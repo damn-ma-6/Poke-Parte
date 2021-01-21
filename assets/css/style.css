@@ -1,0 +1,57 @@
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+  }
+
+  @font-face {
+    font-family: poke;
+    src: url("./pokemon-font.otf");
+  }
+
+  body {
+    font-family: poke, sans-serif;
+  }
+
+  header {
+    text-align: center;
+    margin-top: 30px;
+    overflow: hidden;
+  }
+
+  header h1 {
+    text-transform: uppercase;
+  }
+
+
+  .poke-cards {
+    height: 80vh;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+  }
+
+  .poke-card {
+    width: 320px;
+    transform-style: preserve-3d;
+    background: rgb(165, 172, 34);
+    border-radius: 20px;
+    box-shadow: 0 10px 10px rgba(0, 0, 0, 0.4), 0 0px 40px rgba(0, 0, 0, 0.35);
+    padding: 10px;
+  }
+
+  .poke-info {
+    transition: all .5s ease;
+    color: rgb(210, 46, 150);
+    text-shadow: 0 1px 3px rgba(0, 0, 0, 0.5);
+    margin-bottom: 25px;
+  }
+
+  .poke-image {
+    width: 100%;
+    transition: all .4s ease;
+  }
+
+  .poke-image img {
+    width: 100%;
+  }
