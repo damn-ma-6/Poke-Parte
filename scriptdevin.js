@@ -29,14 +29,14 @@ var displayPokemon = function(pokemon) {
     var pokeOne = pokemon.name;
     var pokeOneType = pokemon.types[0].type.name;
     var pokeTwoType = pokemon.types[1].type.name; 
-    if (pokeOneType === "grass") {
-        window.alert("Hi!");
-    }
+    // if (pokeOneType === "grass") {
+    //     window.alert("Hi!");
+    // }
     
     currentPokemonEl.innerHTML = pokeOne;
     pokemonContainerEl.appendChild(currentPokemonEl);
 
-    currentTypeEl.innerHTML = "Type: " + pokeOneType + " / " + pokeTwoType; 
+    currentTypeEl.innerHTML = pokeOneType + " / " + pokeTwoType; 
     pokemonContainerEl.appendChild(currentTypeEl); 
 
     for(var i=0; i<3; i++) {
@@ -45,7 +45,7 @@ var displayPokemon = function(pokemon) {
         var moveOne = pokemon.moves[Math.floor(Math.random() * 10)].move.name; 
         var moveTwo = pokemon.moves[Math.floor(Math.random() * 10)].move.name; 
         var moveThree = pokemon.moves[Math.floor(Math.random() * 10)].move.name; 
-        currentMoveEl.innerHTML= "Moves: "  + moveOne + " / " + moveTwo + " / " + moveThree;
+        currentMoveEl.innerHTML= moveOne + " / " + moveTwo + " / " + moveThree;
         pokemonContainerEl.appendChild(currentMoveEl);
     }  
 }
@@ -120,4 +120,4 @@ $(imageEl).css("transform", "translateZ(0px) rotateZ(0deg)");
 
 
 getPokemon(); 
-getPokemonRegion(); 
+//getPokemonRegion(); 
