@@ -36,10 +36,13 @@ var displayPokemon = function(pokemon) {
     currentTypeEl.innerHTML = "Type: " + pokeOneType + " / " + pokeTwoType; 
     pokemonContainerEl.appendChild(currentTypeEl); 
 
-    for(var i=0; i<3; i++) { //if time permitting, randomize results of moves 
-        var pokeMove = pokemon.moves[i].move.name;
-        console.log (pokeMove);
-        currentMoveEl.innerHTML = "Moves: " + pokeMove; 
+    for(var i=0; i<3; i++) {
+        // var pokeMove = pokemon.moves[i].move.name;
+        // console.log (pokeMove);
+        var moveOne = pokemon.moves[Math.floor(Math.random() * 10)].move.name; 
+        var moveTwo = pokemon.moves[Math.floor(Math.random() * 10)].move.name; 
+        var moveThree = pokemon.moves[Math.floor(Math.random() * 10)].move.name; 
+        currentMoveEl.innerHTML= "Moves: "  + moveOne + " / " + moveTwo + " / " + moveThree;
         pokemonContainerEl.appendChild(currentMoveEl);
     }  
 }
@@ -56,10 +59,6 @@ var pokemonImage = function (pokemon) {
     pokemonContainerEl.appendChild(currentImageEl);
 }
 
-
-
-
-//display Pokemon attacks 
 //display Pokemon region 
 
 
