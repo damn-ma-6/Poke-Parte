@@ -3,18 +3,90 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="preconnect" href="https://fonts.gstatic.com">
+    <link href="https://cdn.jsdelivr.net/npm/pokemon-font@1.8.1/fonts/pokemon-font.eot" />
     <title>TEST PAGE</title>
+    <style>
+        * {
+          margin: 0;
+          padding: 0;
+          box-sizing: border-box;
+        }
+  
+        @font-face {
+          font-family: poke;
+          src: url("./pokemon-font.otf");
+        }
+  
+        body {
+          font-family: poke, sans-serif;
+        }
+  
+        header {
+          text-align: center;
+          margin-top: 30px;
+          overflow: hidden;
+        }
+  
+        header h1 {
+          text-transform: uppercase;
+        }
+  
+  
+        #pokemon-container {
+          height: 80vh;
+          display: flex;
+          justify-content: center;
+          align-items: center;
+        }
+  
+        .poke-card {
+          width: 320px;
+          transform-style: preserve-3d;
+          background: rgb(165, 172, 34);
+          border-radius: 20px;
+          box-shadow: 0 10px 10px rgba(0, 0, 0, 0.4), 0 0px 40px rgba(0, 0, 0, 0.35);
+          padding: 10px;
+        }
+  
+        #current-pokemon {
+          transition: all .5s ease;
+          color: rgb(210, 46, 150);
+          text-shadow: 0 1px 3px rgba(0, 0, 0, 0.5);
+          margin-bottom: 25px;
+        }
+  
+        #pokemon-image {
+          width: 100%;
+          transition: all .4s ease;
+        }
+  
+        #pokemon-image img {
+          width: 100%;
+        }
+  
+    </style>
 </head>
-<body>
-    <h1>Pokemon Test Page</h1>
-    <div id="pokemon-container">
-        <div id="current-pokemon"></div>
-        <div id="current-type"></div>
-        <div id="pokemon-image"></div>
-        <div id="pokemon-move"></div>
-        <div id="pokemon-habitat"></div>
 
-    </div>
-<script src= "scriptdevin.js"></script> 
-</body>
+<body>
+    <h1>PokéParté</h1>
+
+        <!-- POKE CARDS -->
+        <div id="pokemon-container">
+
+            <div class="poke-card">
+              <div class="poke-info">
+                <h2>Pokemon: <span id="current-pokemon"></span></h2>
+                <p>Type: <span id="current-type"></span></p>
+                <p>Moves: <span id="pokemon-move"></span></p>
+              </div>
+              <div id="#pokemon-image">
+              </div>
+            </div>
+      
+          </div>
+
+    <script src="https://code.jquery.com/jquery-git.min.js"></script>
+    <script src= "scriptdevin.js"></script> 
+  </body>
 </html>

@@ -29,8 +29,11 @@ var displayPokemon = function(pokemon) {
     var pokeOne = pokemon.name;
     var pokeOneType = pokemon.types[0].type.name;
     var pokeTwoType = pokemon.types[1].type.name; 
+    if (pokeOneType === "grass") {
+        window.alert("Hi!");
+    }
     
-    currentPokemonEl.innerHTML = "Name: " + pokeOne;
+    currentPokemonEl.innerHTML = pokeOne;
     pokemonContainerEl.appendChild(currentPokemonEl);
 
     currentTypeEl.innerHTML = "Type: " + pokeOneType + " / " + pokeTwoType; 
@@ -61,11 +64,60 @@ var pokemonImage = function (pokemon) {
 
 //display Pokemon region 
 
+// var pokemonRegion = function () {
+//      //format the PokeAPI data 
+//      var apiURL = "https://pokeapi.co/api/v2/region/kanto/"; 
+//      //make a request to the URL(404 ERROR and network connectivity)
+//      fetch(apiURL).then(function(response) {
+//          //request for data was successful 
+//          if (response.ok) { //"ok" - when the HTTP request status code is something in the 200s - ok = true 404 error
+//              response.json().then(function(data) {
+//                      console.log(data);
+//                      getPokemonRegion(data);
+//              });
+//          } else { //ok = false (not in the 200s)
+//              alert("Error: " + response.statusText); //statusText property - what the issue is 
+//          }
+//      })
+
+// }
+
+// var getPokemonRegion = function () {
+    
+// }
+
 
 //search for city 
     // find weather condition - ie. sunny, cloudy, snowy etc.
         //find pokemon types based on weather 
             // if sunny -- find fire pokemon, display 10 
 
+let cardEl = $(".poke-card");
+let infoEl = $(".poke-info");
+let imageEl = $("#pokemon-image");
+      
+$(cardEl).on('mousemove', (e) => {
+let x = ((window.innerWidth / 2) - e.pageX) / 15;
+let y = ((window.innerHeight / 2) - e.pageY) / 15;
+      
+$(cardEl).css("transform", `rotateY(${-x}deg) rotateX(${-y}deg)`);
+      
+$(infoEl).css("transform", "translateZ(40px)")
+$(imageEl).css("transform", "translateZ(40px) rotateZ(-2deg)")
+});
+      
+$(cardEl).on("mouseenter", () => {
+$(cardEl).css("transition", "none");
+});
+      
+$(cardEl).on("mouseleave", () => {
+$(cardEl).css("transition", "all .5s ease");
+$(cardEl).css("transform", "rotateY(0deg) rotateX(0deg)");
+      
+$(infoEl).css("transform", "translateZ(0px)");
+$(imageEl).css("transform", "translateZ(0px) rotateZ(0deg)");
+});
+
 
 getPokemon(); 
+getPokemonRegion(); 
