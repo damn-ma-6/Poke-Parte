@@ -309,31 +309,6 @@ var pokemonImage = function (pokemon) {
     currentImageEl.appendChild(pokeImage);
 }
 
-//display Pokemon region 
-
-// var pokemonRegion = function () {
-//      //format the PokeAPI data 
-//      var apiURL = "https://pokeapi.co/api/v2/region/kanto/"; 
-//      //make a request to the URL(404 ERROR and network connectivity)
-//      fetch(apiURL).then(function(response) {
-//          //request for data was successful 
-//          if (response.ok) { //"ok" - when the HTTP request status code is something in the 200s - ok = true 404 error
-//              response.json().then(function(data) {
-//                      console.log(data);
-//                      getPokemonRegion(data);
-//              });
-//          } else { //ok = false (not in the 200s)
-//              alert("Error: " + response.statusText); //statusText property - what the issue is 
-//          }
-//      })
-
-// }
-
-// var getPokemonRegion = function () {
-    
-// }
-
-
 //search for city 
     // find weather condition - ie. sunny, cloudy, snowy etc.
         //find pokemon types based on weather 
@@ -367,7 +342,7 @@ $(cardEl).on("mouseleave", () => {
 
 
 getPokemon();
-getGroundType();  
+getGroundType(); 
 getFireType(); 
 getGrassType(); 
 getDarkType(); 
@@ -383,4 +358,3 @@ getPoisonType();
 getFlyingType(); 
 getDragonType(); 
 getPsychicType(); 
-//getPokemonRegion(); 
