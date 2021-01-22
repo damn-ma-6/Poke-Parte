@@ -37,14 +37,10 @@ var displayPokemon = function(pokemon) {
 
     currentTypeEl.textContent = pokeOneType + " / " + pokeTwoType; 
 
-    for(var i=0; i<3; i++) {
-        // var pokeMove = pokemon.moves[i].move.name;
-        // console.log (pokeMove);
-        var moveOne = pokemon.moves[Math.floor(Math.random() * 10)].move.name; 
-        var moveTwo = pokemon.moves[Math.floor(Math.random() * 10)].move.name; 
-        var moveThree = pokemon.moves[Math.floor(Math.random() * 10)].move.name; 
-        currentMoveEl.textContent= moveOne + " / " + moveTwo + " / " + moveThree;
-    }  
+    var moveOne = pokemon.moves[Math.floor(Math.random() * 10)].move.name; 
+    var moveTwo = pokemon.moves[Math.floor(Math.random() * 10)].move.name; 
+    var moveThree = pokemon.moves[Math.floor(Math.random() * 10)].move.name; 
+    currentMoveEl.textContent= moveOne + " / " + moveTwo + " / " + moveThree;
 }
 
 //display Pokemon image
@@ -54,7 +50,7 @@ var pokemonImage = function (pokemon) {
     var pokeImage = document.createElement("img");
     pokeImage.setAttribute("style", "width:250px;height:250px;")
 
-    pokeImage.srcset = `https://pokeres.bastionbot.org/images/pokemon/` + pokeNumber + `.png`;
+    pokeImage.srcset = "https://pokeres.bastionbot.org/images/pokemon/" + pokeNumber + ".png";
     currentImageEl.appendChild(pokeImage);
 }
 
@@ -93,25 +89,25 @@ let infoEl = $(".poke-info");
 let imageEl = $("#pokemon-image");
       
 $(cardEl).on('mousemove', (e) => {
-let x = ((window.innerWidth / 2) - e.pageX) / 15;
-let y = ((window.innerHeight / 2) - e.pageY) / 15;
+    let x = ((window.innerWidth / 2) - e.pageX) / 15;
+    let y = ((window.innerHeight / 2) - e.pageY) / 15;
       
-$(cardEl).css("transform", `rotateY(${-x}deg) rotateX(${-y}deg)`);
+    $(cardEl).css("transform", `rotateY(${-x}deg) rotateX(${-y}deg)`);
       
-$(infoEl).css("transform", "translateZ(40px)")
-$(imageEl).css("transform", "translateZ(40px) rotateZ(-2deg)")
+    $(infoEl).css("transform", "translateZ(40px)")
+    $(imageEl).css("transform", "translateZ(40px) rotateZ(-2deg)")
 });
       
 $(cardEl).on("mouseenter", () => {
-$(cardEl).css("transition", "none");
+    $(cardEl).css("transition", "none");
 });
       
 $(cardEl).on("mouseleave", () => {
-$(cardEl).css("transition", "all .5s ease");
-$(cardEl).css("transform", "rotateY(0deg) rotateX(0deg)");
+    $(cardEl).css("transition", "all .5s ease");
+    $(cardEl).css("transform", "rotateY(0deg) rotateX(0deg)");
       
-$(infoEl).css("transform", "translateZ(0px)");
-$(imageEl).css("transform", "translateZ(0px) rotateZ(0deg)");
+    $(infoEl).css("transform", "translateZ(0px)");
+    $(imageEl).css("transform", "translateZ(0px) rotateZ(0deg)");
 });
 
 
