@@ -1,9 +1,9 @@
-var pokemonContainerEl = document.querySelector("#pokemon-container");
-var currentPokemonEl = document.querySelector("#current-pokemon");
-var currentTypeEl = document.querySelector("#current-type");
-var currentImageEl = document.querySelector("#pokemon-image");
-var currentMoveEl = document.querySelector("#pokemon-move");
-var currentHabitatEl = document.querySelector("#pokemon-habitat");
+var pokemonContainerEl = document.querySelector(".poke-card");
+var currentPokemonEl = document.querySelector(".poke-name");
+var currentTypeEl = document.querySelector(".poke-type");
+var currentImageEl = document.querySelector(".poke-image");
+var currentMoveEl = document.querySelector(".poke-move");
+//var currentHabitatEl = document.querySelector("#pokemon-habitat");
 //var apiURL = "https://pokeapi.co/api/v2/pokemon/"
 
 var getPokemon = function() {
@@ -33,11 +33,9 @@ var displayPokemon = function(pokemon) {
     //     window.alert("Hi!");
     // }
     
-    currentPokemonEl.innerHTML = pokeOne;
-    pokemonContainerEl.appendChild(currentPokemonEl);
+    currentPokemonEl.textContent = pokeOne;
 
-    currentTypeEl.innerHTML = pokeOneType + " / " + pokeTwoType; 
-    pokemonContainerEl.appendChild(currentTypeEl); 
+    currentTypeEl.textContent = pokeOneType + " / " + pokeTwoType; 
 
     for(var i=0; i<3; i++) {
         // var pokeMove = pokemon.moves[i].move.name;
@@ -45,8 +43,7 @@ var displayPokemon = function(pokemon) {
         var moveOne = pokemon.moves[Math.floor(Math.random() * 10)].move.name; 
         var moveTwo = pokemon.moves[Math.floor(Math.random() * 10)].move.name; 
         var moveThree = pokemon.moves[Math.floor(Math.random() * 10)].move.name; 
-        currentMoveEl.innerHTML= moveOne + " / " + moveTwo + " / " + moveThree;
-        pokemonContainerEl.appendChild(currentMoveEl);
+        currentMoveEl.textContent= moveOne + " / " + moveTwo + " / " + moveThree;
     }  
 }
 
@@ -59,7 +56,6 @@ var pokemonImage = function (pokemon) {
 
     pokeImage.srcset = `https://pokeres.bastionbot.org/images/pokemon/` + pokeNumber + `.png`;
     currentImageEl.appendChild(pokeImage);
-    pokemonContainerEl.appendChild(currentImageEl);
 }
 
 //display Pokemon region 
