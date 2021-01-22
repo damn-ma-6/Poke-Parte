@@ -6,7 +6,7 @@
 
   @font-face {
     font-family: poke;
-    src: url("./pokemon-font.otf");
+    src: url("./assets/fonts/pokemon-font.otf");
   }
 
   body {
