@@ -87,60 +87,58 @@ var pokeMoveEl = document.querySelectorAll(".poke-move");
     //fairy(2), fighting(2), poison(2), ice(2), steel(2) 
 
 var getType = function (type) { 
+    
     var apiURL = "https://pokeapi.co/api/v2/type/"+ type + "/";
     fetch(apiURL).then(function(response) {
-        if (response.ok) {
+        if (response.ok){
+            var pokeType = []; 
             response.json().then(function(data) {
                 console.log(data);
-                var pokeType = []; 
+                console.log(pokeType);
                 for (var i=0; i<pokemonContainerEl.length; i++) {
-                    pokeType.push(data.pokemon[Math.floor(Math.random() * 10)].pokemon.name);
-                    console.log(pokeType[i]);
-                    getPokemon(pokeType[i]);
+                 pokeType.push(data.pokemon[Math.floor(Math.random() * 10)].pokemon.name);
+                 getPokemon(pokeType[i]); 
                 }
-            })
+            })  
         }
-    })
+    }) 
+
+    var getPokemon = function(pokemon) {
+        //format the PokeAPI data 
+        var apiURL = "https://pokeapi.co/api/v2/pokemon/" + pokemon + "/"; 
+        //make a request to the URL(404 ERROR and network connectivity)
+        fetch(apiURL).then(function(response) {
+            //request for data was successful 
+            if (response.ok) { //"ok" - when the HTTP request status code is something in the 200s - ok = true 404 error
+                response.json().then(function(pokemon) {
+                    console.log(pokemon);   
+                    for (var i=0; i<pokemonContainerEl.length; i++) { 
+                        pokemonContainerEl.innerHTML= ""; 
+                        var pokeName = pokemon.name;
+                        var pokeTypeOne = pokemon.types[0].type.name;
+                    
+                        pokeNameEl[i].textContent = pokeName;
+                
+                        pokeTypeEl[i].textContent = pokeTypeOne;
+                
+                        var moveOne = pokemon.moves[Math.floor(Math.random() * 5)].move.name; 
+                        var moveTwo = pokemon.moves[Math.floor(Math.random() * 5)].move.name; 
+                        var moveThree = pokemon.moves[Math.floor(Math.random() * 5)].move.name; 
+                        pokeMoveEl[i].textContent= moveOne + " / " + moveTwo + " / " + moveThree;
+                        var pokeNumber = pokemon.id; 
+                        console.log(pokemon.id);
+                        pokePicEl[i].setAttribute("style", "width:200px;height:200px;");
+                        pokePicEl[i].srcset = "https://pokeres.bastionbot.org/images/pokemon/" + pokeNumber + ".png";
+                    } 
+                }); 
+            }
+        })
+    };
 };
 
 getType("dragon");
 
-var getPokemon = function(pokemon) {
-    //format the PokeAPI data 
-    var apiURL = "https://pokeapi.co/api/v2/pokemon/" + pokemon + "/"; 
-    //make a request to the URL(404 ERROR and network connectivity)
-    fetch(apiURL).then(function(response) {
-        //request for data was successful 
-        if (response.ok) { //"ok" - when the HTTP request status code is something in the 200s - ok = true 404 error
-            response.json().then(function(pokemon) {
-                    console.log(pokemon);
-                    displayPokemon(pokemon);
-                    //pokemonImage(pokemon);    
-            });
-        } 
-    })
-};
 
-//display Pokemon name, type and moves 
-var displayPokemon = function(pokemon) {
-    for (var i=0; i<pokemonContainerEl.length; i++) { 
-        var pokeName = pokemon.name;
-        var pokeTypeOne = pokemon.types[0].type.name;
-    
-        pokeNameEl[i].textContent = pokeName;
-
-        pokeTypeEl[i].textContent = pokeTypeOne;
-
-        var moveOne = pokemon.moves[Math.floor(Math.random() * 5)].move.name; 
-        var moveTwo = pokemon.moves[Math.floor(Math.random() * 5)].move.name; 
-        var moveThree = pokemon.moves[Math.floor(Math.random() * 5)].move.name; 
-        pokeMoveEl[i].textContent= moveOne + " / " + moveTwo + " / " + moveThree;
-        var pokeNumber = pokemon.id; 
-        console.log(pokemon.id);
-        pokePicEl[i].setAttribute("style", "width:200px;height:200px;");
-        pokePicEl[i].srcset = "https://pokeres.bastionbot.org/images/pokemon/" + pokeNumber + ".png";
-    }
-};
 
 // //display Pokemon image
 // var pokemonImage = function (pokemon) {
@@ -196,6 +194,4 @@ function getCardDetails(target) {
     card = {};
 });
 
-
-getPokemon();
 
