@@ -6,7 +6,7 @@
 
   @font-face {
     font-family: poke;
-    src: url("/Poke-Parte/assets/fonts/pokemon-font.otf");
+    src: url("../fonts/pokemon-font.otf");
   }
 
   body {
@@ -44,12 +44,14 @@
     transition: all .5s ease;
     color: rgb(210, 46, 150);
     text-shadow: 0 1px 3px rgba(0, 0, 0, 0.5);
+    text-transform: capitalize;
     margin-bottom: 25px;
   }
 
   .poke-image {
     width: 100%;
     transition: all .4s ease;
+    margin-left: 45px; 
   }
 
   .poke-image img {

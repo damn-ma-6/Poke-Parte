@@ -1,9 +1,8 @@
 var pokemonContainerEl = document.querySelector(".poke-card");
-var currentPokemonEl = document.querySelector(".poke-name");
-var currentTypeEl = document.querySelector(".poke-type");
-var currentImageEl = document.querySelector(".poke-image");
-var currentMoveEl = document.querySelector(".poke-move");
-
+var pokeNameEl = document.querySelector(".poke-name");
+var pokeTypeEl = document.querySelector(".poke-type");
+var pokeImageEl = document.querySelector(".poke-image");
+var pokeMoveEl = document.querySelector(".poke-move");
 
 //if weather is sunny, mostly sunny, partly sunny 
     //grass(3), ground(3) and fire(4)
@@ -96,12 +95,9 @@ var getType = function (type) {
                         var pokeType = []; 
                         pokeType.push(data.pokemon[Math.floor(Math.random() *20)]);
                         console.log(pokeType);
-                        getPokemon(pokeType[0].pokemon.name);
-                        //displayPokemon(pokeType[0].pokemon.name);
+                        getPokemon(pokeType[i].pokemon.name);
                     }
-                });
-            } else {
-                alert("Error: " + response.statusText); //statusText property - what the issue is 
+                })
             }
         })
 };
@@ -120,26 +116,24 @@ var getPokemon = function(pokemon) {
                     displayPokemon(pokemon);
                     pokemonImage(pokemon);    
             });
-        } else { //ok = false (not in the 200s)
-            alert("Error: " + response.statusText); //statusText property - what the issue is 
-        }
+        } 
     })
 };
 
 //display Pokemon name, type and moves 
 var displayPokemon = function(pokemon) {
-    var pokeOne = pokemon.name;
-    var pokeOneType = pokemon.types[0].type.name;
-    var pokeTwoType = pokemon.types[1].type.name; 
+    var pokeName = pokemon.name;
+    var pokeTypeOne = pokemon.types[0].type.name;
+    var pokeTypeTwo = pokemon.types[1].type.name; 
     
-    currentPokemonEl.textContent = pokeOne;
+    pokeNameEl.textContent = pokeName;
 
-    currentTypeEl.textContent = pokeOneType + " / " + pokeTwoType; 
+    pokeTypeEl.textContent = pokeTypeOne + " / " + pokeTypeTwo; 
 
-    var moveOne = pokemon.moves[Math.floor(Math.random() * 10)].move.name; 
-    var moveTwo = pokemon.moves[Math.floor(Math.random() * 10)].move.name; 
-    var moveThree = pokemon.moves[Math.floor(Math.random() * 10)].move.name; 
-    currentMoveEl.textContent= moveOne + " / " + moveTwo + " / " + moveThree;
+    var moveOne = pokemon.moves[Math.floor(Math.random() * 30)].move.name; 
+    var moveTwo = pokemon.moves[Math.floor(Math.random() * 30)].move.name; 
+    var moveThree = pokemon.moves[Math.floor(Math.random() * 30)].move.name; 
+    pokeMoveEl.textContent= moveOne + " / " + moveTwo + " / " + moveThree;
 }
 
 //display Pokemon image
@@ -150,13 +144,9 @@ var pokemonImage = function (pokemon) {
     pokeImage.setAttribute("style", "width:200px;height:200px;")
 
     pokeImage.srcset = "https://pokeres.bastionbot.org/images/pokemon/" + pokeNumber + ".png";
-    currentImageEl.appendChild(pokeImage);
+    pokeImageEl.appendChild(pokeImage);
 }
 
-//search for city 
-    // find weather condition - ie. sunny, cloudy, snowy etc.
-        //find pokemon types based on weather 
-            // if sunny -- find fire pokemon, display 10 
 
 let cardEl = $(".poke-card");
 let card = {};
