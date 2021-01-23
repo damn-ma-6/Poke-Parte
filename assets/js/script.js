@@ -87,20 +87,20 @@ var pokeMoveEl = document.querySelectorAll(".poke-move");
     //fairy(2), fighting(2), poison(2), ice(2), steel(2) 
 
 var getType = function (type) { 
-        var apiURL = "https://pokeapi.co/api/v2/type/"+ type + "/";
-        fetch(apiURL).then(function(response) {
-            if (response.ok) {
-                response.json().then(function(data) {
-                    console.log(data);
-                    for (var i=0; i<pokemonContainerEl.length; i++) {
-                        var pokeType = []; 
-                        pokeType.push(data.pokemon[Math.floor(Math.random() * 10)].pokemon.name);
-                        console.log(pokeType);
-                        getPokemon(pokeType[i]);
-                    }
-                })
-            }
-        })
+    var apiURL = "https://pokeapi.co/api/v2/type/"+ type + "/";
+    fetch(apiURL).then(function(response) {
+        if (response.ok) {
+            response.json().then(function(data) {
+                console.log(data);
+                var pokeType = []; 
+                for (var i=0; i<pokemonContainerEl.length; i++) {
+                    pokeType.push(data.pokemon[Math.floor(Math.random() * 10)].pokemon.name);
+                    console.log(pokeType[i]);
+                    getPokemon(pokeType[i]);
+                }
+            })
+        }
+    })
 };
 
 getType("dragon");
@@ -115,7 +115,7 @@ var getPokemon = function(pokemon) {
             response.json().then(function(pokemon) {
                     console.log(pokemon);
                     displayPokemon(pokemon);
-                    pokemonImage(pokemon);    
+                    //pokemonImage(pokemon);    
             });
         } 
     })
@@ -123,31 +123,37 @@ var getPokemon = function(pokemon) {
 
 //display Pokemon name, type and moves 
 var displayPokemon = function(pokemon) {
-    var pokeName = pokemon.name;
-    var pokeTypeOne = pokemon.types[0].type.name;
+    for (var i=0; i<pokemonContainerEl.length; i++) { 
+        var pokeName = pokemon.name;
+        var pokeTypeOne = pokemon.types[0].type.name;
     
-    pokeNameEl.textContent = pokeName;
+        pokeNameEl[i].textContent = pokeName;
 
-    pokeTypeEl.textContent = pokeTypeOne;
+        pokeTypeEl[i].textContent = pokeTypeOne;
 
-    var moveOne = pokemon.moves[Math.floor(Math.random() * 5)].move.name; 
-    var moveTwo = pokemon.moves[Math.floor(Math.random() * 5)].move.name; 
-    var moveThree = pokemon.moves[Math.floor(Math.random() * 5)].move.name; 
-    pokeMoveEl.textContent= moveOne + " / " + moveTwo + " / " + moveThree;
-}
-
-//display Pokemon image
-var pokemonImage = function (pokemon) {
-    var pokeNumber = pokemon.id; 
-    console.log(pokemon.id);
-    //var pokeImage = document.createElement("img");
-    var i = pokePicEl.length; 
-    while (i--) {
+        var moveOne = pokemon.moves[Math.floor(Math.random() * 5)].move.name; 
+        var moveTwo = pokemon.moves[Math.floor(Math.random() * 5)].move.name; 
+        var moveThree = pokemon.moves[Math.floor(Math.random() * 5)].move.name; 
+        pokeMoveEl[i].textContent= moveOne + " / " + moveTwo + " / " + moveThree;
+        var pokeNumber = pokemon.id; 
+        console.log(pokemon.id);
         pokePicEl[i].setAttribute("style", "width:200px;height:200px;");
         pokePicEl[i].srcset = "https://pokeres.bastionbot.org/images/pokemon/" + pokeNumber + ".png";
     }
-    //pokeImageEl.append(pokeImage);
-}
+};
+
+// //display Pokemon image
+// var pokemonImage = function (pokemon) {
+//     var pokeNumber = pokemon.id; 
+//     console.log(pokemon.id);
+//     //var pokeImage = document.createElement("img");
+//     var i = pokePicEl.length; 
+//     while (i--) {
+//         pokePicEl[i].setAttribute("style", "width:200px;height:200px;");
+//         pokePicEl[i].srcset = "https://pokeres.bastionbot.org/images/pokemon/" + pokeNumber + ".png";
+//     }
+//     //pokeImageEl.append(pokeImage);
+// }
 
 
 let cardEl = $(".poke-card");
