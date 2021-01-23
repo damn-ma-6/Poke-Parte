@@ -5,6 +5,9 @@ var pokeImageEl = document.querySelectorAll(".poke-image");
 var pokePicEl = document.querySelectorAll(".poke-pic");
 var pokeMoveEl = document.querySelectorAll(".poke-move");
 
+// this variable will pull the city from the search bar
+var city = "Toronto";
+
 //if weather is sunny, mostly sunny, partly sunny 
     //grass(3), ground(3) and fire(4)
 
@@ -91,11 +94,11 @@ var getType = function (type) {
     fetch(apiURL).then(function(response) {
         if (response.ok) {
             response.json().then(function(data) {
-                console.log(data);
+                
                 var pokeType = []; 
                 for (var i=0; i<pokemonContainerEl.length; i++) {
                     pokeType.push(data.pokemon[Math.floor(Math.random() * 10)].pokemon.name);
-                    console.log(pokeType[i]);
+                    
                     getPokemon(pokeType[i]);
                 }
             })
@@ -105,6 +108,8 @@ var getType = function (type) {
 
 getType("dragon");
 
+
+
 var getPokemon = function(pokemon) {
     //format the PokeAPI data 
     var apiURL = "https://pokeapi.co/api/v2/pokemon/" + pokemon + "/"; 
@@ -113,7 +118,7 @@ var getPokemon = function(pokemon) {
         //request for data was successful 
         if (response.ok) { //"ok" - when the HTTP request status code is something in the 200s - ok = true 404 error
             response.json().then(function(pokemon) {
-                    console.log(pokemon);
+                    
                     displayPokemon(pokemon);
                     //pokemonImage(pokemon);    
             });
@@ -136,12 +141,49 @@ var displayPokemon = function(pokemon) {
         var moveThree = pokemon.moves[Math.floor(Math.random() * 5)].move.name; 
         pokeMoveEl[i].textContent= moveOne + " / " + moveTwo + " / " + moveThree;
         var pokeNumber = pokemon.id; 
-        console.log(pokemon.id);
+        
         pokePicEl[i].setAttribute("style", "width:200px;height:200px;");
         pokePicEl[i].srcset = "https://pokeres.bastionbot.org/images/pokemon/" + pokeNumber + ".png";
     }
 };
 
+// had to call the city api to get the data key for the city then enter it into the get weather function
+var getCity = function(city){
+    
+    var apiUrl = "http://dataservice.accuweather.com/locations/v1/search?apikey=8phV97GIATzlpDJK66fxWSKyzLgvNucC&q=" + city + "&language=en-ca&details=false";
+
+    fetch(apiUrl).then(function(response){
+        if(response.ok){
+            response.json().then(function(data){
+                getWeather(data[0].Key);
+            });
+        }else{
+            alert("City not found Error: " + response.statusText);
+        }
+    })
+    .catch(function(error){
+        alert("Unable to connect");
+    })
+};
+
+// function uses the get hourly weather api from accuweather and uses city key to display weather
+var getWeather = function(cityKey){
+
+    
+    var apiUrl = "http://dataservice.accuweather.com/forecasts/v1/hourly/1hour/" + cityKey + "?apikey=8phV97GIATzlpDJK66fxWSKyzLgvNucC&metric=true";
+
+    fetch(apiUrl).then(function(response){
+        if(response.ok){
+            response.json().then(function(data){
+                console.log(data[0].WeatherIcon);
+            });
+        }
+    });
+
+
+};
+
+getCity(city);
 // //display Pokemon image
 // var pokemonImage = function (pokemon) {
 //     var pokeNumber = pokemon.id; 
