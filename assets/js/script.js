@@ -6,7 +6,9 @@ var pokePicEl = document.querySelectorAll(".poke-pic");
 var pokeMoveEl = document.querySelectorAll(".poke-move");
 
 // this variable will pull the city from the search bar
-var city = "Toronto";
+var city = document.querySelector("#city-name");
+var userFormEl = document.querySelector("#user-form");
+var displayWeatherEl = document.querySelector("#display-weather");
 
 //if weather is sunny, mostly sunny, partly sunny 
     //grass(3), ground(3) and fire(4)
@@ -147,6 +149,20 @@ var displayPokemon = function(pokemon) {
     }
 };
 
+
+var formSubmitHandler = function(event){
+    event.preventDefault();
+
+    var cityName = city.value.trim();
+    
+    if(cityName){
+        getCity(cityName);
+    }else{
+        alert("this doesnt display anything");
+    }
+    
+}
+
 // had to call the city api to get the data key for the city then enter it into the get weather function
 var getCity = function(city){
     
@@ -175,7 +191,7 @@ var getWeather = function(cityKey){
     fetch(apiUrl).then(function(response){
         if(response.ok){
             response.json().then(function(data){
-                console.log(data[0].WeatherIcon);
+                displayWeather(data);
             });
         }
     });
@@ -183,7 +199,36 @@ var getWeather = function(cityKey){
 
 };
 
-getCity(city);
+var displayWeather = function(data){
+    var cityName = city.value.trim();
+    var weatherIcon = data[0].WeatherIcon;
+    var iconPhrase = data[0].IconPhrase;
+    var temp = data[0].Temperature.Value;
+
+    displayWeatherEl.textContent = ""
+    var cityNameDisplay = document.createElement("h2");
+    cityNameDisplay.className = "subtitle"
+    cityNameDisplay.textContent = cityName;
+
+    displayWeatherEl.appendChild(cityNameDisplay);
+
+
+
+    var tempDisplay = document.createElement("p");
+    tempDisplay.textContent = "Temp: " + temp + "°C";
+
+    displayWeatherEl.appendChild(tempDisplay);
+    
+
+    var phraseDisplay = document.createElement("p");
+    phraseDisplay.textContent = iconPhrase;
+
+    displayWeatherEl.appendChild(phraseDisplay);
+
+};
+
+userFormEl.addEventListener("submit", formSubmitHandler);
+
 // //display Pokemon image
 // var pokemonImage = function (pokemon) {
 //     var pokeNumber = pokemon.id; 
