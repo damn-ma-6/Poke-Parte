@@ -1,27 +1,40 @@
 let cardEl = $(".poke-card");
-let infoEl = $(".poke-info");
-let imageEl = $(".poke-image");
+let card = {};
+
+function getCardDetails(e) {
+  let currentCard = $(e).closest(".poke-card");
+  let infoEl = $(currentCard).find(".poke-info");
+  let imageEl = $(currentCard).find(".poke-image");
+  card = {
+    currentCard,
+    infoEl,
+    imageEl
+  };
+
+  return card;
+}
 
 $(cardEl).on('mousemove', (e) => {
   let x = ((window.innerWidth / 2) - e.pageX) / 15;
   let y = ((window.innerHeight / 2) - e.pageY) / 15;
 
-  $(cardEl).css("transform", `rotateY(${-x}deg) rotateX(${-y}deg)`);
+  $(card.currentCard).css("transform", `rotateY(${-x}deg) rotateX(${y}deg)`);
 
-  $(infoEl).css("transform", "translateZ(40px)")
-  $(imageEl).css("transform", "translateZ(40px) rotateZ(-2deg)")
+  $(card.infoEl).css("transform", "translateZ(40px)")
+  $(card.imageEl).css("transform", "translateZ(40px) rotateZ(-2deg)")
 });
 
-$(cardEl).on("mouseenter", () => {
-  $(cardEl).css("transition", "none");
+$(cardEl).on("mouseenter", (e) => {
+  let card = getCardDetails(e.target);
+  $(card.currentCard).css("transition", "none");
 });
 
-$(cardEl).on("mouseleave", () => {
-  $(cardEl).css("transition", "all .5s ease");
-  $(cardEl).css("transform", "rotateY(0deg) rotateX(0deg)");
+$(cardEl).on("mouseleave", (e) => {
+  $(card.currentCard).css("transition", "all .5s ease");
+  $(card.currentCard).css("transform", "rotateY(0deg) rotateX(0deg)");
 
-  $(infoEl).css("transform", "translateZ(0px)");
-  $(imageEl).css("transform", "translateZ(0px) rotateZ(0deg)");
+  $(card.infoEl).css("transform", "translateZ(0px)");
+  $(card.imageEl).css("transform", "translateZ(0px) rotateZ(0deg)");
 });
 
 
