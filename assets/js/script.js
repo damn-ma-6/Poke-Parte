@@ -1,8 +1,9 @@
-var pokemonContainerEl = document.querySelector(".poke-card");
-var pokeNameEl = document.querySelector(".poke-name");
-var pokeTypeEl = document.querySelector(".poke-type");
-var pokeImageEl = document.querySelector(".poke-image");
-var pokeMoveEl = document.querySelector(".poke-move");
+var pokemonContainerEl = document.querySelectorAll(".poke-card");
+var pokeNameEl = document.querySelectorAll(".poke-name");
+var pokeTypeEl = document.querySelectorAll(".poke-type");
+var pokeImageEl = document.querySelectorAll(".poke-image");
+var pokePicEl = document.querySelectorAll(".poke-pic");
+var pokeMoveEl = document.querySelectorAll(".poke-move");
 
 //if weather is sunny, mostly sunny, partly sunny 
     //grass(3), ground(3) and fire(4)
@@ -91,18 +92,18 @@ var getType = function (type) {
             if (response.ok) {
                 response.json().then(function(data) {
                     console.log(data);
-                    for (var i=0; i<3; i++) {
+                    for (var i=0; i<pokemonContainerEl.length; i++) {
                         var pokeType = []; 
-                        pokeType.push(data.pokemon[Math.floor(Math.random() *20)]);
+                        pokeType.push(data.pokemon[Math.floor(Math.random() * 10)].pokemon.name);
                         console.log(pokeType);
-                        getPokemon(pokeType[i].pokemon.name);
+                        getPokemon(pokeType[i]);
                     }
                 })
             }
         })
 };
 
-getType("fairy");
+getType("dragon");
 
 var getPokemon = function(pokemon) {
     //format the PokeAPI data 
@@ -124,15 +125,14 @@ var getPokemon = function(pokemon) {
 var displayPokemon = function(pokemon) {
     var pokeName = pokemon.name;
     var pokeTypeOne = pokemon.types[0].type.name;
-    var pokeTypeTwo = pokemon.types[1].type.name; 
     
     pokeNameEl.textContent = pokeName;
 
-    pokeTypeEl.textContent = pokeTypeOne + " / " + pokeTypeTwo; 
+    pokeTypeEl.textContent = pokeTypeOne;
 
-    var moveOne = pokemon.moves[Math.floor(Math.random() * 30)].move.name; 
-    var moveTwo = pokemon.moves[Math.floor(Math.random() * 30)].move.name; 
-    var moveThree = pokemon.moves[Math.floor(Math.random() * 30)].move.name; 
+    var moveOne = pokemon.moves[Math.floor(Math.random() * 5)].move.name; 
+    var moveTwo = pokemon.moves[Math.floor(Math.random() * 5)].move.name; 
+    var moveThree = pokemon.moves[Math.floor(Math.random() * 5)].move.name; 
     pokeMoveEl.textContent= moveOne + " / " + moveTwo + " / " + moveThree;
 }
 
@@ -140,11 +140,13 @@ var displayPokemon = function(pokemon) {
 var pokemonImage = function (pokemon) {
     var pokeNumber = pokemon.id; 
     console.log(pokemon.id);
-    var pokeImage = document.createElement("img");
-    pokeImage.setAttribute("style", "width:200px;height:200px;")
-
-    pokeImage.srcset = "https://pokeres.bastionbot.org/images/pokemon/" + pokeNumber + ".png";
-    pokeImageEl.appendChild(pokeImage);
+    //var pokeImage = document.createElement("img");
+    var i = pokePicEl.length; 
+    while (i--) {
+        pokePicEl[i].setAttribute("style", "width:200px;height:200px;");
+        pokePicEl[i].srcset = "https://pokeres.bastionbot.org/images/pokemon/" + pokeNumber + ".png";
+    }
+    //pokeImageEl.append(pokeImage);
 }
 
 
