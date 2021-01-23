@@ -4,266 +4,113 @@ var currentTypeEl = document.querySelector(".poke-type");
 var currentImageEl = document.querySelector(".poke-image");
 var currentMoveEl = document.querySelector(".poke-move");
 
-var getGroundType = function () { //returns 3 random ground type pokemon - display if weather is clear/sunny
-    var apiURL = "https://pokeapi.co/api/v2/type/ground/";
-    fetch(apiURL).then(function(response) {
-        if (response.ok) {
-            response.json().then(function(data) {
-                console.log(data);
-                for (var i=0; i<3; i++) {
-                    console.log(data.pokemon[Math.floor(Math.random() * 20)]);
-                }
-            });
-        } else {
-            alert("Error: " + response.statusText); //statusText property - what the issue is 
-        }
-    })
+
+//if weather is sunny, mostly sunny, partly sunny 
+    //grass(3), ground(3) and fire(4)
+
+//if weather is intermittent clouds
+    //normal(5), rock(5) 
+
+//if hazy sunshine 
+    //normal(2), rock(2), grass(2), ground(2) and fire(2)
+
+//if mostly cloudy, cloudy, dreary(overcast)
+    //fairy(3), fighting(3), poison(4)
+
+//if foggy 
+    //ghost(5), dark(5) 
+
+//if showers
+    //water(3), electric(3), bug(4)
+
+//if mostly cloudy w/ showers
+    //water(2), electric(2), bug(1), fairy(3), fighting(1), poison(1)
+
+//if partly sunny w/ showers 
+    //water(2), electric(2), bug(2), grass(2), ground(2)
+
+//if t-storms
+    // water(3), electric(4), bug(3)
+
+//if mostly cloudy with t-storms 
+    //normal(2), rock(2), water(2), electric(2), bug(2)
+
+//if partly sunny with t-storms 
+    //grass(2), ground(2), water(2), electric(2), bug(2)
+
+//if rain
+    //water(2), steel(2), electric(3), bug(3) 
+
+//if flurries, snow, sleet 
+    //ice(5), steel(5) 
+
+//if mostly cloudy w/ flurries
+    //normal(2), rock(3), ice(3), steel(2) 
+
+//if partly sunny w/ flurries
+    //grass(1), ground(3), ice(3), steel(3)
+
+//if mostly cloudy w/ snow
+    //normal(2), rock(3), ice(3), steel(2) 
+
+//if ice 
+    //ice(10) 
+
+//if freezing rain, rain and snow 
+    //water(2), electric(2), ice(2), steel(4) 
+
+//if hot, clear, mostly clear 
+    //grass(2), ground(3), fire(5) 
+
+//if cold
+    //ice(5), steel(5)
+
+//if windy
+    // dragon(2), flying(6), psychic(2)
+
+//if partly cloudy, intermittent clouds, mostly cloudy
+    // normal(5), rock(5)
+
+//if hazy moonlight
+    //normal(2), rock(2), grass(2), ground(2), fire(2) 
+
+//if partly cloudy w/ showers 
+    //normal(2), rock(2), water(2), electric(2), bug(2) 
+
+//if mostly cloudy w/ showers, mostly cloudy w/ t-storms
+    //fairy(2), fighting(1), poison(1), water(2), electric(1), bug(3)
+
+//if partly cloudy w/ t-storms 
+    //normal(2), rock(2), water(2), electric(2), bug(2)
+
+//if mostly cloudy w/ flurries, mostly cloudy w/ snow
+    //fairy(2), fighting(2), poison(2), ice(2), steel(2) 
+
+var getType = function (type) { 
+        var apiURL = "https://pokeapi.co/api/v2/type/"+ type + "/";
+        fetch(apiURL).then(function(response) {
+            if (response.ok) {
+                response.json().then(function(data) {
+                    console.log(data);
+                    for (var i=0; i<3; i++) {
+                        var pokeType = []; 
+                        pokeType.push(data.pokemon[Math.floor(Math.random() *20)]);
+                        console.log(pokeType);
+                        getPokemon(pokeType[0].pokemon.name);
+                        //displayPokemon(pokeType[0].pokemon.name);
+                    }
+                });
+            } else {
+                alert("Error: " + response.statusText); //statusText property - what the issue is 
+            }
+        })
 };
 
-var getFireType = function() { //returns 3 random fire type pokemon - display if weather is clear/sunny 
-    var apiURL = "https://pokeapi.co/api/v2/type/fire/";
-    fetch(apiURL).then(function(response) {
-        if (response.ok) {
-            response.json().then(function(data) {
-                console.log(data);
-                for (var i=0; i<3; i++) {
-                    console.log(data.pokemon[Math.floor(Math.random() * 20)]);
-                }
-            });
-        } else {
-            alert("Error: " + response.statusText); //statusText property - what the issue is 
-        }
-    })
-};
+getType("fairy");
 
-var getGrassType = function() { //returns 4 random grass type pokemon - display if weather is clear/sunny 
-    var apiURL = "https://pokeapi.co/api/v2/type/grass/";
-    fetch(apiURL).then(function(response) {
-        if (response.ok) {
-            response.json().then(function(data) {
-                console.log(data);
-                for (var i=0; i<4; i++) {
-                    console.log(data.pokemon[Math.floor(Math.random() * 20)]);
-                }
-            });
-        } else {
-            alert("Error: " + response.statusText); //statusText property - what the issue is 
-        }
-    })
-};
-
-var getDarkType = function() { //returns 5 random dark type pokemon - display if weather is foggy 
-    var apiURL = "https://pokeapi.co/api/v2/type/dark/";
-    fetch(apiURL).then(function(response) {
-        if (response.ok) {
-            response.json().then(function(data) {
-                console.log(data);
-                for (var i=0; i<5; i++) {
-                    console.log(data.pokemon[Math.floor(Math.random() * 20)]);
-                }
-            });
-        } else {
-            alert("Error: " + response.statusText); //statusText property - what the issue is 
-        }
-    })
-};
-
-var getGhostType = function() { //returns 5 random ghost type pokemon - display if weather is foggy 
-    var apiURL = "https://pokeapi.co/api/v2/type/ghost/";
-    fetch(apiURL).then(function(response) {
-        if (response.ok) {
-            response.json().then(function(data) {
-                console.log(data);
-                for (var i=0; i<5; i++) {
-                    console.log(data.pokemon[Math.floor(Math.random() * 20)]);
-                }
-            });
-        } else {
-            alert("Error: " + response.statusText); //statusText property - what the issue is 
-        }
-    })
-};
-
-var getIceType = function() { //returns 5 random ice type pokemon - display if weather is snowy 
-    var apiURL = "https://pokeapi.co/api/v2/type/ice/";
-    fetch(apiURL).then(function(response) {
-        if (response.ok) {
-            response.json().then(function(data) {
-                console.log(data);
-                for (var i=0; i<5; i++) {
-                    console.log(data.pokemon[Math.floor(Math.random() * 20)]);
-                }
-            });
-        } else {
-            alert("Error: " + response.statusText); //statusText property - what the issue is 
-        }
-    })
-};
-
-var getSteelType = function() { //returns 5 random steel type pokemon - display if weather is snowy 
-    var apiURL = "https://pokeapi.co/api/v2/type/steel/";
-    fetch(apiURL).then(function(response) {
-        if (response.ok) {
-            response.json().then(function(data) {
-                console.log(data);
-                for (var i=0; i<5; i++) {
-                    console.log(data.pokemon[Math.floor(Math.random() * 20)]);
-                }
-            });
-        } else {
-            alert("Error: " + response.statusText); //statusText property - what the issue is 
-        }
-    })
-};
-
-var getWaterType = function() { //returns 3 random water type pokemon - display if weather is rainy 
-    var apiURL = "https://pokeapi.co/api/v2/type/water/";
-    fetch(apiURL).then(function(response) {
-        if (response.ok) {
-            response.json().then(function(data) {
-                console.log(data);
-                for (var i=0; i<3; i++) {
-                    console.log(data.pokemon[Math.floor(Math.random() * 20)]);
-                }
-            });
-        } else {
-            alert("Error: " + response.statusText); //statusText property - what the issue is 
-        }
-    })
-};
-
-var getElectricType = function() { //returns 3 random electric type pokemon - display if weather is rainy 
-    var apiURL = "https://pokeapi.co/api/v2/type/electric/";
-    fetch(apiURL).then(function(response) {
-        if (response.ok) {
-            response.json().then(function(data) {
-                console.log(data);
-                for (var i=0; i<3; i++) {
-                    console.log(data.pokemon[Math.floor(Math.random() * 20)]);
-                }
-            });
-        } else {
-            alert("Error: " + response.statusText); //statusText property - what the issue is 
-        }
-    })
-};
-
-var getBugType = function() { //returns 4 random bug type pokemon - display if weather is rainy 
-    var apiURL = "https://pokeapi.co/api/v2/type/bug/";
-    fetch(apiURL).then(function(response) {
-        if (response.ok) {
-            response.json().then(function(data) {
-                console.log(data);
-                for (var i=0; i<4; i++) {
-                    console.log(data.pokemon[Math.floor(Math.random() * 20)]);
-                }
-            });
-        } else {
-            alert("Error: " + response.statusText); //statusText property - what the issue is 
-        }
-    })
-};
-
-var getFairyType = function() { //returns 3 random fairy type pokemon - display if weather is cloudy
-    var apiURL = "https://pokeapi.co/api/v2/type/fairy/";
-    fetch(apiURL).then(function(response) {
-        if (response.ok) {
-            response.json().then(function(data) {
-                console.log(data);
-                for (var i=0; i<3; i++) {
-                    console.log(data.pokemon[Math.floor(Math.random() * 20)]);
-                }
-            });
-        } else {
-            alert("Error: " + response.statusText); //statusText property - what the issue is 
-        }
-    })
-};
-
-var getFightingType = function() { //returns 3 random fighting type pokemon - display if weather is cloudy 
-    var apiURL = "https://pokeapi.co/api/v2/type/fighting/";
-    fetch(apiURL).then(function(response) {
-        if (response.ok) {
-            response.json().then(function(data) {
-                console.log(data);
-                for (var i=0; i<3; i++) {
-                    console.log(data.pokemon[Math.floor(Math.random() * 20)]);
-                }
-            });
-        } else {
-            alert("Error: " + response.statusText); //statusText property - what the issue is 
-        }
-    })
-};
-
-var getPoisonType = function() { //returns 4 random poison type pokemon - display if weather is cloudy 
-    var apiURL = "https://pokeapi.co/api/v2/type/poison/";
-    fetch(apiURL).then(function(response) {
-        if (response.ok) {
-            response.json().then(function(data) {
-                console.log(data);
-                for (var i=0; i<4; i++) {
-                    console.log(data.pokemon[Math.floor(Math.random() * 20)]);
-                }
-            });
-        } else {
-            alert("Error: " + response.statusText); //statusText property - what the issue is 
-        }
-    })
-};
-
-var getFlyingType = function() { //returns 3 random flying type pokemon - display if weather is windy
-    var apiURL = "https://pokeapi.co/api/v2/type/flying/";
-    fetch(apiURL).then(function(response) {
-        if (response.ok) {
-            response.json().then(function(data) {
-                console.log(data);
-                for (var i=0; i<3; i++) {
-                    console.log(data.pokemon[Math.floor(Math.random() * 20)]);
-                }
-            });
-        } else {
-            alert("Error: " + response.statusText); //statusText property - what the issue is 
-        }
-    })
-};
-
-var getDragonType = function() { //returns 3 random dragon type pokemon - display if weather is windy
-    var apiURL = "https://pokeapi.co/api/v2/type/dragon/";
-    fetch(apiURL).then(function(response) {
-        if (response.ok) {
-            response.json().then(function(data) {
-                console.log(data);
-                for (var i=0; i<3; i++) {
-                    console.log(data.pokemon[Math.floor(Math.random() * 20)]);
-                }
-            });
-        } else {
-            alert("Error: " + response.statusText); //statusText property - what the issue is 
-        }
-    })
-};
-
-var getPsychicType = function() { //returns 4 random pyschic type pokemon - display if weather is windy
-    var apiURL = "https://pokeapi.co/api/v2/type/dragon/";
-    fetch(apiURL).then(function(response) {
-        if (response.ok) {
-            response.json().then(function(data) {
-                console.log(data);
-                for (var i=0; i<4; i++) {
-                    console.log(data.pokemon[Math.floor(Math.random() * 20)]);
-                }
-            });
-        } else {
-            alert("Error: " + response.statusText); //statusText property - what the issue is 
-        }
-    })
-};
-
-
-var getPokemon = function() {
+var getPokemon = function(pokemon) {
     //format the PokeAPI data 
-    var apiURL = "https://pokeapi.co/api/v2/pokemon/bulbasaur/"; 
+    var apiURL = "https://pokeapi.co/api/v2/pokemon/" + pokemon + "/"; 
     //make a request to the URL(404 ERROR and network connectivity)
     fetch(apiURL).then(function(response) {
         //request for data was successful 
@@ -284,9 +131,6 @@ var displayPokemon = function(pokemon) {
     var pokeOne = pokemon.name;
     var pokeOneType = pokemon.types[0].type.name;
     var pokeTwoType = pokemon.types[1].type.name; 
-    // if (pokeOneType === "grass") {
-    //     window.alert("Hi!");
-    // }
     
     currentPokemonEl.textContent = pokeOne;
 
@@ -303,7 +147,7 @@ var pokemonImage = function (pokemon) {
     var pokeNumber = pokemon.id; 
     console.log(pokemon.id);
     var pokeImage = document.createElement("img");
-    pokeImage.setAttribute("style", "width:250px;height:250px;")
+    pokeImage.setAttribute("style", "width:200px;height:200px;")
 
     pokeImage.srcset = "https://pokeres.bastionbot.org/images/pokemon/" + pokeNumber + ".png";
     currentImageEl.appendChild(pokeImage);
@@ -315,46 +159,45 @@ var pokemonImage = function (pokemon) {
             // if sunny -- find fire pokemon, display 10 
 
 let cardEl = $(".poke-card");
-let infoEl = $(".poke-info");
-let imageEl = $("#pokemon-image");
-      
-$(cardEl).on('mousemove', (e) => {
-    let x = ((window.innerWidth / 2) - e.pageX) / 15;
-    let y = ((window.innerHeight / 2) - e.pageY) / 15;
-      
-    $(cardEl).css("transform", `rotateY(${-x}deg) rotateX(${-y}deg)`);
-      
-    $(infoEl).css("transform", "translateZ(40px)")
-    $(imageEl).css("transform", "translateZ(40px) rotateZ(-2deg)")
-});
-      
-$(cardEl).on("mouseenter", () => {
-    $(cardEl).css("transition", "none");
-});
-      
-$(cardEl).on("mouseleave", () => {
-    $(cardEl).css("transition", "all .5s ease");
-    $(cardEl).css("transform", "rotateY(0deg) rotateX(0deg)");
-      
-    $(infoEl).css("transform", "translateZ(0px)");
-    $(imageEl).css("transform", "translateZ(0px) rotateZ(0deg)");
+let card = {};
+            
+function getCardDetails(target) {
+  let currentCard = $(target).closest(".poke-card");
+  let info = $(currentCard).find(".poke-info");
+  let image = $(currentCard).find(".poke-image");
+  card = {
+    currentCard,
+    info,
+    image
+    };
+            
+    return card;
+    }
+            
+    $(cardEl).on("mouseenter", (e) => {
+        let card = getCardDetails(e.target);
+        $(card.currentCard).css("transition", "none");
+    });
+            
+    $(cardEl).on('mousemove', (e) => {
+        let x = ((window.innerWidth / 2) - e.pageX) / 15;
+        let y = ((window.innerHeight / 2) - e.pageY) / 15;
+            
+        $(card.currentCard).css("transform", `rotateY(${-x}deg) rotateX(${y}deg)`);
+            
+        $(card.info).css("transform", "translateZ(40px)")
+        $(card.image).css("transform", "translateZ(40px) rotateZ(-2deg)")
+    });
+            
+    $(cardEl).on("mouseleave", () => {
+    $(card.currentCard).css("transition", "all .5s ease");
+    $(card.currentCard).css("transform", "rotateY(0deg) rotateX(0deg)");
+            
+    $(card.info).css("transform", "translateZ(0px)");
+    $(card.image).css("transform", "translateZ(0px) rotateZ(0deg)");
+    card = {};
 });
 
 
 getPokemon();
-getGroundType(); 
-getFireType(); 
-getGrassType(); 
-getDarkType(); 
-getGhostType(); 
-getIceType(); 
-getSteelType(); 
-getWaterType(); 
-getElectricType(); 
-getBugType(); 
-getFairyType(); 
-getFightingType(); 
-getPoisonType(); 
-getFlyingType(); 
-getDragonType(); 
-getPsychicType(); 
+
