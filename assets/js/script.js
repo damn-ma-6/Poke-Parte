@@ -1,9 +1,10 @@
+var mainContainerEl = document.querySelector(".poke-cards");
 var pokemonContainerEl = document.querySelectorAll(".poke-card");
-var pokeNameEl = document.querySelectorAll(".poke-name");
-var pokeTypeEl = document.querySelectorAll(".poke-type");
-var pokeImageEl = document.querySelectorAll(".poke-image");
-var pokePicEl = document.querySelectorAll(".poke-pic");
-var pokeMoveEl = document.querySelectorAll(".poke-move");
+//var pokeNameEl = document.querySelectorAll(".poke-name");
+//var pokeTypeEl = document.querySelectorAll(".poke-type");
+//var pokeImageEl = document.querySelectorAll(".poke-image");
+//var pokePicEl = document.querySelectorAll(".poke-pic");
+//var pokeMoveEl = document.querySelectorAll(".poke-move");
 
 //if weather is sunny, mostly sunny, partly sunny 
     //grass(3), ground(3) and fire(4)
@@ -111,24 +112,39 @@ var getType = function (type) {
             //request for data was successful 
             if (response.ok) { //"ok" - when the HTTP request status code is something in the 200s - ok = true 404 error
                 response.json().then(function(pokemon) {
-                    console.log(pokemon);   
-                    for (var i=0; i<pokemonContainerEl.length; i++) { 
-                        pokemonContainerEl.innerHTML= ""; 
-                        var pokeName = pokemon.name;
-                        var pokeTypeOne = pokemon.types[0].type.name;
-                    
-                        pokeNameEl[i].textContent = pokeName;
-                
-                        pokeTypeEl[i].textContent = pokeTypeOne;
-                
-                        var moveOne = pokemon.moves[Math.floor(Math.random() * 5)].move.name; 
-                        var moveTwo = pokemon.moves[Math.floor(Math.random() * 5)].move.name; 
-                        var moveThree = pokemon.moves[Math.floor(Math.random() * 5)].move.name; 
-                        pokeMoveEl[i].textContent= moveOne + " / " + moveTwo + " / " + moveThree;
-                        var pokeNumber = pokemon.id; 
-                        console.log(pokemon.id);
-                        pokePicEl[i].setAttribute("style", "width:200px;height:200px;");
-                        pokePicEl[i].srcset = "https://pokeres.bastionbot.org/images/pokemon/" + pokeNumber + ".png";
+                    console.log(pokemon);
+                    var pokemonContainerEls = document.querySelectorAll(".poke-card");   
+                    for (var i=0; i<pokemonContainerEls.length; i++) { 
+                        pokemonContainerEls[i].innerHTML= ""; //empty content
+                        let pokeDiv = document.createElement("div"); //create div
+                        pokeDiv.className = ("poke-info"); //add class to div 
+                        //pokemon name 
+                        let pokeName = pokemon.name; //pokemon name 
+                        let pokeNameEl = document.createElement("h2"); //create h2
+                        pokeNameEl.innerHTML = pokeName; //add name to h2
+                        pokeDiv.append(pokeNameEl); //add h2 to div 
+                        pokemonContainerEls[i].append(pokeDiv); //add div to main div
+                        //pokemon type 
+                        let pokeTypeOne = pokemon.types[0].type.name;
+                        let pokeTypeEl = document.createElement("p");
+                        pokeTypeEl.innerHTML = "Type: " + pokeTypeOne;
+                        pokeDiv.append(pokeTypeEl);
+                        pokemonContainerEls[i].append(pokeDiv);
+                        //pokemon move 
+                        let moveOne = pokemon.moves[Math.floor(Math.random() * 5)].move.name; 
+                        let moveTwo = pokemon.moves[Math.floor(Math.random() * 5)].move.name; 
+                        let moveThree = pokemon.moves[Math.floor(Math.random() * 5)].move.name; 
+                        let pokeMoveEl = document.createElement("p");
+                        pokeMoveEl.innerHTML= "Moves: " + moveOne + " / " + moveTwo + " / " + moveThree;
+                        pokeDiv.append(pokeMoveEl);
+                        pokemonContainerEls[i].append(pokeDiv);
+                        //pokemon picture 
+                        let pokeNumber = pokemon.id; 
+                        let pokePicEl = document.createElement("img");
+                        pokePicEl.setAttribute("style", "width:200px;height:200px;");
+                        pokePicEl.srcset = "https://pokeres.bastionbot.org/images/pokemon/" + pokeNumber + ".png";
+                        pokeDiv.append(pokePicEl);
+                        pokemonContainerEls[i].append(pokeDiv);
                     } 
                 }); 
             }
@@ -136,23 +152,8 @@ var getType = function (type) {
     };
 };
 
+//test
 getType("dragon");
-
-
-
-// //display Pokemon image
-// var pokemonImage = function (pokemon) {
-//     var pokeNumber = pokemon.id; 
-//     console.log(pokemon.id);
-//     //var pokeImage = document.createElement("img");
-//     var i = pokePicEl.length; 
-//     while (i--) {
-//         pokePicEl[i].setAttribute("style", "width:200px;height:200px;");
-//         pokePicEl[i].srcset = "https://pokeres.bastionbot.org/images/pokemon/" + pokeNumber + ".png";
-//     }
-//     //pokeImageEl.append(pokeImage);
-// }
-
 
 let cardEl = $(".poke-card");
 let card = {};
