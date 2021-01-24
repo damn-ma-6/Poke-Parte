@@ -6,7 +6,7 @@
 
   @font-face {
     font-family: poke;
-    src: url("../fonts/pokemon-font.otf");
+    src: url("/assets/fonts/pokemon-font.otf");
   }
 
   body {
@@ -15,7 +15,7 @@
 
   header {
     text-align: center;
-    margin-top: 30px;
+    margin-top: 250px;
     overflow: hidden;
   }
 
@@ -23,38 +23,53 @@
     text-transform: uppercase;
   }
 
-
+  /* Float five columns side by side */
   .poke-cards {
-    height: 80vh;
-    display: flex;
-    flex-flow: row wrap;
-    justify-content: space-between;
-    align-content: space-between;
+    float: left;
+    width: 20%;
+    padding: 0 20px;
   }
 
-  .poke-card {
-    width: 320px;
-    transform-style: preserve-3d;
-    background: rgb(165, 172, 34);
-    border-radius: 20px;
-    box-shadow: 0 10px 10px rgba(0, 0, 0, 0.4), 0 0px 40px rgba(0, 0, 0, 0.35);
-    padding: 10px;
+  /* Remove extra left and right margins, due to padding */
+    .row {margin: 0 150px;}
+
+  /* Style the counter cards */
+  .card,.card.hn {
+  padding: 20px;
+  text-align: center;
+  background-color: #f1f1f1;
+  height:40vh;
+  transform-style: preserve-3d;
+  background: rgb(165, 172, 34);
+  border-radius: 20px;
+  box-shadow: 0 10px 10px rgba(0, 0, 0, 0.4), 0 0px 40px rgba(0, 0, 0, 0.35);
+  color: rgb(210, 46, 150);
+  transform: perspective(600px) rotateY(25deg); /* Perspective Horizontal */
+  position: relative;
+  display: inline-block;
+  margin: auto;
+  margin-bottom: 100px;
   }
 
-  .poke-info {
-    transition: all .5s ease;
-    color: rgb(210, 46, 150);
-    text-shadow: 0 1px 3px rgba(0, 0, 0, 0.5);
-    text-transform: capitalize;
-    margin-bottom: 25px;
+    /* Card hover animation */
+  .card:hover {
+      background:darkgoldenrod;
+      transform: perspective(0px) rotateY(0deg);
+      box-shadow: 0 0 10px 0 rgba(0, 0, 0, .2);
   }
 
-  .poke-image {
-    width: 100%;
-    transition: all .4s ease;
-    margin-left: 45px; 
+  /* Display weather */
+  .weather-container{
+    margin-left: 150px;
+    line-height: 40px;
+    margin-bottom: 100px;
+    margin-top: 150px;
+    color: darkgreen;
   }
 
-  .poke-image img {
-    width: 100%;
+  /* Display submit button */
+  .submitsection {
+    text-align: center;
+    margin-bottom: 200px;
+    top: 100px;
   }

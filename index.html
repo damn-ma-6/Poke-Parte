@@ -1,160 +1,175 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-  <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Poké-Parté</title>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Poké-Parté</title>
 
-  <!-- Favicon link for emoji on tab -->
-  <link rel="shortcut icon" type="image/jpg" href="./assets/images/pokeball.png"/>
-  <!-- Google Material Icons link -->
-  <link href="https://fonts.googleapis.com/icon?family=Material+Icons"
-  rel="stylesheet">
-  <!-- CSS files (tailwind and custom) -->
-  <link href="./assets/css/tailwind.css" rel="stylesheet">
-  <link rel="stylesheet" href="./assets/css/style.css" />
-
+        <!-- Favicon link for emoji on tab -->
+        <link rel="shortcut icon" type="image/jpg" href="assets/images/pokeball.png"/>
+        <!-- Google Material Icons link -->
+        <link href="https://fonts.googleapis.com/icon?family=Material+Icons"
+        rel="stylesheet">
+        <!-- CSS files (tailwind and custom) -->
+        <link href="./assets/css/tailwind.css" rel="stylesheet">
+        <link rel="stylesheet" href="assets/css/style.css" />
 </head>
 
 <body>
-  <header>
-    <h1>Poké-Parté</h1>
-  </header> 
-  
-  <div id="city-search-display">
-    <h3>Search By City</h3>
-    <form id="user-form">
-      <label for="city-name">City:</label>
-      <input name="city" id="city-name" type="text"    autofocus="true" class="form-input"/>
-      <button type="submit" class="btn">Get City</button>
-    </form>
+   
+<header>
+  <!-- LOGO AND SEARCH BAR -->
+  <div>
+    <div id="logo">
+      <img src="assets/images/pokeparte logo.png">
+    </div>
+      <div id="titlebottom">
+      </div>
+      <div id="login">
+          <div>
+              <input type="text" placeholder="Input city name...">
+              <button class="btn">SEARCH</button>
+          </div>
+      </div>
   </div>
+</header>
 
-  <div id="display-weather">
-  </div>
-  
-  <div class="poke-cards">
-
-    <!-- POKE CARD 1 -->
-    <div class="poke-card">
-      <div class="poke-info">
-        <h2>Pokemon: <span class="poke-name"></span></h2>
-        <p>Type: <span class="poke-type"></span></p>
-        <p>Moves: <span class="poke-move"></span></p>
+ <!-- WEATHER DISPLAY -->
+ <section class="weather-container">
+  <div>
+   <h3 class="location" id="location">Location: </h3>
+   <h3 class="temp" id="temp">Temperature: </h3>
       </div>
-      <div class="poke-image"><img class="poke-pic"></div>
-    </div>
+    </section>
 
-
-    <!-- POKE CARD 2 -->
-    <div class="poke-card">
-      <div class="poke-info">
-        <h2>Pokemon: <span class="poke-name"></span></h2>
-        <p>Type: <span class="poke-type"></span></p>
-        <p>Moves: <span class="poke-move"></span></p>
-      </div>
-      <div class="poke-image"><img class="poke-pic"></div>
-    </div>
-
-    <!-- POKE CARD 3 -->
-    <div class="poke-card">
-      <div class="poke-info">
-        <h2>Pokemon: <span class="poke-name"></span></h2>
-        <p>Type: <span class="poke-type"></span></p>
-        <p>Moves: <span class="poke-move"></span></p>
-      </div>
-      <div class="poke-image"><img class="poke-pic"></div>
-    </div>
-  
-    <!-- POKE CARD 4 -->
-    <div class="poke-card">
-      <div class="poke-info">
-        <h2>Pokemon: <span class="poke-name"></span></h2>
-        <p>Type: <span class="poke-type"></span></p>
-        <p>Moves: <span class="poke-move"></span></p>
-      </div>
-      <div class="poke-image"><img class="poke-pic"></div>
-    </div>
-
-    <!-- POKE CARD 5 -->
-    <div class="poke-card">
-      <div class="poke-info">
-        <h2>Pokemon: <span class="poke-name"></span></h2>
-        <p>Type: <span class="poke-type"></span></p>
-        <p>Moves: <span class="poke-move"></span></p>
-      </div>
-      <div class="poke-image"><img class="poke-pic"></div>
-    </div>
-
-    <!-- POKE CARD 6 -->
-    <div class="poke-card">
-      <div class="poke-info">
-        <h2>Pokemon: <span class="poke-name"></span></h2>
-        <p>Type: <span class="poke-type"></span></p>
-        <p>Moves: <span class="poke-move"></span></p>
-      </div>
-      <div class="poke-image"><img class="poke-pic"></div>
-    </div>
-
-    <!-- POKE CARD 7 -->
-    <div class="poke-card">
-      <div class="poke-info">
-        <h2>Pokemon: <span class="poke-name"></span></h2>
-        <p>Type: <span class="poke-type"></span></p>
-        <p>Moves: <span class="poke-move"></span></p>
-      </div>
-      <div class="poke-image"><img class="poke-pic"></div>
-    </div>
-
-    <!-- POKE CARD 8 -->
-    <div class="poke-card">
-      <div class="poke-info">
-        <h2>Pokemon: <span class="poke-name"></span></h2>
-        <p>Type: <span class="poke-type"></span></p>
-        <p>Moves: <span class="poke-move"></span></p>
-      </div>
-      <div class="poke-image"><img class="poke-pic"></div>
-    </div>
-
-    <!-- POKE CARD 9 -->
-    <div class="poke-card">
-      <div class="poke-info">
-        <h2>Pokemon: <span class="poke-name"></span></h2>
-        <p>Type: <span class="poke-type"></span></p>
-        <p>Moves: <span class="poke-move"></span></p>
-      </div>
-      <div class="poke-image"><img class="poke-pic"></div>
-    </div>
-
-    <!-- POKE CARD 10 -->
-    <div class="poke-card">
-      <div class="poke-info">
-        <h2>Pokemon: <span class="poke-name"></span></h2>
-        <p>Type: <span class="poke-type"></span></p>
-        <p>Moves: <span class="poke-move"></span></p>
-      </div>
-      <div class="poke-image"><img class="poke-pic"></div>
-    </div>
-
-  </div>
-    
-
-  <!-- Footer begins -->
-  <footer>
-  </footer>
-  <!-- Footer ends -->
-
-  <!-- Script section begins -->
+ <!-- POKE CARDS SECTION -->
+ <section>
+      <div class="row">
+        <div class="poke-cards">
+          <div class="card">
+            <h2>Pokemon: <span class="poke-name">???</span></h2>
+            <p>Type: <span class="poke-type">???</span></p>
+          <div class="poke-image">
+            <img src="https://pokeres.bastionbot.org/images/pokemon/450.png" width="180" height="180" alt="??"/>
+          </div>
+          </div>
+        </div>
+      
+        <div class="poke-cards">
+          <div class="card">
+            <h2>Pokemon: <span class="poke-name">???</span></h2>
+            <p>Type: <span class="poke-type">???</span></p>
+          <div class="poke-image">
+            <img src="https://pokeres.bastionbot.org/images/pokemon/450.png" width="180" height="180" alt="??"/>
+          </div>
+          </div>
+        </div>
         
-  <script src="https://code.jquery.com/jquery-3.4.1.min.js"></script>
-  <script src="./assets/js/script.js"></script>
+        <div class="poke-cards">
+          <div class="card">
+            <h2>Pokemon: <span class="poke-name">???</span></h2>
+            <p>Type: <span class="poke-type">???</span></p>
+          <div class="poke-image">
+            <img src="https://pokeres.bastionbot.org/images/pokemon/450.png" width="180" height="180" alt="??"/>
+          </div>
+          </div>
+        </div>
         
-  <!-- Script section ends -->
+        <div class="poke-cards">
+          <div class="card">
+            <h2>Pokemon: <span class="poke-name">???</span></h2>
+            <p>Type: <span class="poke-type">???</span></p>
+          <div class="poke-image">
+            <img src="https://pokeres.bastionbot.org/images/pokemon/450.png" width="180" height="180" alt="??"/>
+          </div>
+          </div>
+        </div>
+
+        <div class="poke-cards">
+          <div class="card">
+            <h2>Pokemon: <span class="poke-name">???</span></h2>
+            <p>Type: <span class="poke-type">???</span></p>
+          <div class="poke-image">
+            <img src="https://pokeres.bastionbot.org/images/pokemon/450.png" width="180" height="180" alt="??"/>
+          </div>
+          </div>
+        </div>
+
+        <div class="poke-cards">
+          <div class="card">
+            <h2>Pokemon: <span class="poke-name">???</span></h2>
+            <p>Type: <span class="poke-type">???</span></p>
+          <div class="poke-image">
+            <img src="https://pokeres.bastionbot.org/images/pokemon/450.png" width="180" height="180" alt="??"/>
+          </div>
+          </div>
+        </div>
+
+        <div class="poke-cards">
+          <div class="card">
+            <h2>Pokemon: <span class="poke-name">???</span></h2>
+            <p>Type: <span class="poke-type">???</span></p>
+          <div class="poke-image">
+            <img src="https://pokeres.bastionbot.org/images/pokemon/450.png" width="180" height="180" alt="??"/>
+          </div>
+          </div>
+        </div>
+
+        <div class="poke-cards">
+          <div class="card">
+            <h2>Pokemon: <span class="poke-name">???</span></h2>
+            <p>Type: <span class="poke-type">???</span></p>
+          <div class="poke-image">
+            <img src="https://pokeres.bastionbot.org/images/pokemon/450.png" width="180" height="180" alt="??"/>
+          </div>
+          </div>
+        </div>
+
+        <div class="poke-cards">
+          <div class="card">
+            <h2>Pokemon: <span class="poke-name">???</span></h2>
+            <p>Type: <span class="poke-type">???</span></p>
+          <div class="poke-image">
+            <img src="https://pokeres.bastionbot.org/images/pokemon/450.png" width="180" height="180" alt="??"/>
+          </div>
+          </div>
+        </div>
+
+        <div class="poke-cards">
+          <div class="card">
+            <h2>Pokemon: <span class="poke-name">???</span></h2>
+            <p>Type: <span class="poke-type">???</span></p>
+          <div class="poke-image">
+            <img src="https://pokeres.bastionbot.org/images/pokemon/450.png" width="180" height="180" alt="??"/>
+          </div>
+          </div>
+        </div>
+      </div> <!--row-->
+    </section>
+
+ <!-- USER DATA-->
+ <section">
+      <div class="submitsection">
+          <input type="text" id="username" class="input" placeholder="Enter Your Name" />
+          <input type="text" id="userID" class="input"  placeholder="Enter Your Trainer ID" size="30" />
+          <div>
+            <button id="submitbutton"">ENTER</button>
+          </div>
+        </div>
+      
+</section>
+
+        <!-- Footer begins -->
+            <footer>
+            </footer>
+        <!-- Footer ends -->
+
+        <!-- Script section begins -->
+        
+            <script src="https://code.jquery.com/jquery-3.4.1.min.js"></script>
+            <script src="./assets/js/script.js"></script>
+        
+        <!-- Script section ends -->
 
 </body>
 </html>
-
-
-
-
-

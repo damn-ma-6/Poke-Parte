@@ -186,6 +186,20 @@ textarea {
   margin: 0; /* 2 */
 }
 
+input {
+  font-family: inherit; /* 1 */
+  background-color: transparent;
+  border-bottom: 2px solid #fff;
+  outline: none;
+  padding-bottom: 10px;
+  text-align: center;
+  width: 400px;
+  font-size: 100%;
+  color: #fff;
+  font-weight: 100;
+  margin-bottom: 50px;
+}
+
 /**
 Remove the inheritance of text transform in Edge and Firefox.
 1. Remove the inheritance of text transform in Firefox.
@@ -343,6 +357,13 @@ button:focus {
 fieldset {
   margin: 0;
   padding: 0;
+}
+
+button {
+  background: #4CAF50;
+  border-radius: 15px;
+  width:10%;
+  height:50px;
 }
 
 ol,
@@ -530,7 +551,7 @@ iframe,
 embed,
 object {
   display: block;
-  vertical-align: middle;
+  /* vertical-align: middle; */
 }
 
 /**
