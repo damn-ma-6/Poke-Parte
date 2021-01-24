@@ -87,8 +87,14 @@ var pokemonContainerEl = document.querySelectorAll(".poke-card");
 //if mostly cloudy w/ flurries, mostly cloudy w/ snow
     //fairy(2), fighting(2), poison(2), ice(2), steel(2) 
 
+
+
+// this variable will pull the city from the search bar
+var city = document.querySelector("#city-name");
+var userFormEl = document.querySelector("#user-form");
+var displayWeatherEl = document.querySelector("#display-weather");
+
 var getType = function (type) { 
-    
     var apiURL = "https://pokeapi.co/api/v2/type/"+ type + "/";
     fetch(apiURL).then(function(response) {
         if (response.ok){
@@ -97,7 +103,7 @@ var getType = function (type) {
                 console.log(data);
                 console.log(pokeType);
                 for (var i=0; i<pokemonContainerEl.length; i++) {
-                 pokeType.push(data.pokemon[Math.floor(Math.random() * 10)].pokemon.name);
+                 pokeType.push(data.pokemon[Math.floor(Math.random() * 12)].pokemon.name);
                  getPokemon(pokeType[i]); 
                 }
             })  
@@ -119,11 +125,11 @@ var getType = function (type) {
                         let pokeDiv = document.createElement("div"); //create div
                         pokeDiv.className = ("poke-info"); //add class to div 
                         //pokemon name 
-                        let pokeName = pokemon.name; //pokemon name 
-                        let pokeNameEl = document.createElement("h2"); //create h2
-                        pokeNameEl.innerHTML = pokeName; //add name to h2
-                        pokeDiv.append(pokeNameEl); //add h2 to div 
-                        pokemonContainerEls[i].append(pokeDiv); //add div to main div
+                        let pokeName = pokemon.name; 
+                        let pokeNameEl = document.createElement("h2"); 
+                        pokeNameEl.innerHTML = pokeName; 
+                        pokeDiv.append(pokeNameEl);  
+                        pokemonContainerEls[i].append(pokeDiv); 
                         //pokemon type 
                         let pokeTypeOne = pokemon.types[0].type.name;
                         let pokeTypeEl = document.createElement("p");
@@ -141,7 +147,7 @@ var getType = function (type) {
                         //pokemon picture 
                         let pokeNumber = pokemon.id; 
                         let pokePicEl = document.createElement("img");
-                        pokePicEl.setAttribute("style", "width:200px;height:200px;");
+                        pokePicEl.setAttribute("style", "width:200px;height:200px;margin:50px;");
                         pokePicEl.srcset = "https://pokeres.bastionbot.org/images/pokemon/" + pokeNumber + ".png";
                         pokeDiv.append(pokePicEl);
                         pokemonContainerEls[i].append(pokeDiv);
@@ -153,7 +159,87 @@ var getType = function (type) {
 };
 
 //test
-getType("dragon");
+getType("psychic");
+
+var formSubmitHandler = function(event){
+    event.preventDefault();
+
+    var cityName = city.value.trim();
+    
+    if(cityName){
+        getCity(cityName);
+    }else{
+        alert("this doesnt display anything");
+    }
+    
+}
+
+// had to call the city api to get the data key for the city then enter it into the get weather function
+var getCity = function(city){
+    
+    var apiUrl = "http://dataservice.accuweather.com/locations/v1/search?apikey=8phV97GIATzlpDJK66fxWSKyzLgvNucC&q=" + city + "&language=en-ca&details=false";
+
+    fetch(apiUrl).then(function(response){
+        if(response.ok){
+            response.json().then(function(data){
+                getWeather(data[0].Key);
+            });
+        }else{
+            alert("City not found Error: " + response.statusText);
+        }
+    })
+    .catch(function(error){
+        alert("Unable to connect");
+    })
+};
+
+// function uses the get hourly weather api from accuweather and uses city key to display weather
+var getWeather = function(cityKey){
+
+    
+    var apiUrl = "http://dataservice.accuweather.com/forecasts/v1/hourly/1hour/" + cityKey + "?apikey=8phV97GIATzlpDJK66fxWSKyzLgvNucC&metric=true";
+
+    fetch(apiUrl).then(function(response){
+        if(response.ok){
+            response.json().then(function(data){
+                displayWeather(data);
+            });
+        }
+    });
+
+
+};
+
+var displayWeather = function(data){
+    var cityName = city.value.trim();
+    var weatherIcon = data[0].WeatherIcon;
+    var iconPhrase = data[0].IconPhrase;
+    var temp = data[0].Temperature.Value;
+
+    displayWeatherEl.textContent = ""
+    var cityNameDisplay = document.createElement("h2");
+    cityNameDisplay.className = "subtitle"
+    cityNameDisplay.textContent = cityName;
+
+    displayWeatherEl.appendChild(cityNameDisplay);
+
+
+
+    var tempDisplay = document.createElement("p");
+    tempDisplay.textContent = "Temp: " + temp + "°C";
+
+    displayWeatherEl.appendChild(tempDisplay);
+    
+
+    var phraseDisplay = document.createElement("p");
+    phraseDisplay.textContent = iconPhrase;
+
+    displayWeatherEl.appendChild(phraseDisplay);
+
+};
+
+userFormEl.addEventListener("submit", formSubmitHandler);
+
 
 let cardEl = $(".poke-card");
 let card = {};

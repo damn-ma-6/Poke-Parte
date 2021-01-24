@@ -12,30 +12,68 @@
   rel="stylesheet">
   <!-- CSS files (tailwind and custom) -->
   <link href="./assets/css/tailwind.css" rel="stylesheet">
-  <link rel="stylesheet" href="./assets/css/style.css" />
+  <link rel="stylesheet" href="./assets/css/style.css"/>
 
 </head>
 
 <body>
+
   <header>
-    <h1>Poké-Parté</h1>
-  </header> 
-  
-  
-  <div class="poke-cards">
+    <!-- LOGO AND SEARCH BAR -->
+    <div>
+      <div id="logo">
+        <img src="assets/images/pokeparte logo.png">
+      </div>
+        <div id="titlebottom">
+        </div>
+        <div id="login">
+            <div>
+                <input type="text" placeholder="Input city name...">
+                <button class="btn">SEARCH</button>
+            </div>
+        </div>
+    </div>
+  </header>
 
-    <div class="poke-card"></div>
-    <div class="poke-card"></div>
-    <div class="poke-card"></div>
-    <div class="poke-card"></div>
-    <div class="poke-card"></div>
-    <div class="poke-card"></div>
-    <div class="poke-card"></div>
-    <div class="poke-card"></div>
-    <div class="poke-card"></div>
-    <div class="poke-card"></div>
-
+  <!-- WEATHER DISPLAY -->
+  <div id="city-search-display">
+    <h3>Search By City</h3>
+    <form id="user-form">
+      <label for="city-name">City:</label>
+      <input name="city" id="city-name" type="text"    autofocus="true" class="form-input"/>
+      <button type="submit" class="btn">Get City</button>
+    </form>
   </div>
+
+  <div id="display-weather"></div>
+  
+  <section>
+  <div class="row">
+    <div class="poke-cards">
+      <div class="poke-card card"></div>
+      <div class="poke-card card"></div>
+      <div class="poke-card card"></div>
+      <div class="poke-card card"></div>
+      <div class="poke-card card"></div>
+      <div class="poke-card card"></div>
+      <div class="poke-card card"></div>
+      <div class="poke-card card"></div>
+      <div class="poke-card card"></div>
+      <div class="poke-card card"></div>
+    </div>
+  </div>
+  </section>
+
+  <!-- USER DATA-->
+ <section">
+  <div class="submitsection">
+      <input type="text" id="username" class="input" placeholder="Enter Your Name" />
+      <input type="text" id="userID" class="input"  placeholder="Enter Your Trainer ID" size="30" />
+      <div>
+        <button id="submitbutton"">ENTER</button>
+      </div>
+    </div>
+  </section>
     
 
   <!-- Footer begins -->
