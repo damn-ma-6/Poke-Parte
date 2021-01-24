@@ -190,14 +190,14 @@ input {
   font-family: inherit; /* 1 */
   background-color: transparent;
   border-bottom: 2px solid #fff;
-  outline: none;
-  padding-bottom: 10px;
+  padding-bottom: 50px;
+  display: center;
   text-align: center;
   width: 400px;
   font-size: 100%;
   color: #fff;
   font-weight: 100;
-  margin-bottom: 50px;
+  margin-bottom: 100px;
 }
 
 /**
@@ -492,6 +492,7 @@ h6 {
   font-weight: inherit;
 }
 
+
 /**
  * Reset links to optimize for opt-in styling instead of
  * opt-out.
@@ -550,8 +551,7 @@ audio,
 iframe,
 embed,
 object {
-  display: block;
-  /* vertical-align: middle; */
+  vertical-align: middle;
 }
 
 /**

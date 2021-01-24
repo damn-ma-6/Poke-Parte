@@ -1,12 +1,11 @@
 * {
-    margin: 0;
-    padding: 0;
-    box-sizing: border-box;
-  }
-
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
   @font-face {
     font-family: poke;
-    src: url("/assets/fonts/pokemon-font.otf");
+    src: url("../fonts/pokemon-font.otf");
   }
 
   .svg-container {
@@ -16,63 +15,35 @@
     left: 0;
     z-index: -1;
   }
+  
   body {
     background: #fff;
     position: relative;
+    font-family: poke;
     background: url(https://s3-us-west-2.amazonaws.com/s.cdpn.io/652/confectionary.png); 
   }
 
   header {
     color: #fff;
-    padding-top: 10vw;
+    padding-top: 15vw;
+    padding-bottom: 1vw;
     text-align: center;
-  } 
-
-  header h1 {
-    text-transform: uppercase;
+    margin-top: 30px;
+    overflow: hidden;
   }
 
-  /* Float five columns side by side */
-  .poke-cards {
-    float: left;
-    width: 20%;
-    padding: 0 20px;
+  .citysearch{
+    text-align: center;
+    margin-bottom: 150px;
+    top: 100px;
+    color: #fff;
   }
-
-  /* Remove extra left and right margins, due to padding */
-  .row {margin: 0 150px;}
-
-  /* Style the counter cards */
-  .card,.card.hn {
-  padding: 20px;
-  text-align: center;
-  background-color: #f1f1f1;
-  height:40vh;
-  transform-style: preserve-3d;
-  background: rgb(165, 172, 34);
-  border-radius: 20px;
-  box-shadow: 0 10px 10px rgba(0, 0, 0, 0.4), 0 0px 40px rgba(0, 0, 0, 0.35);
-  color: rgb(210, 46, 150);
-  transform: perspective(600px) rotateY(25deg); /* Perspective Horizontal */
-  position: relative;
-  display: inline-block;
-  margin: auto;
-  margin-bottom: 100px;
-  }
-
-    /* Card hover animation */
-  .card:hover {
-      background:darkgoldenrod;
-      transform: perspective(0px) rotateY(0deg);
-      box-shadow: 0 0 10px 0 rgba(0, 0, 0, .2);
-  }
-
   /* Display weather */
   .weather-container{
     margin-left: 150px;
     line-height: 40px;
     margin-bottom: 100px;
-    margin-top: 150px;
+    margin-top: 50px;
     color: darkgreen;
   }
 
@@ -81,4 +52,40 @@
     text-align: center;
     margin-bottom: 200px;
     top: 100px;
+  }
+
+  /* Remove extra left and right margins, due to padding */
+  .row{
+    margin: 0 20px;
+  }
+
+  /* Display 5 cards in a row */
+
+  .poke-cards {  
+    display: grid;
+    grid-template-columns: repeat(5, 2fr);
+    grid-column-gap: 50px;
+    grid-row-gap: 1em;
+    margin-bottom: 150px;
+    padding-left: 20px；
+    padding-right: 20px；
+  }
+
+/* Style the counter cards */
+.card,.card.hn {
+  padding: 20px;
+  text-align: left;
+  height:50vh;
+  width: 35vh;
+  background: rgb(165, 172, 34);
+  border-radius: 20px;
+  box-shadow: 0 10px 10px rgba(0, 0, 0, 0.4), 0 0px 40px rgba(0, 0, 0, 0.35);
+  color: rgb(210, 46, 150);
+  display: flex;
+  margin-bottom: 100px;
+  }
+
+    /* Card hover animation */
+  .card:hover {
+      background:darkgoldenrod;
   }
