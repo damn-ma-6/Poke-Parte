@@ -158,9 +158,6 @@ var getType = function (type) {
     };
 };
 
-//test
-getType("psychic");
-
 var formSubmitHandler = function(event){
     event.preventDefault();
 
@@ -213,7 +210,7 @@ var getWeather = function(cityKey){
 var displayWeather = function(data){
     var cityName = city.value.trim();
     var weatherIcon = data[0].WeatherIcon;
-    var iconPhrase = data[0].IconPhrase;
+    var iconPhrase = data[0].IconPhrase.toUpperCase(); 
     var temp = data[0].Temperature.Value;
 
     displayWeatherEl.textContent = ""
@@ -236,6 +233,79 @@ var displayWeather = function(data){
 
     displayWeatherEl.appendChild(phraseDisplay);
 
+    if(iconPhrase === "SUNNY" || iconPhrase === "MOSTLY SUNNY" || iconPhrase === "PARTLY SUNNY" || iconPhrase === "HOT" || iconPhrase === "CLEAR" || iconPhrase === "MOSTLY CLEAR") {
+        getType("grass");
+        getType("ground");
+        getType("fire");
+    } else if(iconPhrase === "INTERMITTENT CLOUDS" || iconPhrase === "PARTLY CLOUDY" || iconPhrase === "MOSTLY CLOUDY") {
+        getType("normal");
+        getType("rock");
+    } else if(iconPhrase === "HAZY SUNSHINE" || iconPhrase === "HAZY MOONLIGHT"){
+        getType("normal");
+        getType("rock");
+        getType("grass");
+        getType("ground");
+        getType("fire");
+    } else if(iconPhrase === "MOSTLY CLOUDY" || iconPhrase === "CLOUDY" || iconPhrase === "DREARY(OVERCAST)"){
+        getType("fairy");
+        getType("fighting");
+        getType("poison");
+    } else if(iconPhrase === "FOG") {
+        getType("ghost"); 
+        getType("dark");
+    } else if(iconPhrase === "SHOWERS" || iconPhrase === "T-STORMS" || iconPhrase === "RAIN") {
+        getType("water");
+        getType("electric");
+        getType("bug");
+    } else if(iconPhrase === "MOSTLY CLOUDY W/ SHOWERS" || iconPhrase === "MOSTLY CLOUDY W/ T-STORMS") {
+        getType("water");
+        getType("electric");
+        getType("bug");
+        getType("fairy");
+        getType("fighting");
+        getType("poison");
+    } else if(iconPhrase === "PARTLY SUNNY W/ SHOWERS" || iconPhrase === "PARTLY SUNNY W/ T-STORMS") {
+        getType("water");
+        getType("electric");
+        getType("grass");
+        getType("ground");
+    } else if(iconPhrase === "MOSTLY CLOUDY W/ T-STORMS" || iconPhrase === "PARTLY CLOUDY W/ SHOWERS" || iconPhrase === "PARTLY CLOUDY W/ T-STORMS"){
+        getType("normal");
+        getType("rock");
+        getType("water");
+        getType("electric");
+        getType("bug");
+    } else if(iconPhrase === "FLURRIES" || iconPhrase === "SNOW" || iconPhrase === "SLEET" || iconPhrase === "COLD") {
+        getType("ice");
+        getType("steel"); 
+    } else if(iconPhrase === "MOSTLY CLOUDY W/ FLURRIES" || iconPhrase === "MOSTLY CLOUDY W/ SNOW") {
+        getType("normal");
+        getType("rock");
+        getType("ice");
+        getType("steel");
+    } else if(iconPhrase === "PARTLY SUNNY W/ FLURRIES") {
+        getType("grass");
+        getType("ground");
+        getType("ice");
+        getType("steel");
+    } else if(iconPhrase === "ICE") {
+        getType("steel");
+    } else if(iconPhrase === "FREEZING RAIN" || iconPhrase === "RAIN AND SNOW") {
+        getType("water");
+        getType("electric");
+        getType("ice");
+        getType("steel");
+    } else if(iconPhrase === "WINDY") {
+        getType("dragon"); 
+        getType("flying");
+        getType("psychic");
+    } else if(iconPhrase === "MOSTLY CLOUDY W/ FLURRIES" || iconPhrase === "MOSYLY CLOUDY W/ SNOW") {
+        getType("fairy");
+        getType("fighting");
+        getType("poison");
+        getType("ice");
+        getType("steel");
+    }
 };
 
 userFormEl.addEventListener("submit", formSubmitHandler);
