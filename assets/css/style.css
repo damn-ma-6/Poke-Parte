@@ -1,23 +1,27 @@
-* {
-    margin: 0;
-    padding: 0;
-    box-sizing: border-box;
-  }
 
   @font-face {
     font-family: poke;
-    src: url("../fonts/pokemon-font.otf");
+    src: url("/assets/fonts/pokemon-font.otf");
   }
 
+  .svg-container {
+    position: absolute;
+    top: 0;
+    right: 0;
+    left: 0;
+    z-index: -1;
+  }
   body {
-    font-family: poke, sans-serif;
+    background: #fff;
+    position: relative;
+    background: url(https://s3-us-west-2.amazonaws.com/s.cdpn.io/652/confectionary.png); 
   }
 
   header {
+    color: #fff;
+    padding-top: 10vw;
     text-align: center;
-    margin-top: 250px;
-    overflow: hidden;
-  }
+  } 
 
   header h1 {
     text-transform: uppercase;
@@ -31,13 +35,12 @@
   }
 
   /* Remove extra left and right margins, due to padding */
- .row {margin: 0 150px;}
+  .row {margin: 0 150px;}
 
   /* Style the counter cards */
   .card,.card.hn {
   padding: 20px;
   text-align: center;
-  text-transform: uppercase;
   background-color: #f1f1f1;
   height:40vh;
   transform-style: preserve-3d;

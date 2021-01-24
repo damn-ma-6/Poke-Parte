@@ -103,8 +103,9 @@ var getType = function (type) {
                 console.log(data);
                 console.log(pokeType);
                 for (var i=0; i<pokemonContainerEl.length; i++) {
-                pokeType.push(data.pokemon[Math.floor(Math.random() * 12)].pokemon.name);
-                getPokemon(pokeType[i]); 
+                    pokeType.push(data.pokemon[Math.floor(Math.random() * 10)].pokemon.name);
+                    getPokemon(pokeType[i]); 
+                    console.log(pokeType[i]);
                 }
             })  
         }
@@ -122,20 +123,20 @@ var getPokemon = function(pokemon) {
          if (response.ok) { //"ok" - when the HTTP request status code is something in the 200s - ok = true 404 error
             response.json().then(function(pokemon) {
             console.log(pokemon);
-            debugger;
             displayPokemon(pokemon);
             }); 
         }
     })
 };
 
-var displayPokemon = function(pokemon) {
+var displayPokemon = function(pokemon) { //for some reason, the data in this paramater is staying static as it loops
+    console.log(arguments.length); 
     console.log(pokemon);
     let pokemonContainerEls = document.querySelectorAll(".poke-card");  
-        for(var i=0; i<pokeType.length; i++) {
+        for(var i=0; i<pokemonContainerEls.length; i++) {
             pokemonContainerEls[i].innerHTML = ""; //empty content
             let pokeDiv = document.createElement("div"); //create div
-            pokeDiv.className = ("poke-info"); //add class to div 
+            //pokeDiv.className = ("poke-info"); //add class to div 
             //pokemon name 
             let pokeName = pokemon.name; 
             let pokeNameEl = document.createElement("h2"); 
@@ -143,7 +144,7 @@ var displayPokemon = function(pokemon) {
             pokeDiv.append(pokeNameEl);  
             pokemonContainerEls[i].append(pokeDiv); 
             //pokemon type 
-            let pokeTypeOne = types[0].type.name;
+            let pokeTypeOne = pokemon.types[0].type.name;
             //var pokeTypeTwo = pokemon.types[1].type.name || null; 
             let pokeTypeEl = document.createElement("p");
             pokeTypeEl.innerHTML = "Type: " + pokeTypeOne;
@@ -166,7 +167,6 @@ var displayPokemon = function(pokemon) {
             pokeDiv.append(pokePicEl);
             pokemonContainerEls[i].append(pokeDiv);
         }
-
 }
 
 
