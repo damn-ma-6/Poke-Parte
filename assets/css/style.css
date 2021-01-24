@@ -1,7 +1,7 @@
 
   @font-face {
     font-family: poke;
-    src: url("/assets/fonts/pokemon-font.otf");
+    src: url("../fonts/pokemon-font.otf");
   }
 
   .svg-container {
@@ -11,6 +11,7 @@
     left: 0;
     z-index: -1;
   }
+  
   body {
     background: #fff;
     position: relative;
