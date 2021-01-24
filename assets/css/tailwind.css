@@ -176,6 +176,7 @@ Forms
 */
 
 button,
+input,
 optgroup,
 select,
 textarea {
@@ -336,6 +337,21 @@ figure,
 p,
 pre {
   margin: 0;
+}
+
+button {
+  background-color: transparent;
+  background-image: none;
+}
+
+/**
+ * Work around a Firefox/IE bug where the transparent `button` background
+ * results in a loss of the default `button` focus styles.
+ */
+
+button:focus {
+  outline: 1px dotted;
+  outline: 5px auto -webkit-focus-ring-color;
 }
 
 fieldset {
@@ -504,7 +520,6 @@ textarea {
   color: inherit;
 }
 
-
 /**
  * Use the configured 'mono' font family for elements that
  * are expected to be rendered with a monospace font, falling
@@ -527,7 +542,7 @@ samp {
  * https://github.com/mozdevs/cssremedy/issues/14
  */
 
-
+img,
 svg,
 video,
 canvas,
@@ -535,18 +550,22 @@ audio,
 iframe,
 embed,
 object {
-  vertical-align: middle;
+  display: block;
+  /* vertical-align: middle; */
 }
 
-img {
-margin-bottom: 80px;
-}
 /**
  * Constrain images and videos to the parent width and preserve
  * their instrinsic aspect ratio.
  *
  * https://github.com/mozdevs/cssremedy/issues/14
  */
+
+img,
+video {
+  max-width: 100%;
+  height: auto;
+}
 
 .container {
   width: 100%;
