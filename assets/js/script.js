@@ -5,18 +5,24 @@ var city = document.querySelector("#city-name");
 var userFormEl = document.querySelector("#user-form");
 var displayWeatherEl = document.querySelector("#display-weather");
 var pokeType = [];  
+let uniquePokeType = [];
+function getRandomNumber(min, max) {
+    return Math.ceil(Math.random() * (max-min +1) + min);
+};
 
 var getType = function (type) { 
     var apiURL = "https://pokeapi.co/api/v2/type/"+ type + "/";
     fetch(apiURL).then(function(response) {
         if (response.ok){
             response.json().then(function(data) {
-                console.log(data);
-                console.log(pokeType);
                 for (var i=0; i<pokemonContainerEl.length; i++) {
-                    pokeType.push(data.pokemon[Math.floor(Math.random() * 10)].pokemon.name);
-                    console.log(pokeType[i]);
-                    getPokemon(pokeType[i], i);
+                    pokeType.push(data.pokemon[getRandomNumber(1,29)].pokemon.name);
+                    pokeType.forEach((c) => {
+                        if (!uniquePokeType.includes(c)) {
+                            uniquePokeType.push(c); 
+                        }
+                    }); 
+                 getPokemon(uniquePokeType[getRandomNumber(1,29)], i);
                 }
             })
         }
@@ -26,25 +32,18 @@ var getType = function (type) {
 //getType("fire");
 
 var getPokemon = function(pokemon, i) {
-    //format the PokeAPI data 
     var apiURL = "https://pokeapi.co/api/v2/pokemon/" + pokemon + "/"; 
-    //make a request to the URL(404 ERROR and network connectivity)
     fetch(apiURL).then(function(response) {
-    //request for data was successful 
-         if (response.ok) { //"ok" - when the HTTP request status code is something in the 200s - ok = true 404 error
+         if (response.ok) { 
             response.json().then(function(pokemon) {
-            console.log(pokemon);
             displayPokemon(pokemon, i);
             }); 
         }
     })
 };
 
-var displayPokemon = function(pokemon, i) { //for some reason, the data in this paramater is staying static as it loops
-    console.log(arguments.length); 
-    console.log(pokemon);
+var displayPokemon = function(pokemon, i) { 
     let pokemonContainerEls = document.querySelectorAll(".poke-card");  
-        //for(var i=0; i<pokemonContainerEls.length; i++) {
             pokemonContainerEls[i].innerHTML = ""; //empty content
             let pokeDiv = document.createElement("div"); //create div
             //pokemon name 
@@ -55,18 +54,15 @@ var displayPokemon = function(pokemon, i) { //for some reason, the data in this 
             pokemonContainerEls[i].append(pokeDiv); 
             //pokemon type 
             let pokeTypeOne = pokemon.types[0].type.name;
-            //var pokeTypeTwo = pokemon.types[1].type.name || null; 
             let pokeTypeEl = document.createElement("p");
             pokeTypeEl.innerHTML = "Type: " + pokeTypeOne;
-            //pokeTypeEl.innerHTML = pokeTypeTwo ||null;
             pokeDiv.append(pokeTypeEl);
             pokemonContainerEls[i].append(pokeDiv);
             //pokemon move 
             let moveOne = pokemon.moves[Math.floor(Math.random() * 5)].move.name; 
             let moveTwo = pokemon.moves[Math.floor(Math.random() * 5)].move.name; 
-            //let moveThree = pokemon.moves[Math.floor(Math.random() * 5)].move.name; 
             let pokeMoveEl = document.createElement("p");
-            pokeMoveEl.innerHTML= "Moves: " + moveOne + " / " + moveTwo // " / " + moveThree;
+            pokeMoveEl.innerHTML= "Moves: " + moveOne + " / " + moveTwo;
             pokeDiv.append(pokeMoveEl);
             pokemonContainerEls[i].append(pokeDiv);
             //pokemon picture 
@@ -76,7 +72,6 @@ var displayPokemon = function(pokemon, i) { //for some reason, the data in this 
             pokePicEl.srcset = "https://pokeres.bastionbot.org/images/pokemon/" + pokeNumber + ".png";
             pokeDiv.append(pokePicEl);
             pokemonContainerEls[i].append(pokeDiv);
-        //}
 }
 
 var formSubmitHandler = function(event){
@@ -162,15 +157,14 @@ var displayWeather = function(data){
     } else if(iconPhrase === "INTERMITTENT CLOUDS" || iconPhrase === "PARTLY CLOUDY" || iconPhrase === "MOSTLY CLOUDY") {
         getType("normal");
         getType("rock");
-        typeDisplay.textContent = "NORMAL AND ROCK TYPES!"
+        getType("poison");
+        typeDisplay.textContent = "NORMAL, ROCK AND POISON TYPES!"
         displayWeatherEl.appendChild(typeDisplay);
     } else if(iconPhrase === "HAZY SUNSHINE" || iconPhrase === "HAZY MOONLIGHT"){
-        getType("normal");
         getType("rock");
-        getType("grass");
         getType("ground");
         getType("fire");
-        typeDisplay.textContent = "NORMAL, ROCK, GRASS, GROUND AND FIRE TYPES!"
+        typeDisplay.textContent = "ROCK, GROUND AND FIRE TYPES!"
         displayWeatherEl.appendChild(typeDisplay);
     } else if(iconPhrase === "MOSTLY CLOUDY" || iconPhrase === "CLOUDY" || iconPhrase === "DREARY(OVERCAST)"){
         getType("fairy");
@@ -181,7 +175,8 @@ var displayWeather = function(data){
     } else if(iconPhrase === "FOG") {
         getType("ghost"); 
         getType("dark");
-        typeDisplay.textContent = "GHOST AND DARK TYPES!"
+        getType("electric");
+        typeDisplay.textContent = "GHOST, DARK AND ELECTRIC TYPES!"
         displayWeatherEl.appendChild(typeDisplay);
     } else if(iconPhrase === "SHOWERS" || iconPhrase === "T-STORMS" || iconPhrase === "RAIN") {
         getType("water");
@@ -191,57 +186,51 @@ var displayWeather = function(data){
         displayWeatherEl.appendChild(typeDisplay);
     } else if(iconPhrase === "MOSTLY CLOUDY W/ SHOWERS" || iconPhrase === "MOSTLY CLOUDY W/ T-STORMS") {
         getType("water");
-        getType("electric");
         getType("bug");
         getType("fairy");
-        getType("fighting");
-        getType("poison");
-        typeDisplay.textContent = "WATER, ELECTRIC, BUG, FAIRY, FIGHTING AND POISON TYPES!"
+        typeDisplay.textContent = "WATER, BUG AND FAIRY TYPES!"
         displayWeatherEl.appendChild(typeDisplay);
     } else if(iconPhrase === "PARTLY SUNNY W/ SHOWERS" || iconPhrase === "PARTLY SUNNY W/ T-STORMS") {
         getType("water");
         getType("electric");
-        getType("grass");
         getType("ground");
-        typeDisplay.textContent = "WATER, ELECTRIC, GRASS AND GROUND TYPES!"
+        typeDisplay.textContent = "WATER, ELECTRIC AND GROUND TYPES!"
         displayWeatherEl.appendChild(typeDisplay);
     } else if(iconPhrase === "MOSTLY CLOUDY W/ T-STORMS" || iconPhrase === "PARTLY CLOUDY W/ SHOWERS" || iconPhrase === "PARTLY CLOUDY W/ T-STORMS"){
-        getType("normal");
-        getType("rock");
         getType("water");
         getType("electric");
         getType("bug");
-        typeDisplay.textContent = "NORMAL, ROCK, WATER, ELECTRIC AND BUG TYPES!"
+        typeDisplay.textContent = "WATER, ELECTRIC AND BUG TYPES!"
         displayWeatherEl.appendChild(typeDisplay);
     } else if(iconPhrase === "FLURRIES" || iconPhrase === "SNOW" || iconPhrase === "SLEET" || iconPhrase === "COLD") {
         getType("ice");
         getType("steel"); 
-        typeDisplay.textContent = "ICE AND STEEL TYPES!"
+        getType("rock");
+        typeDisplay.textContent = "ICE, STEEL AND ROCK TYPES!"
         displayWeatherEl.appendChild(typeDisplay);
     } else if(iconPhrase === "MOSTLY CLOUDY W/ FLURRIES" || iconPhrase === "MOSTLY CLOUDY W/ SNOW") {
         getType("normal");
-        getType("rock");
         getType("ice");
         getType("steel");
-        typeDisplay.textContent = "NORMAL, ROCK, ICE AND STEEL TYPES!"
+        typeDisplay.textContent = "NORMAL, ICE AND STEEL TYPES!"
         displayWeatherEl.appendChild(typeDisplay);
     } else if(iconPhrase === "PARTLY SUNNY W/ FLURRIES") {
-        getType("grass");
         getType("ground");
         getType("ice");
         getType("steel");
-        typeDisplay.textContent = "GRASS, GROUND, ICE AND STEEL TYPES!"
+        typeDisplay.textContent = "GROUND, ICE AND STEEL TYPES!"
         displayWeatherEl.appendChild(typeDisplay);
     } else if(iconPhrase === "ICE") {
         getType("steel");
-        typeDisplay.textContent = "STEEL TYPE!"
+        getType("ice");
+        getType("dragon"); 
+        typeDisplay.textContent = "STEEL, ICE AND DRAGON TYPE!"
         displayWeatherEl.appendChild(typeDisplay);
     } else if(iconPhrase === "FREEZING RAIN" || iconPhrase === "RAIN AND SNOW") {
         getType("water");
         getType("electric");
         getType("ice");
-        getType("steel");
-        typeDisplay.textContent = "WATER, ELECTRIC, ICE AND STEEL TYPES!"
+        typeDisplay.textContent = "WATER, ELECTRIC AND ICE TYPES!"
         displayWeatherEl.appendChild(typeDisplay);
     } else if(iconPhrase === "WINDY") {
         getType("dragon"); 
@@ -253,9 +242,7 @@ var displayWeather = function(data){
         getType("fairy");
         getType("fighting");
         getType("poison");
-        getType("ice");
-        getType("steel");
-        typeDisplay.textContent = "FAIRY, FIGHTING, POISON, ICE AND STEEL TYPES!"
+        typeDisplay.textContent = "FAIRY, FIGHTING AND POISON TYPES!"
         displayWeatherEl.appendChild(typeDisplay);
     }
 };
