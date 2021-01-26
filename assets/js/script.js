@@ -1,94 +1,5 @@
 var mainContainerEl = document.querySelector(".poke-cards");
 var pokemonContainerEl = document.querySelectorAll(".poke-card");
-//var pokeNameEl = document.querySelectorAll(".poke-name");
-//var pokeTypeEl = document.querySelectorAll(".poke-type");
-//var pokeImageEl = document.querySelectorAll(".poke-image");
-//var pokePicEl = document.querySelectorAll(".poke-pic");
-//var pokeMoveEl = document.querySelectorAll(".poke-move");
-
-//if weather is sunny, mostly sunny, partly sunny 
-    //grass(3), ground(3) and fire(4)
-
-//if weather is intermittent clouds
-    //normal(5), rock(5) 
-
-//if hazy sunshine 
-    //normal(2), rock(2), grass(2), ground(2) and fire(2)
-
-//if mostly cloudy, cloudy, dreary(overcast)
-    //fairy(3), fighting(3), poison(4)
-
-//if foggy 
-    //ghost(5), dark(5) 
-
-//if showers
-    //water(3), electric(3), bug(4)
-
-//if mostly cloudy w/ showers
-    //water(2), electric(2), bug(1), fairy(3), fighting(1), poison(1)
-
-//if partly sunny w/ showers 
-    //water(2), electric(2), bug(2), grass(2), ground(2)
-
-//if t-storms
-    // water(3), electric(4), bug(3)
-
-//if mostly cloudy with t-storms 
-    //normal(2), rock(2), water(2), electric(2), bug(2)
-
-//if partly sunny with t-storms 
-    //grass(2), ground(2), water(2), electric(2), bug(2)
-
-//if rain
-    //water(2), steel(2), electric(3), bug(3) 
-
-//if flurries, snow, sleet 
-    //ice(5), steel(5) 
-
-//if mostly cloudy w/ flurries
-    //normal(2), rock(3), ice(3), steel(2) 
-
-//if partly sunny w/ flurries
-    //grass(1), ground(3), ice(3), steel(3)
-
-//if mostly cloudy w/ snow
-    //normal(2), rock(3), ice(3), steel(2) 
-
-//if ice 
-    //ice(10) 
-
-//if freezing rain, rain and snow 
-    //water(2), electric(2), ice(2), steel(4) 
-
-//if hot, clear, mostly clear 
-    //grass(2), ground(3), fire(5) 
-
-//if cold
-    //ice(5), steel(5)
-
-//if windy
-    // dragon(2), flying(6), psychic(2)
-
-//if partly cloudy, intermittent clouds, mostly cloudy
-    // normal(5), rock(5)
-
-//if hazy moonlight
-    //normal(2), rock(2), grass(2), ground(2), fire(2) 
-
-//if partly cloudy w/ showers 
-    //normal(2), rock(2), water(2), electric(2), bug(2) 
-
-//if mostly cloudy w/ showers, mostly cloudy w/ t-storms
-    //fairy(2), fighting(1), poison(1), water(2), electric(1), bug(3)
-
-//if partly cloudy w/ t-storms 
-    //normal(2), rock(2), water(2), electric(2), bug(2)
-
-//if mostly cloudy w/ flurries, mostly cloudy w/ snow
-    //fairy(2), fighting(2), poison(2), ice(2), steel(2) 
-
-
-
 // this variable will pull the city from the search bar
 var city = document.querySelector("#city-name");
 var userFormEl = document.querySelector("#user-form");
@@ -112,7 +23,7 @@ var getType = function (type) {
     }) 
 };
 
-getType("fire");
+//getType("fire");
 
 var getPokemon = function(pokemon) {
     //format the PokeAPI data 
@@ -136,10 +47,9 @@ var displayPokemon = function(pokemon) { //for some reason, the data in this par
         for(var i=0; i<pokemonContainerEls.length; i++) {
             pokemonContainerEls[i].innerHTML = ""; //empty content
             let pokeDiv = document.createElement("div"); //create div
-            //pokeDiv.className = ("poke-info"); //add class to div 
             //pokemon name 
             let pokeName = pokemon.name; 
-            let pokeNameEl = document.createElement("h2"); 
+            let pokeNameEl = document.createElement("h2");
             pokeNameEl.innerHTML = pokeName; 
             pokeDiv.append(pokeNameEl);  
             pokemonContainerEls[i].append(pokeDiv); 
@@ -154,15 +64,15 @@ var displayPokemon = function(pokemon) { //for some reason, the data in this par
             //pokemon move 
             let moveOne = pokemon.moves[Math.floor(Math.random() * 5)].move.name; 
             let moveTwo = pokemon.moves[Math.floor(Math.random() * 5)].move.name; 
-            let moveThree = pokemon.moves[Math.floor(Math.random() * 5)].move.name; 
+            //let moveThree = pokemon.moves[Math.floor(Math.random() * 5)].move.name; 
             let pokeMoveEl = document.createElement("p");
-            pokeMoveEl.innerHTML= "Moves: " + moveOne + " / " + moveTwo + " / " + moveThree;
+            pokeMoveEl.innerHTML= "Moves: " + moveOne + " / " + moveTwo // " / " + moveThree;
             pokeDiv.append(pokeMoveEl);
             pokemonContainerEls[i].append(pokeDiv);
             //pokemon picture 
             let pokeNumber = pokemon.id; 
             let pokePicEl = document.createElement("img");
-            pokePicEl.setAttribute("style", "width:200px;height:200px;margin:50px;");
+            pokePicEl.setAttribute("style", "width:150px;height:150px;");
             pokePicEl.srcset = "https://pokeres.bastionbot.org/images/pokemon/" + pokeNumber + ".png";
             pokeDiv.append(pokePicEl);
             pokemonContainerEls[i].append(pokeDiv);
@@ -248,12 +158,12 @@ var displayWeather = function(data){
         getType("grass");
         getType("ground");
         getType("fire");
-        typeDisplay.textContent = "GRASS, GROUND AND FIRE!"
+        typeDisplay.textContent = "GRASS, GROUND AND FIRE TYPES!"
         displayWeatherEl.appendChild(typeDisplay);
     } else if(iconPhrase === "INTERMITTENT CLOUDS" || iconPhrase === "PARTLY CLOUDY" || iconPhrase === "MOSTLY CLOUDY") {
         getType("normal");
         getType("rock");
-        typeDisplay.textContent = "NORMAL AND ROCK!"
+        typeDisplay.textContent = "NORMAL AND ROCK TYPES!"
         displayWeatherEl.appendChild(typeDisplay);
     } else if(iconPhrase === "HAZY SUNSHINE" || iconPhrase === "HAZY MOONLIGHT"){
         getType("normal");
@@ -261,24 +171,24 @@ var displayWeather = function(data){
         getType("grass");
         getType("ground");
         getType("fire");
-        typeDisplay.textContent = "NORMAL, ROCK, GRASS, GROUND AND FIRE!"
+        typeDisplay.textContent = "NORMAL, ROCK, GRASS, GROUND AND FIRE TYPES!"
         displayWeatherEl.appendChild(typeDisplay);
     } else if(iconPhrase === "MOSTLY CLOUDY" || iconPhrase === "CLOUDY" || iconPhrase === "DREARY(OVERCAST)"){
         getType("fairy");
         getType("fighting");
         getType("poison");
-        typeDisplay.textContent = "FAIRY, FIGHTING AND POISON!"
+        typeDisplay.textContent = "FAIRY, FIGHTING AND POISON TYPES!"
         displayWeatherEl.appendChild(typeDisplay);    
     } else if(iconPhrase === "FOG") {
         getType("ghost"); 
         getType("dark");
-        typeDisplay.textContent = "GHOST AND DARK!"
+        typeDisplay.textContent = "GHOST AND DARK TYPES!"
         displayWeatherEl.appendChild(typeDisplay);
     } else if(iconPhrase === "SHOWERS" || iconPhrase === "T-STORMS" || iconPhrase === "RAIN") {
         getType("water");
         getType("electric");
         getType("bug");
-        typeDisplay.textContent = "WATER, ELECTRIC AND BUG!"
+        typeDisplay.textContent = "WATER, ELECTRIC AND BUG TYPES!"
         displayWeatherEl.appendChild(typeDisplay);
     } else if(iconPhrase === "MOSTLY CLOUDY W/ SHOWERS" || iconPhrase === "MOSTLY CLOUDY W/ T-STORMS") {
         getType("water");
@@ -287,14 +197,14 @@ var displayWeather = function(data){
         getType("fairy");
         getType("fighting");
         getType("poison");
-        typeDisplay.textContent = "WATER, ELECTRIC, BUG, FAIRY, FIGHTING AND POISON!"
+        typeDisplay.textContent = "WATER, ELECTRIC, BUG, FAIRY, FIGHTING AND POISON TYPES!"
         displayWeatherEl.appendChild(typeDisplay);
     } else if(iconPhrase === "PARTLY SUNNY W/ SHOWERS" || iconPhrase === "PARTLY SUNNY W/ T-STORMS") {
         getType("water");
         getType("electric");
         getType("grass");
         getType("ground");
-        typeDisplay.textContent = "WATER, ELECTRIC, GRASS AND GROUND!"
+        typeDisplay.textContent = "WATER, ELECTRIC, GRASS AND GROUND TYPES!"
         displayWeatherEl.appendChild(typeDisplay);
     } else if(iconPhrase === "MOSTLY CLOUDY W/ T-STORMS" || iconPhrase === "PARTLY CLOUDY W/ SHOWERS" || iconPhrase === "PARTLY CLOUDY W/ T-STORMS"){
         getType("normal");
@@ -302,43 +212,43 @@ var displayWeather = function(data){
         getType("water");
         getType("electric");
         getType("bug");
-        typeDisplay.textContent = "NORMAL, ROCK, WATER, ELECTRIC AND BUG!"
+        typeDisplay.textContent = "NORMAL, ROCK, WATER, ELECTRIC AND BUG TYPES!"
         displayWeatherEl.appendChild(typeDisplay);
     } else if(iconPhrase === "FLURRIES" || iconPhrase === "SNOW" || iconPhrase === "SLEET" || iconPhrase === "COLD") {
         getType("ice");
         getType("steel"); 
-        typeDisplay.textContent = "ICE AND STEEL!"
+        typeDisplay.textContent = "ICE AND STEEL TYPES!"
         displayWeatherEl.appendChild(typeDisplay);
     } else if(iconPhrase === "MOSTLY CLOUDY W/ FLURRIES" || iconPhrase === "MOSTLY CLOUDY W/ SNOW") {
         getType("normal");
         getType("rock");
         getType("ice");
         getType("steel");
-        typeDisplay.textContent = "NORMAL, ROCK, ICE AND STEEL!"
+        typeDisplay.textContent = "NORMAL, ROCK, ICE AND STEEL TYPES!"
         displayWeatherEl.appendChild(typeDisplay);
     } else if(iconPhrase === "PARTLY SUNNY W/ FLURRIES") {
         getType("grass");
         getType("ground");
         getType("ice");
         getType("steel");
-        typeDisplay.textContent = "GRASS, GROUND, ICE AND STEEL!"
+        typeDisplay.textContent = "GRASS, GROUND, ICE AND STEEL TYPES!"
         displayWeatherEl.appendChild(typeDisplay);
     } else if(iconPhrase === "ICE") {
         getType("steel");
-        typeDisplay.textContent = "STEEL!"
+        typeDisplay.textContent = "STEEL TYPE!"
         displayWeatherEl.appendChild(typeDisplay);
     } else if(iconPhrase === "FREEZING RAIN" || iconPhrase === "RAIN AND SNOW") {
         getType("water");
         getType("electric");
         getType("ice");
         getType("steel");
-        typeDisplay.textContent = "WATER, ELECTRIC, ICE AND STEEL!"
+        typeDisplay.textContent = "WATER, ELECTRIC, ICE AND STEEL TYPES!"
         displayWeatherEl.appendChild(typeDisplay);
     } else if(iconPhrase === "WINDY") {
         getType("dragon"); 
         getType("flying");
         getType("psychic");
-        typeDisplay.textContent = "DRAGON, FLYING AND PSYCHIC!"
+        typeDisplay.textContent = "DRAGON, FLYING AND PSYCHIC TYPES!"
         displayWeatherEl.appendChild(typeDisplay);
     } else if(iconPhrase === "MOSTLY CLOUDY W/ FLURRIES" || iconPhrase === "MOSYLY CLOUDY W/ SNOW") {
         getType("fairy");
@@ -346,7 +256,7 @@ var displayWeather = function(data){
         getType("poison");
         getType("ice");
         getType("steel");
-        typeDisplay.textContent = "FAIRY, FIGHTING, POISON, ICE AND STEEL!"
+        typeDisplay.textContent = "FAIRY, FIGHTING, POISON, ICE AND STEEL TYPES!"
         displayWeatherEl.appendChild(typeDisplay);
     }
 };
