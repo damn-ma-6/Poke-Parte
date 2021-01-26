@@ -1,0 +1,56 @@
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+.gallery {
+    max-width: 700px;
+    margin: auto;
+    display: grid;
+    grid-template: repeat(4, 150px) / repeat(5, 150px);
+    grid-gap: 15px;
+}
+
+.slctd {
+    grid-area: 1/ 1/ -1/ -2;
+}
+
+.poke-card:hover {
+    cursor: pointer;
+    transform: translateY(3px);
+    transition: all .3s ease;
+}
+
+.slctd:hover{
+    cursor: default;
+}
+
+
+@keyframes fadeIn {
+    to {
+        opacity: 1;
+    }
+}
+
+.fade-in {
+    opacity: 0;
+    animation: fadeIn .5s ease 1;
+}
+
+.poke-card {
+    transform-style: preserve-3d;
+    background: rgb(165, 172, 34);
+    border-radius: 20px;
+    box-shadow: 0 10px 10px rgba(0, 0, 0, 0.4), 0 0px 40px rgba(0, 0, 0, 0.35);
+    padding: 10px;
+}
+
+.images .poke-image {
+    transition: all .4s ease;
+    width: 100px;
+}
+
+.poke-image img {
+    width: 100%;
+}
