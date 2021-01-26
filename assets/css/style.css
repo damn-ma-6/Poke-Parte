@@ -3,6 +3,7 @@
   padding: 0;
   box-sizing: border-box;
 }
+<<<<<<< HEAD
 
 @font-face {
   font-family: poke;
@@ -54,3 +55,103 @@ header h1 {
 .poke-image img {
   width: 100%;
 }
+=======
+@font-face {
+    font-family: poke;
+    src: url("../fonts/pokemon-font.otf");
+}
+
+.svg-container {
+    position: absolute;
+    top: 0;
+    right: 0;
+    left: 0;
+    z-index: -1;
+}
+  
+body {
+    background: #fff;
+    position: relative;
+    font-family: poke;
+    background: url(https://s3-us-west-2.amazonaws.com/s.cdpn.io/652/confectionary.png); 
+}
+
+header {
+    color: #fff;
+    padding-top: 15vw;
+    padding-bottom: 1vw;
+    text-align: center;
+    margin-top: 30px;
+    overflow: hidden;
+}
+
+.citysearch{
+    text-align: center;
+    margin-bottom: 150px;
+    top: 100px;
+    color: #fff;
+}
+
+/* Display weather */
+.weather-container{
+    margin-left: 150px;
+    line-height: 40px;
+    margin-bottom: 100px;
+    margin-top: 50px;
+    color: darkgreen;
+}
+
+/* Display submit button */
+.submitsection {
+    text-align: center;
+    margin-bottom: 200px;
+    top: 100px;
+}
+
+/* Remove extra left and right margins, due to padding */
+.row{
+    margin: 0 20px;
+}
+
+/* Display 5 cards in a row */
+.poke-cards {  
+    display: grid;
+    grid-template-columns: repeat(5, 2fr);
+    grid-column-gap: 50px;
+    grid-row-gap: 1em;
+    margin-bottom: 150px;
+    padding-left: 20px;
+    padding-right: 20px；
+}
+  
+.poke-card h2 { /* make pokemon name stand out more */
+    text-shadow: 1px 1px 3px rgba(0, 0, 0, 0.7);
+    font-size: 18px;
+}
+
+.poke-card p { /*make font smaller on pokemon cards*/ 
+    font-size: 12px; 
+}
+
+/* Style the counter cards */
+.card,.card.hn {
+  padding: 20px;
+  text-align: left;
+  text-transform: capitalize; /* capitalize pokemon name, type and moves*/
+  height:50vh;
+  width: 35vh;
+  background: rgb(165, 172, 34);
+  border-radius: 20px;
+  box-shadow: 0 10px 10px rgba(0, 0, 0, 0.4), 0 0px 40px rgba(0, 0, 0, 0.35);
+  color: rgb(210, 46, 150);
+  display: flex;
+  margin-bottom: 100px;
+  }
+
+
+/* Card hover animation */
+.card:hover {
+      background:darkgoldenrod;
+}
+
+>>>>>>> main
