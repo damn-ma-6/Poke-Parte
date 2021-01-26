@@ -63,7 +63,7 @@ There is no installation required. This application can be run on any web browse
 
 ## Usage
 
-![website demo]()
+![website demo](https://github.com/damn-ma-6/Poke-Parte/blob/djones/assets/images/pokeparte%20demo.gif)
 
 Here are some user experience highlights from our application: 
     
@@ -87,6 +87,7 @@ Here are some user experience highlights from our application:
 ![username](https://github.com/damn-ma-6/Poke-Parte/blob/djones/assets/images/username%20enter.PNG)
 
     - once the user clicks the "Enter" button, they are brought to a seperate page which has their 5 chosen Pokemon, their city name, name, and optional Trainer ID. The user has the option to save this roster as a jpeg and post wherever they would like. 
+![second page]()
 
 ## Credits
 Here are the sources we used: 
