@@ -63,7 +63,11 @@ There is no installation required. This application can be run on any web browse
 
 ## Usage
 
+<<<<<<< HEAD
 ![website demo](assets/screenshots/Poké-Parté.webm)
+=======
+![website demo](https://github.com/damn-ma-6/Poke-Parte/blob/djones/assets/images/pokeparte%20demo.gif)
+>>>>>>> e78d76709f6022332ca34fced27332b948c1eb05
 
 Here are some user experience highlights from our application: 
     
@@ -72,17 +76,28 @@ Here are some user experience highlights from our application:
         + the weather conditions 
         + a list of Pokemon types
 
+<<<<<<< HEAD
 ![search](assets/screenshots/POKE6.png)
 ![weather info](assets/screenshots/POKE7.png)
 
     - a random assortment of 10 Pokemon are displayed on cards that match the types returned from the weather condition
 
 ![poke 1](assets/screenshots/POKE2.png)
+=======
+![search](https://github.com/damn-ma-6/Poke-Parte/blob/djones/assets/images/search%20city.PNG)
+![weather info](https://github.com/damn-ma-6/Poke-Parte/blob/djones/assets/images/weather%20type%20info.PNG)
+
+    - a random assortment of 10 Pokemon are displayed on cards that match the types returned from the weather condition
+
+![poke 1](https://github.com/damn-ma-6/Poke-Parte/blob/djones/assets/images/poke%20cards%201.PNG)
+![poke 2](https://github.com/damn-ma-6/Poke-Parte/blob/djones/assets/images/poke%20cards%202.PNG)
+>>>>>>> e78d76709f6022332ca34fced27332b948c1eb05
 
     - the user selects 5 out of the 10 Pokemon to add to their team. 
 
     - the user enters their Name and Trainer ID from PokemonGo (optional)
 
+<<<<<<< HEAD
 ![username](assets/screenshots/POKE8.png)
 
      - mobile and desktop screen sizes
@@ -94,6 +109,12 @@ Here are some user experience highlights from our application:
 
     - once the user clicks the "Enter" button, they are brought to a seperate page which has their 5 chosen Pokemon, their city name, name, and optional Trainer ID. The user has the option to save this roster as a jpeg and post wherever they would like. 
 ![second page](assets/screenshots/POKE1.png)
+=======
+![username](https://github.com/damn-ma-6/Poke-Parte/blob/djones/assets/images/username%20enter.PNG)
+
+    - once the user clicks the "Enter" button, they are brought to a seperate page which has their 5 chosen Pokemon, their city name, name, and optional Trainer ID. The user has the option to save this roster as a jpeg and post wherever they would like. 
+![second page](https://github.com/damn-ma-6/Poke-Parte/blob/djones/assets/images/2nd%20page.PNG)
+>>>>>>> e78d76709f6022332ca34fced27332b948c1eb05
 
 ## Credits
 Here are the sources we used: 
