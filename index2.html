@@ -3,9 +3,44 @@
     <head>
         <meta charset="UTF-8">
         <title>Gallery</title>
+         <!-- Favicon link for emoji on tab -->
+        <link rel="shortcut icon" type="image/jpg" href="./assets/images/pokeball.png"/>
+        <!-- Google Material Icons link -->
+        <link href="https://fonts.googleapis.com/icon?family=Material+Icons"
+        rel="stylesheet">
+          <!-- CSS files (tailwind and custom) -->
+        <link href="./assets/css/tailwind.css" rel="stylesheet">  
         <link rel="stylesheet" href="./assets/css/style2.css" />
+
     </head>
     <body>
+
+        <div class="svg-container">
+            <svg viewbox="0 0 800 400" class="svg">
+              <path id="curve" fill="#50C6D8" d="M 800 300 Q 400 350 0 300 L 0 0 L 800 0 L 800 300 Z">
+              </path>
+            </svg>
+        </div>
+        
+        <header>
+            <!-- LOGO AND SEARCH BAR -->
+            <div>
+              <div id="logo">
+                <img src="assets/images/pokeparte logo.png">
+              </div>
+                <div id="titlebottom"></div>
+            </div>
+        </header>
+
+        <div id="user-display">
+            <div id="city-name"> CITY NAME </div> <!--get city name from localstorage-->
+            <div id="user-name"> USER NAME </div> <!--get name from localstorage-->
+            <div id="trainer-id"> TRAINER ID </div> <!--get trainer id from localstorage-->
+            <div id="poke-types"> POKEMON TYPES </div> <!--get pokemon types from localstorage-->
+        </div>
+
+        
+
         <div class="gallery">
             
             <div class="poke-card slctd">
