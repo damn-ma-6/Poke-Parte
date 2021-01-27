@@ -29,8 +29,6 @@ var getType = function (type) {
     }) 
 };
 
-//getType("fire");
-
 var getPokemon = function(pokemon, i) {
     var apiURL = "https://pokeapi.co/api/v2/pokemon/" + pokemon + "/"; 
     fetch(apiURL).then(function(response) {
@@ -53,9 +51,9 @@ var displayPokemon = function(pokemon, i) {
             pokeDiv.append(pokeNameEl);  
             pokemonContainerEls[i].append(pokeDiv); 
             //pokemon type 
-            let pokeTypeOne = pokemon.types[0].type.name;
-            let pokeTypeEl = document.createElement("p");
-            pokeTypeEl.innerHTML = "Type: " + pokeTypeOne;
+            let pokeTypeOne = pokemon.types[0].type.name;  
+            let pokeTypeEl = document.createElement("p"); 
+            pokeTypeEl.innerHTML = "Type: " + pokeTypeOne;  
             pokeDiv.append(pokeTypeEl);
             pokemonContainerEls[i].append(pokeDiv);
             //pokemon move 
