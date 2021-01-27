@@ -85,7 +85,7 @@ Here are some user experience highlights from our application:
 
 ![username](assets/screenshots/POKE8.png)
 
-     - mobile and minimum desktop version
+     - mobile and desktop screen sizes
 
 ![poke 2](assets/screenshots/POKE3.png)
 ![poke 3](assets/screenshots/POKE4.png)
