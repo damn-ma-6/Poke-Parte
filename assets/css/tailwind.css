@@ -197,7 +197,6 @@ input {
   font-size: 100%;
   color: #fff;
   font-weight: 100;
-  margin-bottom: 100px;
 }
 
 /**
@@ -362,8 +361,7 @@ fieldset {
 button {
   background: #4CAF50;
   border-radius: 15px;
-  width:10%;
-  height:50px;
+  color: white;
 }
 
 ol,
@@ -511,7 +509,7 @@ a {
  * normalize.css.
  */
 
-button,
+
 input,
 optgroup,
 select,
@@ -521,6 +519,11 @@ textarea {
   color: inherit;
 }
 
+button{
+border: none;
+color: white;
+padding:15px;
+}
 /**
  * Use the configured 'mono' font family for elements that
  * are expected to be rendered with a monospace font, falling

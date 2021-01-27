@@ -1,0 +1,122 @@
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+body {
+  background: #fff;
+  position: relative;
+  font-family: poke;
+  font-size: large;
+  background: url(https://s3-us-west-2.amazonaws.com/s.cdpn.io/652/confectionary.png);
+}
+
+header {
+  color: #fff;
+  padding-bottom: 1vw;
+  text-align: center;
+  overflow: hidden;
+}
+#logo img {
+  padding-top: 150px;
+}
+
+.svg-container {
+  position: absolute;
+  top: 0;
+  right: 0;
+  left: 0;
+  z-index: -1;
+}
+.gallery {
+  max-width: 700px;
+  margin: auto;
+  display: grid;
+  grid-template: repeat(4, 150px) / repeat(5, 150px);
+  grid-gap: 15px;
+}
+
+.slctd {
+  grid-area: 1/ 1/ -1/ -2;
+}
+
+.poke-card:hover {
+  cursor: pointer;
+  transform: translateY(3px);
+  transition: all 0.3s ease;
+}
+
+.slctd:hover {
+  cursor: default;
+}
+
+@keyframes fadeIn {
+  to {
+    opacity: 1;
+  }
+}
+
+.fade-in {
+  opacity: 0;
+  animation: fadeIn 0.5s ease 1;
+}
+
+.poke-card {
+  transform-style: preserve-3d;
+  background: rgb(165, 172, 34);
+  border-radius: 20px;
+  box-shadow: 0 10px 10px rgba(0, 0, 0, 0.4), 0 0px 40px rgba(0, 0, 0, 0.35);
+  padding: 10px;
+}
+
+.images .poke-image {
+  transition: all 0.4s ease;
+  width: 100px;
+}
+
+.poke-image img {
+  width: 100%;
+}
+
+.poke-des {
+  color: darkgreen;
+  padding-left: 320px;
+  padding-top: 100px;
+  padding-bottom: 100px;
+  font-size: 2rem;
+}
+
+button {
+  background: #4caf50;
+  border-radius: 15px;
+  color: white;
+  border: none;
+  padding: 20px;
+  width: 300px;
+  margin-left: 300px;
+}
+
+.downloadpic {
+  padding-bottom: 100px;
+}
+
+/* Media Query Resonsive to screen size */
+@media (max-width: 768px) {
+  body {
+    font-size: small;
+    align-items: center;
+  }
+  #logo img {
+    padding-top: 20px;
+    width: 80%;
+  }
+  .svg-container {
+    position: absolute;
+    float: none;
+    height: 380px;
+  }
+  .svg-container svg {
+    height: 120%;
+  }
+}
