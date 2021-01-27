@@ -1,138 +1,157 @@
-<<<<<<< HEAD
-
-  @font-face {
-    font-family: poke;
-    src: url("../fonts/pokemon-font.otf");
-  }
-
-  .svg-container {
-    position: absolute;
-    top: 0;
-    right: 0;
-    left: 0;
-    z-index: -1;
-  }
-  
-  body {
-    background: #fff;
-    position: relative;
-    background: url(https://s3-us-west-2.amazonaws.com/s.cdpn.io/652/confectionary.png); 
-  }
-
-  header {
-    color: #fff;
-    padding-top: 10vw;
-    text-align: center;
-  } 
-=======
 * {
-    margin: 0;
-    padding: 0;
-    box-sizing: border-box;
-  }
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
 
-  @font-face {
-    font-family: poke;
-    src: url("/assets/fonts/pokemon-font.otf");
-  }
+@font-face {
+  font-family: poke;
+  src: url("../fonts/pokemon-font.otf");
+}
 
-  body {
-    font-family: poke, sans-serif;
-  }
+body {
+  background: #fff;
+  position: relative;
+  font-family: poke;
+  font-size: large;
+  background: url(https://s3-us-west-2.amazonaws.com/s.cdpn.io/652/confectionary.png);
+}
 
-  header {
-    text-align: center;
-    margin-top: 30px;
-    overflow: hidden;
-  }
->>>>>>> 80e81584bc845beebeea7b87fa00fb27182f06e5
-
-  header h1 {
-    text-transform: uppercase;
-  }
-
-<<<<<<< HEAD
-  /* Float five columns side by side */
-  .poke-cards {
-    float: left;
-    width: 20%;
-    padding: 0 20px;
-  }
-
-  /* Remove extra left and right margins, due to padding */
-  .row {margin: 0 150px;}
-
-  /* Style the counter cards */
-  .card,.card.hn {
-  padding: 20px;
+header {
+  color: #fff;
+  padding-bottom: 1vw;
   text-align: center;
-  background-color: #f1f1f1;
-  height:40vh;
-  transform-style: preserve-3d;
+  overflow: hidden;
+}
+#logo img {
+  padding-top: 150px;
+}
+
+.svg-container {
+  position: absolute;
+  top: 0;
+  right: 0;
+  left: 0;
+  z-index: -1;
+}
+
+.user-form {
+  display: flex;
+  flex-direction: row;
+  width: 70%;
+  margin: auto;
+}
+
+.user-form .user-input {
+  flex: 1;
+  display: flex;
+  outline: none;
+}
+
+.user-form .user-input .lab {
+  width: 120px;
+}
+
+.user-form .user-input .form-control {
+  flex: 1;
+  outline: none;
+}
+
+.user-form .user-btn .btn {
+  padding: 8px 10px;
+  outline: none;
+}
+
+/* Display city search */
+.citysearch {
+  text-align: center;
+  margin-bottom: 150px;
+  top: 100px;
+  color: yellow;
+  line-height: 40px;
+}
+
+/* Display weather */
+.weather-container {
+  padding-top: 100px;
+  padding-left: 150px;
+  line-height: 40px;
+  margin-bottom: 100px;
+  margin-top: 50px;
+  color: darkgreen;
+}
+
+/* Display submit button */
+.submitsection {
+  text-align: center;
+  margin-bottom: 200px;
+  top: 100px;
+  line-height: 100px;
+}
+
+/* Display 5 cards in a row */
+.poke-cards {
+  display: grid;
+  grid-template-columns: repeat(5, 2fr);
+  grid-column-gap: 50px;
+  grid-row-gap: 1em;
+  margin-bottom: 150px;
+  padding: 0 100px;
+}
+
+/* Style the counter cards */
+.card,
+.card.hn {
+  padding: 20px;
+  text-align: left;
   background: rgb(165, 172, 34);
   border-radius: 20px;
   box-shadow: 0 10px 10px rgba(0, 0, 0, 0.4), 0 0px 40px rgba(0, 0, 0, 0.35);
   color: rgb(210, 46, 150);
-  transform: perspective(600px) rotateY(25deg); /* Perspective Horizontal */
-  position: relative;
-  display: inline-block;
-  margin: auto;
+  display: flex;
   margin-bottom: 100px;
-  }
+}
 
-    /* Card hover animation */
-  .card:hover {
-      background:darkgoldenrod;
-      transform: perspective(0px) rotateY(0deg);
-      box-shadow: 0 0 10px 0 rgba(0, 0, 0, .2);
-  }
+/* Card hover animation */
+.card:hover {
+  background: darkgoldenrod;
+}
 
-  /* Display weather */
-  .weather-container{
-    margin-left: 150px;
-    line-height: 40px;
-    margin-bottom: 100px;
-    margin-top: 150px;
-    color: darkgreen;
-  }
-
-  /* Display submit button */
-  .submitsection {
-    text-align: center;
-    margin-bottom: 200px;
-    top: 100px;
-  }
-=======
-
-  .poke-cards {
-    height: 80vh;
-    display: flex;
-    justify-content: center;
+/* Media Query Resonsive to screen size */
+@media (max-width: 768px) {
+  body {
+    font-size: small;
     align-items: center;
   }
-
-  .poke-card {
-    width: 320px;
-    transform-style: preserve-3d;
-    background: rgb(165, 172, 34);
-    border-radius: 20px;
-    box-shadow: 0 10px 10px rgba(0, 0, 0, 0.4), 0 0px 40px rgba(0, 0, 0, 0.35);
-    padding: 10px;
+  #logo img {
+    padding-top: 20px;
+    width: 80%;
   }
-
-  .poke-info {
-    transition: all .5s ease;
-    color: rgb(210, 46, 150);
-    text-shadow: 0 1px 3px rgba(0, 0, 0, 0.5);
-    margin-bottom: 25px;
+  .svg-container {
+    position: absolute;
+    float: none;
+    height: 380px;
   }
-
-  .poke-image {
-    width: 100%;
-    transition: all .4s ease;
+  .svg-container svg {
+    height: 120%;
   }
-
-  .poke-image img {
-    width: 100%;
+  .user-form {
+    width: 90%;
+    flex-direction: column;
   }
->>>>>>> 80e81584bc845beebeea7b87fa00fb27182f06e5
+  .user-form .user-btn {
+    margin-top: 20px;
+  }
+  .citysearch {
+    line-height: 50px;
+  }
+  .weather-container {
+    text-align: center;
+    padding: 50px;
+  }
+  .poke-cards {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+    grid-gap: 50px;
+  }
+}

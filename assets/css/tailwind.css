@@ -186,23 +186,19 @@ textarea {
   margin: 0; /* 2 */
 }
 
-<<<<<<< HEAD
 input {
   font-family: inherit; /* 1 */
   background-color: transparent;
   border-bottom: 2px solid #fff;
-  outline: none;
-  padding-bottom: 10px;
+  padding-bottom: 50px;
+  display: center;
   text-align: center;
   width: 400px;
   font-size: 100%;
   color: #fff;
   font-weight: 100;
-  margin-bottom: 50px;
 }
 
-=======
->>>>>>> 80e81584bc845beebeea7b87fa00fb27182f06e5
 /**
 Remove the inheritance of text transform in Edge and Firefox.
 1. Remove the inheritance of text transform in Firefox.
@@ -362,16 +358,12 @@ fieldset {
   padding: 0;
 }
 
-<<<<<<< HEAD
 button {
   background: #4CAF50;
   border-radius: 15px;
-  width:10%;
-  height:50px;
+  color: white;
 }
 
-=======
->>>>>>> 80e81584bc845beebeea7b87fa00fb27182f06e5
 ol,
 ul {
   list-style: none;
@@ -498,6 +490,7 @@ h6 {
   font-weight: inherit;
 }
 
+
 /**
  * Reset links to optimize for opt-in styling instead of
  * opt-out.
@@ -516,7 +509,7 @@ a {
  * normalize.css.
  */
 
-button,
+
 input,
 optgroup,
 select,
@@ -526,6 +519,11 @@ textarea {
   color: inherit;
 }
 
+button{
+border: none;
+color: white;
+padding:15px;
+}
 /**
  * Use the configured 'mono' font family for elements that
  * are expected to be rendered with a monospace font, falling
@@ -556,12 +554,7 @@ audio,
 iframe,
 embed,
 object {
-  display: block;
-<<<<<<< HEAD
-  /* vertical-align: middle; */
-=======
   vertical-align: middle;
->>>>>>> 80e81584bc845beebeea7b87fa00fb27182f06e5
 }
 
 /**

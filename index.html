@@ -1,7 +1,6 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-<<<<<<< HEAD
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>Poké-Parté</title>
@@ -18,7 +17,7 @@
 </head>
 
 <body>
-
+  <!-- BLUE CURVE DESIGN -->
   <div class="svg-container">
     <svg viewbox="0 0 800 400" class="svg">
       <path id="curve" fill="#50C6D8" d="M 800 300 Q 400 350 0 300 L 0 0 L 800 0 L 800 300 Z">
@@ -26,6 +25,7 @@
     </svg>
   </div>
 
+  <!-- Header begins -->
   <header>
     <!-- LOGO AND SEARCH BAR -->
     <div>
@@ -35,9 +35,10 @@
         <div id="titlebottom"></div>
     </div>
   </header>
+  <!-- Header ends -->
 
-  <!-- WEATHER DISPLAY -->
-  <div id="city-search-display">
+  <!-- SEARCH DISPLAY -->
+  <div id="city-search-display" class="citysearch">
     <h3>Search By City</h3>
     <form id="user-form">
       <label for="city-name">City:</label>
@@ -46,7 +47,13 @@
     </form>
   </div>
 
-  <div id="display-weather"></div>
+   <!-- WEATHER DISPLAY -->
+ <section class="weather-container" >
+  <div id="display-weather">
+   <h3 class="location" id="location">Location: </h3>
+   <h3 class="temp" id="temp">Temperature: </h3>
+      </div>
+    </section>
 
   <!-- POKE CARDS SECTION -->
   <section>
@@ -72,7 +79,7 @@
       <input type="text" id="username" class="input" placeholder="Enter Your Name" />
       <input type="text" id="userID" class="input"  placeholder="Enter Your Trainer ID" size="30" />
       <div>
-        <button id="submitbutton"">ENTER</button>
+        <button id="submitbutton">ENTER</button>
       </div>
     </div>
   </section>
@@ -86,63 +93,10 @@
   <!-- Script section begins -->
         
   <script src="https://code.jquery.com/jquery-3.4.1.min.js"></script>
-  <script src="./assets/js/script.js"></script>
+  <script src="assets/js/script.js"></script>
         
   <!-- Script section ends -->
 </body>
 
 </html>
 
-
-
-
-
-=======
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Poké-Parté</title>
-
-        <!-- Favicon link for emoji on tab -->
-        <link rel="shortcut icon" type="image/jpg" href="./assets/images/pokeball.png"/>
-        <!-- Google Material Icons link -->
-        <link href="https://fonts.googleapis.com/icon?family=Material+Icons"
-        rel="stylesheet">
-        <!-- CSS files (tailwind and custom) -->
-        <link href="./assets/css/tailwind.css" rel="stylesheet">
-        <link rel="stylesheet" href="./assets/css/style.css" />
-
-</head>
-<body>
-  
-      <!-- POKE CARDS -->
-      <div class="poke-cards">
-  
-        <div class="poke-card">
-          <div class="poke-info">
-            <h2>Pokemon: <span class="poke-name">???</span></h2>
-            <p>Type: <span class="poke-type">???</span></p>
-          </div>
-          <div class="poke-image">
-            <img src="https://pokeres.bastionbot.org/images/pokemon/450.png" alt="??"/>
-          </div>
-        </div>
-  
-      </div>
-  
-    
-
-        <!-- Footer begins -->
-            <footer>
-            </footer>
-        <!-- Footer ends -->
-
-        <!-- Script section begins -->
-        
-            <script src="https://code.jquery.com/jquery-3.4.1.min.js"></script>
-            <script src="./assets/js/script.js"></script>
-        
-        <!-- Script section ends -->
-
-</body>
-</html>
->>>>>>> 80e81584bc845beebeea7b87fa00fb27182f06e5
