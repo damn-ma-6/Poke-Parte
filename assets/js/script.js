@@ -268,16 +268,33 @@ function getCardDetails(target) {
         let card = getCardDetails(e.target);
         $(card.currentCard).css("transition", "none");
     });
-            
+        
     $(cardEl).on('mousemove', (e) => {
-        let x = ((window.innerWidth / 2) - e.pageX) / 15;
-        let y = ((window.innerHeight / 2) - e.pageY) / 15;
-            
+        let center = {
+            x: (e.target.offsetWidth)/2,
+            y: (e.target.offsetHeight)/2
+        };
+    
+        let mouse = {
+            x: e.offsetX,
+            y: e.offsetY
+        };
+
+        let x = (center.x - mouse.x) / 25;
+        let y = (center.y - mouse.y) / 25;
+
+        (x > 5) && (x = 5 + (x-5)/10);
+        (x < -5) && (x = -5 - (x + 5)/10);
+        (y > 5) && (y = 5 + (y-5)/10);
+        (y < -5) && (y = -5 - (y + 5)/10)
+    
         $(card.currentCard).css("transform", `rotateY(${-x}deg) rotateX(${y}deg)`);
-            
+    
         $(card.info).css("transform", "translateZ(40px)")
-        $(card.image).css("transform", "translateZ(40px) rotateZ(-2deg)")
+        $(card.image).css("transition", "transform .5s")
+        $(card.image).css("transform", "translateZ(60px)")
     });
+    
             
     $(cardEl).on("mouseleave", () => {
     $(card.currentCard).css("transition", "all .5s ease");
