@@ -88,7 +88,7 @@ var formSubmitHandler = function(event){
 // had to call the city api to get the data key for the city then enter it into the get weather function
 var getCity = function(city){
     
-    var apiUrl = "http://dataservice.accuweather.com/locations/v1/search?apikey=8phV97GIATzlpDJK66fxWSKyzLgvNucC&q=" + city + "&language=en-ca&details=false";
+    var apiUrl = "https://dataservice.accuweather.com/locations/v1/search?apikey=8phV97GIATzlpDJK66fxWSKyzLgvNucC&q=" + city + "&language=en-ca&details=false";
 
     fetch(apiUrl).then(function(response){
         if(response.ok){
@@ -107,7 +107,7 @@ var getCity = function(city){
 // function uses the get hourly weather api from accuweather and uses city key to display weather
 var getWeather = function(cityKey){
 
-    var apiUrl = "http://dataservice.accuweather.com/forecasts/v1/hourly/1hour/" + cityKey + "?apikey=8phV97GIATzlpDJK66fxWSKyzLgvNucC&metric=true";
+    var apiUrl = "https://dataservice.accuweather.com/forecasts/v1/hourly/1hour/" + cityKey + "?apikey=8phV97GIATzlpDJK66fxWSKyzLgvNucC&metric=true";
 
     fetch(apiUrl).then(function(response){
         if(response.ok){
