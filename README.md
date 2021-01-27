@@ -87,9 +87,9 @@ Here are some user experience highlights from our application:
 
      - mobile and desktop screen sizes
 
-![poke 2](assets/screenshots/POKE3.png)
-![poke 3](assets/screenshots/POKE4.png)
-![poke 4](assets/screenshots/POKE5.png)
+![m1](assets/screenshots/POKE9.png)
+![m2](assets/screenshots/POKE4.png)
+![d1](assets/screenshots/POKE5.png)
 
 
     - once the user clicks the "Enter" button, they are brought to a seperate page which has their 5 chosen Pokemon, their city name, name, and optional Trainer ID. The user has the option to save this roster as a jpeg and post wherever they would like. 
