@@ -277,16 +277,18 @@ function getCardDetails(target) {
             y: (e.target.offsetHeight)/2
         };
     
-        (center.x > 320) && (center.x = 300);
-        (center.y > 320) && (center.y = 300);
-    
         let mouse = {
             x: e.offsetX,
             y: e.offsetY
-        }
-    
-        let x = (center.x - mouse.x) / 30;
-        let y = (center.y - mouse.y) / 30;
+        };
+
+        let x = (center.x - mouse.x) / 25;
+        let y = (center.y - mouse.y) / 25;
+
+        (x > 6) && (x = 6);
+        (x < -6) && (x = -6);
+        (y > 6) && (y = 6);
+        (y < -6) && (y = -6)
     
         $(card.currentCard).css("transform", `rotateY(${-x}deg) rotateX(${y}deg)`);
     
