@@ -61,6 +61,11 @@ $(cardEl).on('mousemove', (e) => {
     let x = (center.x - mouse.x) / 40;
     let y = (center.y - mouse.y) / 40;
 
+    (x > 5) && (x = 5 + (x-5)/10);
+    (x < -5) && (x = -5 - (x + 5)/10);
+    (y > 5) && (y = 5 + (y-5)/10);
+    (y < -5) && (y = -5 - (y + 5)/10)
+
     $(card.currentCard).css("transform", `rotateY(${-x}deg) rotateX(${y}deg)`);
 
     $(card.info).css("transform", "translateZ(40px)")
