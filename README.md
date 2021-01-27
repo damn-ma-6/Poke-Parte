@@ -107,7 +107,7 @@ Here are the sources we used:
 ## Learning
 Here are the highlights of what we learned and issues we had while writing this code:
 
-1. The first major issue we ran into was having the cards display different Pokemon. Everytime the application ran, the cards were cycling through the Pokemon all at the same time. With the help of our teaching assistant, Edward(), we were able to figure out that we were running a for loop when we didn't have to. We were also using array indexes improperly. 
+1. The first major issue we ran into was having the cards display different Pokemon. Everytime the application ran, the cards were cycling through the Pokemon all at the same time. With the help of our teaching assistant, Edward(🙏🏼), we were able to figure out that we were running a for loop when we didn't have to. We were also using array indexes improperly. 
 
 2. Our communication was really great during this project. Slack, Trello and Zoom calls kept us organized and up to date with eachother. Using pull requests on GitHub and having others review the code helped us catch errors and issues we may have missed any other way. 
 
