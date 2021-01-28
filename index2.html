@@ -1,77 +1,102 @@
 <!DOCTYPE html>
 <html lang="en">
-    <head>
-        <meta charset="UTF-8">
-        <title>Gallery</title>
-         <!-- Favicon link for emoji on tab -->
-        <link rel="shortcut icon" type="image/jpg" href="./assets/images/pokeball.png"/>
-        <!-- Google Material Icons link -->
-        <link href="https://fonts.googleapis.com/icon?family=Material+Icons"
-        rel="stylesheet">
-          <!-- CSS files (tailwind and custom) -->
-        <link href="./assets/css/tailwind.css" rel="stylesheet">  
-        <link rel="stylesheet" href="./assets/css/style2.css" />
+  <head>
+    <meta charset="UTF-8" />
+    <title>Gallery</title>
+    <link rel="stylesheet" href="./assets/css/style2.css" />
+  </head>
 
-    </head>
-    <body>
+  <body>
+      
+    <!-- BLUE CURVE DESIGN -->
+    <div class="svg-container">
+      <svg viewbox="0 0 800 400" class="svg">
+        <path
+          id="curve"
+          fill="#50C6D8"
+          d="M 800 300 Q 400 350 0 300 L 0 0 L 800 0 L 800 300 Z"
+        ></path>
+      </svg>
+    </div>
 
-        <div class="svg-container">
-            <svg viewbox="0 0 800 400" class="svg">
-              <path id="curve" fill="#50C6D8" d="M 800 300 Q 400 350 0 300 L 0 0 L 800 0 L 800 300 Z">
-              </path>
-            </svg>
+    <!-- Header begins -->
+    <header>
+      <!-- LOGO AND SEARCH BAR -->
+      <div>
+        <div id="logo">
+          <img src="assets/images/pokeparte-logo.png" />
         </div>
-        
-        <header>
-            <!-- LOGO AND SEARCH BAR -->
-            <div>
-              <div id="logo">
-                <img src="assets/images/pokeparte logo.png">
-              </div>
-                <div id="titlebottom"></div>
-            </div>
-        </header>
+        <div id="titlebottom"></div>
+      </div>
+    </header>
+    <!-- Header ends -->
 
-        <div id="user-display">
-            <div id="city-name"> CITY NAME </div> <!--get city name from localstorage-->
-            <div id="user-name"> USER NAME </div> <!--get name from localstorage-->
-            <div id="trainer-id"> TRAINER ID </div> <!--get trainer id from localstorage-->
-            <div id="poke-types"> POKEMON TYPES </div> <!--get pokemon types from localstorage-->
+    <div class="gallery">
+      <div class="poke-card slctd">
+        <div class="poke-image">
+          <img
+            src="https://pokeres.bastionbot.org/images/pokemon/450.png"
+            class="active"
+            alt="??"
+          />
         </div>
+      </div>
 
-        
-
-        <div class="gallery">
-            
-            <div class="poke-card slctd">
-                <div class="poke-image">
-                    <img src="https://pokeres.bastionbot.org/images/pokemon/450.png" class="active" alt="??"/>
-                </div>
-            </div>
-            
-            <div class="poke-card">
-                <div class="poke-image">
-                    <img src="https://pokeres.bastionbot.org/images/pokemon/230.png" class="img" alt="??"/>
-                </div>
-            </div>
-            <div class="poke-card">
-                <div class="poke-image">
-                    <img src="https://pokeres.bastionbot.org/images/pokemon/673.png" class="img" alt="??"/>
-                </div>
-            </div>
-            <div class="poke-card">
-                <div class="poke-image">
-                    <img src="https://pokeres.bastionbot.org/images/pokemon/125.png" class="img" alt="??"/>
-                </div>
-            </div>
-            <div class="poke-card">
-                <div class="poke-image">
-                    <img src="https://pokeres.bastionbot.org/images/pokemon/777.png" class="img" alt="??"/>
-                </div>
-            </div>
-            
+      <div class="poke-card">
+        <div class="poke-image">
+          <img
+            src="https://pokeres.bastionbot.org/images/pokemon/230.png"
+            class="img"
+            alt="??"
+          />
         </div>
-        <script src="https://code.jquery.com/jquery-git.min.js"></script>
-        <script src="./assets/js/script2.js"></script>
-    </body>
+      </div>
+      <div class="poke-card">
+        <div class="poke-image">
+          <img
+            src="https://pokeres.bastionbot.org/images/pokemon/673.png"
+            class="img"
+            alt="??"
+          />
+        </div>
+      </div>
+      <div class="poke-card">
+        <div class="poke-image">
+          <img
+            src="https://pokeres.bastionbot.org/images/pokemon/125.png"
+            class="img"
+            alt="??"
+          />
+        </div>
+      </div>
+      <div class="poke-card">
+        <div class="poke-image">
+          <img
+            src="https://pokeres.bastionbot.org/images/pokemon/777.png"
+            class="img"
+            alt="??"
+          />
+        </div>
+      </div>
+    </div>
+
+    <!-- DESCRIPTION -->
+    <section class="poke-description">
+      <div>
+        <p class="poke-des">DESCRIPTION:</p>
+      </div>
+    </section>
+
+    <!-- DOWNLOAD BUTTON -->
+    <section class="downloadpic">
+      <div>
+        <button id="downloadbutton">DOWNLOAD</button>
+      </div>
+    </section>
+
+    <!-- Script section begins -->
+    <script src="https://code.jquery.com/jquery-git.min.js"></script>
+    <script src="./assets/js/script2.js"></script>
+    <!-- Script section ends -->
+  </body>
 </html>

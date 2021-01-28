@@ -304,4 +304,3 @@ function getCardDetails(target) {
     $(card.image).css("transform", "translateZ(0px) rotateZ(0deg)");
     card = {};
 });
-
