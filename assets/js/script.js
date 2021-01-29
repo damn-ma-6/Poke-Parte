@@ -10,6 +10,11 @@ var city = document.querySelector("#city-name");
 var userFormEl = document.querySelector("#user-form");
 var displayWeatherEl = document.querySelector("#display-weather");
 
+var pokeCardsEl = document.querySelector(".poke-cards")
+
+// to display poke cards
+
+
 //if weather is sunny, mostly sunny, partly sunny 
     //grass(3), ground(3) and fire(4)
 
@@ -98,11 +103,13 @@ var getType = function (type) {
             response.json().then(function(data) {
                 
                 var pokeType = []; 
-                for (var i=0; i<pokemonContainerEl.length; i++) {
-                    pokeType.push(data.pokemon[Math.floor(Math.random() * 10)].pokemon.name);
+                // for (var i=0; i<pokemonContainerEl.length; i++) {
+                //     pokeType.push(data.pokemon[Math.floor(Math.random() * 10)].pokemon.name);
                     
-                    getPokemon(pokeType[i]);
-                }
+                //     getPokemon(pokeType[i]);
+                // }
+
+                getPokemon()
             })
         }
     })
@@ -128,25 +135,40 @@ var getPokemon = function(pokemon) {
     })
 };
 
-//display Pokemon name, type and moves 
+//display Pokemon name, type and moves
+
+
 var displayPokemon = function(pokemon) {
-    for (var i=0; i<pokemonContainerEl.length; i++) { 
+
         var pokeName = pokemon.name;
-        var pokeTypeOne = pokemon.types[0].type.name;
-    
-        pokeNameEl[i].textContent = pokeName;
-
-        pokeTypeEl[i].textContent = pokeTypeOne;
-
-        var moveOne = pokemon.moves[Math.floor(Math.random() * 5)].move.name; 
-        var moveTwo = pokemon.moves[Math.floor(Math.random() * 5)].move.name; 
-        var moveThree = pokemon.moves[Math.floor(Math.random() * 5)].move.name; 
-        pokeMoveEl[i].textContent= moveOne + " / " + moveTwo + " / " + moveThree;
         var pokeNumber = pokemon.id; 
         
-        pokePicEl[i].setAttribute("style", "width:200px;height:200px;");
-        pokePicEl[i].srcset = "https://pokeres.bastionbot.org/images/pokemon/" + pokeNumber + ".png";
-    }
+        pokeCards.textContent = "";
+
+        var thePokeCard = document.creatElement("div");
+        thePokeCard.className = "poke-info";
+
+        pokeCardsEl.appendChild(thePokeCards);
+
+        var pokemonImg = document.createElement("#img");
+        pokemonImg.src = "https://pokeres.bastionbot.org/images/pokemon/" + pokeNumber + ".png";
+
+        pokeCardsEl.appendChild(pokemonImg);
+    
+        // pokeNameEl[i].textContent = pokeName;
+
+        // pokeTypeEl[i].textContent = pokeTypeOne;
+
+        // var moveOne = pokemon.moves[Math.floor(Math.random() * 5)].move.name; 
+        // var moveTwo = pokemon.moves[Math.floor(Math.random() * 5)].move.name; 
+        // var moveThree = pokemon.moves[Math.floor(Math.random() * 5)].move.name; 
+
+        // pokeMoveEl[i].textContent= moveOne + " / " + moveTwo + " / " + moveThree;
+        
+        
+        // pokePicEl[i].setAttribute("style", "width:200px;height:200px;");
+        // pokePicEl[i].srcset = "https://pokeres.bastionbot.org/images/pokemon/" + pokeNumber + ".png";
+    
 };
 
 
