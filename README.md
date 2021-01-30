@@ -44,7 +44,7 @@ We were to create this application, and meet all of the requirements listed abov
     - CSS 
     - JavaScript
     - Web APIs
-    - Third Party APIs - jQuery, Tailwind
+    - Third Party APIs - jQuery, Tailwind, html2canvas
     - Server Side APIs - PokeApi, AccuWeather
 	
 Features: 
@@ -72,22 +72,28 @@ Here are some user experience highlights from our application:
         + the weather conditions 
         + a list of Pokemon types
 
-![search](https://github.com/damn-ma-6/Poke-Parte/blob/djones/assets/images/search%20city.PNG)
-![weather info](https://github.com/damn-ma-6/Poke-Parte/blob/djones/assets/images/weather%20type%20info.PNG)
+![search](assets/screenshots/POKE6.png)
+![weather info](assets/screenshots/POKE7.png)
 
     - a random assortment of 10 Pokemon are displayed on cards that match the types returned from the weather condition
 
-![poke 1](https://github.com/damn-ma-6/Poke-Parte/blob/djones/assets/images/poke%20cards%201.PNG)
-![poke 2](https://github.com/damn-ma-6/Poke-Parte/blob/djones/assets/images/poke%20cards%202.PNG)
+![poke 1](assets/screenshots/POKE2.png)
 
     - the user selects 5 out of the 10 Pokemon to add to their team. 
 
     - the user enters their Name and Trainer ID from PokemonGo (optional)
 
-![username](https://github.com/damn-ma-6/Poke-Parte/blob/djones/assets/images/username%20enter.PNG)
+![username](assets/screenshots/POKE8.png)
+
+     - mobile and desktop screen sizes
+
+![m1](assets/screenshots/POKE9.png)
+![m2](assets/screenshots/POKE4.png)
+![d1](assets/screenshots/POKE5.png)
+
 
     - once the user clicks the "Enter" button, they are brought to a seperate page which has their 5 chosen Pokemon, their city name, name, and optional Trainer ID. The user has the option to save this roster as a jpeg and post wherever they would like. 
-![second page](https://github.com/damn-ma-6/Poke-Parte/blob/djones/assets/images/2nd%20page.PNG)
+![second page](assets/screenshots/POKE1.png)
 
 ## Credits
 Here are the sources we used: 
