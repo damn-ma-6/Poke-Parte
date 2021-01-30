@@ -43,7 +43,6 @@ var getPokemon = function(pokemon, i) {
 var displayPokemon = function(pokemon, i) { 
     let pokemonContainerEls = document.querySelectorAll(".poke-card");  
     pokemonContainerEls[i].innerHTML = ""; //empty content
-    let pokeDiv = document.createElement("div"); //create div
     //pokemon name 
     let pokeInfoEl = document.createElement("div");
     pokeInfoEl.classList.add("poke-info");
@@ -51,9 +50,6 @@ var displayPokemon = function(pokemon, i) {
     let pokeNameEl = document.createElement("h2");
     pokeNameEl.innerHTML = pokeName; 
     pokeInfoEl.appendChild(pokeNameEl);
-    // pokeDiv.append(pokeNameEl);  
-    // pokemonContainerEls[i].append(pokeDiv); 
-
     //pokemon type 
     let pokeTypeOne = pokemon.types[0].type.name;  
     let pokeTypeEl = document.createElement("p"); 
