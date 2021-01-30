@@ -76,15 +76,11 @@ header {
 }
 
 .poke-image img {
-<<<<<<< HEAD
     width: 100%;
 }
 
 #download-jpeg {
     width: 100%;
-}
-=======
-  width: 100%;
 }
 
 .poke-des {
@@ -128,4 +124,3 @@ button {
     height: 120%;
   }
 }
->>>>>>> 1e5cfd1241220f003f5f20bf193b2c4c1c963309
