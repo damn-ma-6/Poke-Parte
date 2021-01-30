@@ -35,6 +35,19 @@ header {
   z-index: -1;
 }
 
+.form {
+  display: flex;
+  flex-wrap: wrap;
+  width: 70%;
+  justify-content: center;
+  margin: 0 auto;
+}
+
+.user-location {
+  margin-left: 5px;
+  width: 60px;
+}
+
 .user-form {
   display: flex;
   flex-direction: row;
