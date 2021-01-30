@@ -44,7 +44,7 @@ We were to create this application, and meet all of the requirements listed abov
     - CSS 
     - JavaScript
     - Web APIs
-    - Third Party APIs - jQuery, Tailwind
+    - Third Party APIs - jQuery, Tailwind, html2canvas
     - Server Side APIs - PokeApi, AccuWeather
 	
 Features: 
