@@ -81,3 +81,18 @@ $(cardEl).on("mouseleave", () => {
     $(card.image).css("transform", "translateZ(0px) rotateZ(0deg)");
     card = {};
 });
+
+// function to download image as jpeg when button is clicked using html2canvas library
+
+$("#download-jpeg").on("click", function() {
+
+    html2canvas(document.querySelector("#gallery-container")).then(canvas => {
+        document.body.appendChild(canvas);
+        var a = document.createElement("a");
+        // toDataURL defaults to png, so we need to request a jpeg, then convert for file download.
+        a.href = canvas.toDataURL("image/jpeg").replace("image/jpeg", "image/octet-stream");
+        a.download = "roster.jpeg";
+        a.click();
+      }
+)});
+
