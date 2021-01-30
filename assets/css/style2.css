@@ -24,7 +24,7 @@
     text-align: center;
     overflow: hidden;
   }
-  
+
   #logo img {
     padding-top: 150px;
   }
@@ -76,6 +76,14 @@
     box-shadow: 0 10px 10px rgba(0, 0, 0, 0.4), 0 0px 40px rgba(0, 0, 0, 0.35);
     padding: 10px;
   }
+
+  .card,.card.hn {
+    padding: 20px;
+    text-align: left;
+    text-transform: capitalize; /* capitalize pokemon name, type and moves*/
+    box-shadow: 0 10px 10px rgba(0, 0, 0, 0.4), 0 0px 40px rgba(0, 0, 0, 0.35);
+    color: rgb(210, 46, 150);
+    }
   
   .images .poke-image {
     transition: all 0.4s ease;

@@ -101,3 +101,7 @@ header {
       background:darkgoldenrod;
 }
 
+.selectedpoke {
+    background: purple;
+}
+
