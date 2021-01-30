@@ -6,8 +6,8 @@ var userFormEl = document.querySelector("#user-form");
 var displayWeatherEl = document.querySelector("#display-weather");
 var pokeType = [];  
 let uniquePokeType = [];
-function getRandomNumber(max) {
-    return Math.floor(Math.random() * max) + 1;
+function getRandomNumber(min, max) {
+    return Math.ceil(Math.random() * (max-min) +1) + min;
 };
 
 var getType = function (type) { 
@@ -16,14 +16,14 @@ var getType = function (type) {
         if (response.ok){
             response.json().then(function(data) {
                 for (var i=0; i<pokemonContainerEl.length; i++) {
-                    pokeType.push(data.pokemon[getRandomNumber(10)].pokemon.name);
+                    pokeType.push(data.pokemon[getRandomNumber(1,29)].pokemon.name);
                     
                     pokeType.forEach((c) => {
                         if (!uniquePokeType.includes(c)) {
                             uniquePokeType.push(c); 
                         }
                     }); 
-                 getPokemon(uniquePokeType[getRandomNumber(10)], i);
+                 getPokemon(uniquePokeType[getRandomNumber(1,29)], i);
                 }
             })
         }
