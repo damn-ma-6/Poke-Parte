@@ -10,6 +10,8 @@
   <!-- Google Material Icons link -->
   <link href="https://fonts.googleapis.com/icon?family=Material+Icons"
   rel="stylesheet">
+  <!-- Link to font awsome CDN -->
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.2/css/all.min.css" />
   <!-- CSS files (tailwind and custom) -->
   <link href="./assets/css/tailwind.css" rel="stylesheet">
   <link rel="stylesheet" href="./assets/css/style.css"/>
@@ -40,11 +42,14 @@
   <!-- SEARCH DISPLAY -->
   <div id="city-search-display" class="citysearch">
     <h3>Search By City</h3>
-    <form id="user-form">
-      <label for="city-name">City:</label>
-      <input name="city" id="city-name" type="text"    autofocus="true" class="form-input"/>
-      <button type="submit" class="btn">Get City</button>
-    </form>
+    <div class="form">
+      <form id="user-form">
+        <label for="city-name">City:</label>
+        <input name="city" id="city-name" type="text"    autofocus="true" class="form-input"/>
+        <button type="submit" class="btn">Get City</button>
+      </form>
+      <button class="btn user-location"><i class="fas fa-map-marker-alt"></i></button>
+    </div>
   </div>
 
    <!-- WEATHER DISPLAY -->
@@ -74,7 +79,7 @@
   </section>
 
   <!-- USER DATA-->
- <section">
+ <section>
   <div class="submitsection">
       <input type="text" id="username" class="input" placeholder="Enter Your Name" />
       <input type="text" id="userID" class="input"  placeholder="Enter Your Trainer ID" size="30" />
@@ -94,7 +99,7 @@
         
   <script src="https://code.jquery.com/jquery-3.4.1.min.js"></script>
   <script src="assets/js/script.js"></script>
-        
+        <script src="./assets/js/anim.js"></script>
   <!-- Script section ends -->
 </body>
 
