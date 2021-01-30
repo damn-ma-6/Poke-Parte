@@ -126,14 +126,14 @@ var types = [];
 var displayWeather = function(data){
     var cityName = city.value.trim();
     cityArray = JSON.parse(localStorage.getItem("city")) || [];
-    cityArray.push(cityName);
+    cityArray.unshift(cityName);
     console.log(cityName);
     localStorage.setItem("city", JSON.stringify(cityName));
 
     var weatherIcon = data[0].WeatherIcon;
     var iconPhrase = data[0].IconPhrase.toUpperCase(); 
     conditions = JSON.parse(localStorage.getItem("conditions")) || [];
-    conditions.push(iconPhrase);
+    conditions.unshft(iconPhrase);
     console.log(iconPhrase);
     localStorage.setItem("conditions", JSON.stringify(conditions));
 
@@ -286,56 +286,43 @@ for(var i = 0; i < pokemonContainerEl.length; i++){
 
 //save user name and trainer id 
 //opens 2nd page on submit button 
-var userName = [];
-var userId = []; 
-var submitButton = document.querySelector("#submitbutton"); 
+// var userName = [];
+// var userId = []; 
+// var submitButton = document.querySelector("#submitbutton"); 
 // submitButton.addEventListener("click", function () {
 //     var username = document.querySelector("#username"); 
 //     var uservalue = username.value.trim();  
 //     console.log(uservalue);
 //     userName = JSON.parse(localStorage.getItem("uservalue")) || []; 
-//     userName.push(uservalue);
+//     userName.unshift(uservalue);
 //     localStorage.setItem("uservalue", JSON.stringify(userName)); 
 
 //     var userid = document.querySelector("#userID"); 
 //     var idvalue = userid.value.trim(); 
 //     console.log(idvalue);
 //     userId = JSON.parse(localStorage.getItem("idvalue")) || []; 
-//     userId.push(idvalue);
+//     userId.unshift(idvalue);
 //     localStorage.setItem("idvalue", JSON.stringify(userId));
 
 //     document.location.href = "./index2.html"
 // }); 
 
 //set weather, username, trainer id to 2nd page from localStorage 
-var cityNameEl = document.querySelector("#city-name-two"); 
-var cityValue = localStorage.getItem("city");
-cityNameEl.textContent = "CITY: " + JSON.parse(cityValue); 
+// var cityNameEl = document.querySelector("#city-name-two"); 
+// var cityValue = localStorage.getItem("city");
+// cityNameEl.textContent = "CITY: " + JSON.parse(cityValue); 
 
-var userNameEl = document.querySelector("#user-name");
+var userNameEl = document.querySelector("#user-name"); //second page 
 var userValue = localStorage.getItem("uservalue");
 userNameEl.textContent = "USERNAME: " + JSON.parse(userValue);
 
-var trainerIdEl = document.querySelector("#trainer-id");
+var trainerIdEl = document.querySelector("#trainer-id"); // second page
 var trainerValue = localStorage.getItem("idvalue");
 trainerIdEl.innerHTML = "TRAINER ID: " + JSON.parse(trainerValue);
 
-var weatherConditionsEl = document.querySelector("#weather-conditions"); 
-var weatherValue = localStorage.getItem("conditions");
-weatherConditionsEl.innerHTML = "CONDTIONS: " + JSON.parse(weatherValue); 
-
-
-
-
-
-
-
-
-
-
-
-
-
+// var weatherConditionsEl = document.querySelector("#weather-conditions"); 
+// var weatherValue = localStorage.getItem("conditions");
+// weatherConditionsEl.innerHTML = "CONDTIONS: " + JSON.parse(weatherValue); 
 
 let cardEl = $(".poke-card");
 let card = {};
