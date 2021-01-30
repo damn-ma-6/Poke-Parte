@@ -1,10 +1,17 @@
 <!DOCTYPE html>
 <html lang="en">
-  <head>
-    <meta charset="UTF-8" />
-    <title>Gallery</title>
-    <link rel="stylesheet" href="./assets/css/style2.css" />
-  </head>
+    <head>
+        <meta charset="UTF-8">
+        <title>Gallery</title>
+         <!-- Favicon link for emoji on tab -->
+        <link rel="shortcut icon" type="image/jpg" href="./assets/images/pokeball.png"/>
+        <!-- Google Material Icons link -->
+        <link href="https://fonts.googleapis.com/icon?family=Material+Icons"
+        rel="stylesheet">
+          <!-- CSS files (tailwind and custom) -->
+        <link href="./assets/css/tailwind.css" rel="stylesheet">  
+        <link rel="stylesheet" href="./assets/css/style2.css" />
+    </head>
 
   <body>
       
@@ -26,10 +33,16 @@
         <div id="logo">
           <img src="assets/images/pokeparte-logo.png" />
         </div>
-        <div id="titlebottom"></div>
-      </div>
-    </header>
-    <!-- Header ends -->
+        
+        <header>
+            <!-- LOGO AND SEARCH BAR -->
+            <div>
+              <div id="logo">
+                <img src="assets/images/pokeparte-logo.png">
+              </div>
+                <div id="titlebottom"></div>
+            </div>
+        </header>
 
     <div class="gallery">
       <div class="poke-card slctd">
@@ -42,62 +55,47 @@
         </div>
       </div>
 
-      <div class="poke-card">
-        <div class="poke-image">
-          <img
-            src="https://pokeres.bastionbot.org/images/pokemon/230.png"
-            class="img"
-            alt="??"
-          />
-        </div>
-      </div>
-      <div class="poke-card">
-        <div class="poke-image">
-          <img
-            src="https://pokeres.bastionbot.org/images/pokemon/673.png"
-            class="img"
-            alt="??"
-          />
-        </div>
-      </div>
-      <div class="poke-card">
-        <div class="poke-image">
-          <img
-            src="https://pokeres.bastionbot.org/images/pokemon/125.png"
-            class="img"
-            alt="??"
-          />
-        </div>
-      </div>
-      <div class="poke-card">
-        <div class="poke-image">
-          <img
-            src="https://pokeres.bastionbot.org/images/pokemon/777.png"
-            class="img"
-            alt="??"
-          />
-        </div>
-      </div>
-    </div>
 
-    <!-- DESCRIPTION -->
-    <section class="poke-description">
-      <div>
-        <p class="poke-des">DESCRIPTION:</p>
-      </div>
-    </section>
+        <div class="gallery" id="image-area">
+            
+            <div class="poke-card slctd">
+                <div class="poke-image">
+                    <img src="https://pokeres.bastionbot.org/images/pokemon/450.png" class="active" alt="??"/>
+                </div>
+            </div>
+            
+            <div class="poke-card">
+                <div class="poke-image">
+                    <img src="https://pokeres.bastionbot.org/images/pokemon/230.png" class="img" alt="??"/>
+                </div>
+            </div>
+            <div class="poke-card">
+                <div class="poke-image">
+                    <img src="https://pokeres.bastionbot.org/images/pokemon/673.png" class="img" alt="??"/>
+                </div>
+            </div>
+            <div class="poke-card">
+                <div class="poke-image">
+                    <img src="https://pokeres.bastionbot.org/images/pokemon/125.png" class="img" alt="??"/>
+                </div>
+            </div>
+            <div class="poke-card">
+                <div class="poke-image">
+                    <img src="https://pokeres.bastionbot.org/images/pokemon/777.png" class="img" alt="??"/>
+                </div>
+            </div>
+            
+        </div>
 
-    <!-- DOWNLOAD BUTTON -->
-    <section class="downloadpic">
-      <div>
-        <button id="downloadbutton">DOWNLOAD</button>
-      </div>
-    </section>
+        <br />
+        <br />
 
-    <!-- Script section begins -->
-    <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.11.3/jquery.min.js"></script>
-    <script src="https://html2canvas.hertzen.com/dist/html2canvas.min.js"></script>
-    <script src="./assets/js/script2.js"></script>
-    <!-- Script section ends -->
-  </body>
+        <button id="download-jpeg">Download jpeg</button>
+
+
+        <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.11.3/jquery.min.js"></script>
+        <script src="https://html2canvas.hertzen.com/dist/html2canvas.min.js"></script>
+        <script src="./assets/js/script2.js"></script>
+
+    </body>
 </html>
