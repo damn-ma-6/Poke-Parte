@@ -29,6 +29,8 @@ var getType = function (type) {
     }) 
 };
 
+getType("fairy");
+
 var getPokemon = function(pokemon, i) {
     var apiURL = "https://pokeapi.co/api/v2/pokemon/" + pokemon + "/"; 
     fetch(apiURL).then(function(response) {
@@ -120,8 +122,20 @@ var getWeather = function(cityKey){
 
 var displayWeather = function(data){
     var cityName = city.value.trim();
+    var cityArray = [];
+    cityArray = JSON.parse(localStorage.getItem("city")) || [];
+    cityArray.push(cityName);
+    console.log(cityName);
+    localStorage.setItem("pokemon", JSON.stringify(cityName));
+
     var weatherIcon = data[0].WeatherIcon;
     var iconPhrase = data[0].IconPhrase.toUpperCase(); 
+    var conditions = [];
+    cityArray = JSON.parse(localStorage.getItem("conditions")) || [];
+    conditions.push(iconPhrase);
+    console.log(iconPhrase);
+    localStorage.setItem("conditions", JSON.stringify(conditions));
+
     var temp = data[0].Temperature.Value;
 
     displayWeatherEl.textContent = ""
@@ -245,8 +259,48 @@ var displayWeather = function(data){
     }
 };
 
+
+var pokeStorage = [];
+
+
+for(var i = 0; i < pokemonContainerEl.length; i++){
+    pokemonContainerEl[i].addEventListener("click", function(){
+        var pokeName = this.getElementsByTagName("h2")[0].textContent;
+        console.log(pokeName);
+        
+        pokeStorage = JSON.parse(localStorage.getItem("pokemon")) || [];
+        pokeStorage.push(pokeName);
+
+        alert(pokeName);
+
+        localStorage.setItem("pokemon", JSON.stringify(pokeStorage));
+
+    });
+}
+
 userFormEl.addEventListener("submit", formSubmitHandler);
 
+//save user name and trainer id 
+var userName = [];
+var userId = []; 
+
+var submitButton = document.querySelector("#submitbutton"); 
+
+submitButton.addEventListener("click", function () {
+    var username = this.querySelector("#username"); 
+    console.log(username);
+    userName = JSON.parse(localStorage.getItem("username")) || []; 
+    userName.push(username);
+    localStorage.setItem("username", JSON.stringify(userName)); 
+
+    var userid = this.querySelector("#userID"); 
+    console.log(userid);
+    userid = JSON.parse(localStorage.getItem("userid")) || []; 
+    userId.push(userid);
+    localStorage.setItem("userid", JSON.stringify(userId));
+
+    document.location.href = "./index2.html"
+}); 
 
 let cardEl = $(".poke-card");
 let card = {};
