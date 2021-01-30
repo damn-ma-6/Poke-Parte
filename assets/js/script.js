@@ -7,7 +7,7 @@ var displayWeatherEl = document.querySelector("#display-weather");
 var pokeType = [];  
 let uniquePokeType = [];
 function getRandomNumber(min, max) {
-    return Math.ceil(Math.random() * (max-min +1) + min);
+    return Math.ceil(Math.random() * (max-min) +1) + min;
 };
 
 var getType = function (type) { 
@@ -17,6 +17,7 @@ var getType = function (type) {
             response.json().then(function(data) {
                 for (var i=0; i<pokemonContainerEl.length; i++) {
                     pokeType.push(data.pokemon[getRandomNumber(1,29)].pokemon.name);
+                    
                     pokeType.forEach((c) => {
                         if (!uniquePokeType.includes(c)) {
                             uniquePokeType.push(c); 
@@ -42,34 +43,38 @@ var getPokemon = function(pokemon, i) {
 
 var displayPokemon = function(pokemon, i) { 
     let pokemonContainerEls = document.querySelectorAll(".poke-card");  
-            pokemonContainerEls[i].innerHTML = ""; //empty content
-            let pokeDiv = document.createElement("div"); //create div
-            //pokemon name 
-            let pokeName = pokemon.name; 
-            let pokeNameEl = document.createElement("h2");
-            pokeNameEl.innerHTML = pokeName; 
-            pokeDiv.append(pokeNameEl);  
-            pokemonContainerEls[i].append(pokeDiv); 
-            //pokemon type 
-            let pokeTypeOne = pokemon.types[0].type.name;  
-            let pokeTypeEl = document.createElement("p"); 
-            pokeTypeEl.innerHTML = "Type: " + pokeTypeOne;  
-            pokeDiv.append(pokeTypeEl);
-            pokemonContainerEls[i].append(pokeDiv);
-            //pokemon move 
-            let moveOne = pokemon.moves[Math.floor(Math.random() * 5)].move.name; 
-            let moveTwo = pokemon.moves[Math.floor(Math.random() * 5)].move.name; 
-            let pokeMoveEl = document.createElement("p");
-            pokeMoveEl.innerHTML= "Moves: " + moveOne + " / " + moveTwo;
-            pokeDiv.append(pokeMoveEl);
-            pokemonContainerEls[i].append(pokeDiv);
-            //pokemon picture 
-            let pokeNumber = pokemon.id; 
-            let pokePicEl = document.createElement("img");
-            pokePicEl.setAttribute("style", "width:150px;height:150px;");
-            pokePicEl.srcset = "https://pokeres.bastionbot.org/images/pokemon/" + pokeNumber + ".png";
-            pokeDiv.append(pokePicEl);
-            pokemonContainerEls[i].append(pokeDiv);
+    pokemonContainerEls[i].innerHTML = ""; //empty content
+    let pokeDiv = document.createElement("div"); //create div
+
+    //pokemon name 
+    let pokeName = pokemon.name; 
+    let pokeNameEl = document.createElement("h2");
+    pokeNameEl.innerHTML = pokeName; 
+    pokeDiv.append(pokeNameEl);  
+    pokemonContainerEls[i].append(pokeDiv); 
+
+    //pokemon type 
+    let pokeTypeOne = pokemon.types[0].type.name;  
+    let pokeTypeEl = document.createElement("p"); 
+    pokeTypeEl.innerHTML = "Type: " + pokeTypeOne;  
+    pokeDiv.append(pokeTypeEl);
+    pokemonContainerEls[i].append(pokeDiv);
+
+    //pokemon move 
+    let moveOne = pokemon.moves[Math.floor(Math.random() * 5)].move.name; 
+    let moveTwo = pokemon.moves[Math.floor(Math.random() * 5)].move.name; 
+    let pokeMoveEl = document.createElement("p");
+    pokeMoveEl.innerHTML= "Moves: " + moveOne + " / " + moveTwo;
+    pokeDiv.append(pokeMoveEl);
+    pokemonContainerEls[i].append(pokeDiv);
+
+    //pokemon picture 
+    let pokeNumber = pokemon.id; 
+    let pokePicEl = document.createElement("img");
+    pokePicEl.setAttribute("style", "width:150px;height:150px;");
+    pokePicEl.srcset = "https://pokeres.bastionbot.org/images/pokemon/" + pokeNumber + ".png";
+    pokeDiv.append(pokePicEl);
+    pokemonContainerEls[i].append(pokeDiv);
 }
 
 var formSubmitHandler = function(event){
@@ -236,7 +241,7 @@ var displayWeather = function(data){
         getType("psychic");
         typeDisplay.textContent = "DRAGON, FLYING AND PSYCHIC TYPES!"
         displayWeatherEl.appendChild(typeDisplay);
-    } else if(iconPhrase === "MOSTLY CLOUDY W/ FLURRIES" || iconPhrase === "MOSYLY CLOUDY W/ SNOW") {
+    } else if(iconPhrase === "MOSTLY CLOUDY W/ FLURRIES" || iconPhrase === "MOSTLY CLOUDY W/ SNOW") {
         getType("fairy");
         getType("fighting");
         getType("poison");
@@ -244,6 +249,33 @@ var displayWeather = function(data){
         displayWeatherEl.appendChild(typeDisplay);
     }
 };
+// var choosePokemon = function(){
+//     document.selectQuery(".poke-card").addEventListener('click', function(event){
+//         // push pokemon to array
+//         //push array to local storage
+
+//     });
+
+// };
+
+var pokeStorage = [];
+
+
+for(var i = 0; i < pokemonContainerEl.length; i++){
+    pokemonContainerEl[i].addEventListener("click", function(){
+        var pokeName = this.getElementsByTagName("h2")[0].textContent;
+        console.log(pokeName);
+        
+        pokeStorage = JSON.parse(localStorage.getItem("pokemon")) || [];
+        pokeStorage.push(pokeName);
+
+        alert(pokeName);
+
+        localStorage.setItem("pokemon", JSON.stringify(pokeStorage));
+
+    });
+}
+
 
 userFormEl.addEventListener("submit", formSubmitHandler);
 
