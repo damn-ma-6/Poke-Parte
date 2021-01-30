@@ -29,7 +29,7 @@ var getType = function (type) {
     }) 
 };
 
-getType("fairy");
+//getType("fairy");
 
 var getPokemon = function(pokemon, i) {
     var apiURL = "https://pokeapi.co/api/v2/pokemon/" + pokemon + "/"; 
@@ -120,18 +120,19 @@ var getWeather = function(cityKey){
     });
 };
 
+var cityArray = [];
+var conditions = [];
+var types = []; 
 var displayWeather = function(data){
     var cityName = city.value.trim();
-    var cityArray = [];
     cityArray = JSON.parse(localStorage.getItem("city")) || [];
     cityArray.push(cityName);
     console.log(cityName);
-    localStorage.setItem("pokemon", JSON.stringify(cityName));
+    localStorage.setItem("city", JSON.stringify(cityName));
 
     var weatherIcon = data[0].WeatherIcon;
     var iconPhrase = data[0].IconPhrase.toUpperCase(); 
-    var conditions = [];
-    cityArray = JSON.parse(localStorage.getItem("conditions")) || [];
+    conditions = JSON.parse(localStorage.getItem("conditions")) || [];
     conditions.push(iconPhrase);
     console.log(iconPhrase);
     localStorage.setItem("conditions", JSON.stringify(conditions));
@@ -166,6 +167,11 @@ var displayWeather = function(data){
         getType("fire");
         typeDisplay.textContent = "GRASS, GROUND AND FIRE TYPES!"
         displayWeatherEl.appendChild(typeDisplay);
+        types = JSON.parse(localStorage.getItem("types")) || [];
+        conditions.push(typeDisplay.value);
+        console.log(typeDisplay.value);
+        localStorage.setItem("types", JSON.stringify(types));
+
     } else if(iconPhrase === "INTERMITTENT CLOUDS" || iconPhrase === "PARTLY CLOUDY" || iconPhrase === "MOSTLY CLOUDY") {
         getType("normal");
         getType("rock");
@@ -259,10 +265,8 @@ var displayWeather = function(data){
     }
 };
 
-
+//save pokemon 
 var pokeStorage = [];
-
-
 for(var i = 0; i < pokemonContainerEl.length; i++){
     pokemonContainerEl[i].addEventListener("click", function(){
         var pokeName = this.getElementsByTagName("h2")[0].textContent;
@@ -274,33 +278,64 @@ for(var i = 0; i < pokemonContainerEl.length; i++){
         alert(pokeName);
 
         localStorage.setItem("pokemon", JSON.stringify(pokeStorage));
-
     });
 }
+//getType(pokeStorage[i]); 
 
-userFormEl.addEventListener("submit", formSubmitHandler);
+//userFormEl.addEventListener("submit", formSubmitHandler);
 
 //save user name and trainer id 
+//opens 2nd page on submit button 
 var userName = [];
 var userId = []; 
-
 var submitButton = document.querySelector("#submitbutton"); 
+// submitButton.addEventListener("click", function () {
+//     var username = document.querySelector("#username"); 
+//     var uservalue = username.value.trim();  
+//     console.log(uservalue);
+//     userName = JSON.parse(localStorage.getItem("uservalue")) || []; 
+//     userName.push(uservalue);
+//     localStorage.setItem("uservalue", JSON.stringify(userName)); 
 
-submitButton.addEventListener("click", function () {
-    var username = this.querySelector("#username"); 
-    console.log(username);
-    userName = JSON.parse(localStorage.getItem("username")) || []; 
-    userName.push(username);
-    localStorage.setItem("username", JSON.stringify(userName)); 
+//     var userid = document.querySelector("#userID"); 
+//     var idvalue = userid.value.trim(); 
+//     console.log(idvalue);
+//     userId = JSON.parse(localStorage.getItem("idvalue")) || []; 
+//     userId.push(idvalue);
+//     localStorage.setItem("idvalue", JSON.stringify(userId));
 
-    var userid = this.querySelector("#userID"); 
-    console.log(userid);
-    userid = JSON.parse(localStorage.getItem("userid")) || []; 
-    userId.push(userid);
-    localStorage.setItem("userid", JSON.stringify(userId));
+//     document.location.href = "./index2.html"
+// }); 
 
-    document.location.href = "./index2.html"
-}); 
+//set weather, username, trainer id to 2nd page from localStorage 
+var cityNameEl = document.querySelector("#city-name-two"); 
+var cityValue = localStorage.getItem("city");
+cityNameEl.textContent = "CITY: " + JSON.parse(cityValue); 
+
+var userNameEl = document.querySelector("#user-name");
+var userValue = localStorage.getItem("uservalue");
+userNameEl.textContent = "USERNAME: " + JSON.parse(userValue);
+
+var trainerIdEl = document.querySelector("#trainer-id");
+var trainerValue = localStorage.getItem("idvalue");
+trainerIdEl.innerHTML = "TRAINER ID: " + JSON.parse(trainerValue);
+
+var weatherConditionsEl = document.querySelector("#weather-conditions"); 
+var weatherValue = localStorage.getItem("conditions");
+weatherConditionsEl.innerHTML = "CONDTIONS: " + JSON.parse(weatherValue); 
+
+
+
+
+
+
+
+
+
+
+
+
+
 
 let cardEl = $(".poke-card");
 let card = {};
