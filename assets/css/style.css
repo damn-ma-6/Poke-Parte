@@ -117,6 +117,10 @@ header {
 .card:hover {
   background: darkgoldenrod;
 }
+/* changes cards to purple when they've been selected */
+.selectedpoke {
+    background: purple;
+}
 
 /* Media Query Resonsive to screen size */
 @media (max-width: 768px) {
@@ -155,4 +159,4 @@ header {
     grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
     grid-gap: 50px;
   }
-}
+
