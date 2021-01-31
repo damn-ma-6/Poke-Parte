@@ -104,7 +104,7 @@ function showPosition(position) {
     let lon = position.coords.longitude;
     console.log(`latitude: ${lat}, longitude: ${lon}`);
     let apiUrl = 
-        `https://dataservice.accuweather.com/locations/v1/cities/geoposition/search?apikey=Zra9Ros10umGJIrZ90Fr5pVryc5Ae3YS&q=${lat},${lon}&language=en-ca&details=false`;
+        `https://dataservice.accuweather.com/locations/v1/cities/geoposition/search?apikey=8phV97GIATzlpDJK66fxWSKyzLgvNucC&q=${lat},${lon}&language=en-ca&details=false`;
     fetch(apiUrl).then(response => {
         if(response.ok) {
             response.json().then(data => {
@@ -130,7 +130,7 @@ function error() {
 // had to call the city api to get the data key for the city then enter it into the get weather function
 var getCity = function(city){
     
-    var apiUrl = "https://dataservice.accuweather.com/locations/v1/search?apikey=Zra9Ros10umGJIrZ90Fr5pVryc5Ae3YS&q=" + city + "&language=en-ca&details=false";
+    var apiUrl = "https://dataservice.accuweather.com/locations/v1/search?apikey=8phV97GIATzlpDJK66fxWSKyzLgvNucC&q=" + city + "&language=en-ca&details=false";
 
     fetch(apiUrl).then(function(response){
         if(response.ok){
@@ -151,7 +151,7 @@ var getCity = function(city){
 var getWeather = function(cityKey, cityName){
     // let ctname = cityName;
 
-    var apiUrl = "https://dataservice.accuweather.com/forecasts/v1/hourly/1hour/" + cityKey + "?apikey=Zra9Ros10umGJIrZ90Fr5pVryc5Ae3YS&metric=true";
+    var apiUrl = "https://dataservice.accuweather.com/forecasts/v1/hourly/1hour/" + cityKey + "?apikey=8phV97GIATzlpDJK66fxWSKyzLgvNucC&metric=true";
 
     fetch(apiUrl).then(function(response){
         if(response.ok){
@@ -318,7 +318,6 @@ for(var i = 0; i < pokemonContainerEl.length; i++){
 
 userFormEl.addEventListener("submit", formSubmitHandler);
 
-
 let cardEl = $(".poke-card");
 let card = {};
             
@@ -330,50 +329,21 @@ function getCardDetails(target) {
     currentCard,
     info,
     image
-    };
-            
-    return card;
-    }
-            
-    $(cardEl).on("mouseenter", (e) => {
-        let card = getCardDetails(e.target);
-        $(card.currentCard).css("transition", "none");
-    });
+  };
         
-    $(cardEl).on('mousemove', (e) => {
-        console.log(e);
-        let thisCard = e.target.closest(".poke-card");
-        // console.log(thisCard);
-        let center = {
-            x: (thisCard.offsetWidth)/2,
-            y: (thisCard.offsetHeight)/2
-        };
-        console.log(center.x, center.y);
-    
-        let mouse = {
-            x: e.offsetX,
-            y: e.offsetY
-        };
-        console.log(`mouseX: ${mouse.x}; mouseY: ${mouse.y}`);
-
-        let x = (center.x - mouse.x) / 20;
-        let y = (center.y - mouse.y) / 20;
-
-        // (x > 5) && (x = 5 + (x-5)/10);
-        // (x < -5) && (x = -5 - (x + 5)/10);
-        // (y > 5) && (y = 5 + (y-5)/10);
-        // (y < -5) && (y = -5 - (y + 5)/10)
-    
-        $(card.currentCard).css("transform", `rotateY(${-x}deg) rotateX(${y}deg)`);
-    
-        $(card.info).css("transform", "translateZ(40px)");
-        $(card.info).css("perspective", "300px")
-        $(card.image).css("transition", "transform .5s");
-        $(card.image).css("transform", "translateZ(60px)");
-    });
-    
+    return card;
+}
+        
+$(cardEl).on("mouseenter", (e) => {
+    let card = getCardDetails(e.target);
+    $(card.currentCard).css("transition", "none");
+    $(card.info).css("transform", "translateZ(40px)");
+    $(card.info).css("perspective", "300px")
+    $(card.image).css("transition", "transform .5s");
+    $(card.image).css("transform", "translateZ(60px)");
+});
             
-    $(cardEl).on("mouseleave", () => {
+$(cardEl).on("mouseleave", () => {
     $(card.currentCard).css("transition", "all .5s ease");
     $(card.currentCard).css("transform", "rotateY(0deg) rotateX(0deg)");
             

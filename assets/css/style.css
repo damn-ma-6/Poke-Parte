@@ -89,7 +89,7 @@ header {
   padding-top: 100px;
   padding-left: 150px;
   line-height: 40px;
-  max-width: 1500px;
+  max-width: 1650px;
   margin: 50px auto 100px;
   color: darkgreen;
 }
@@ -109,7 +109,7 @@ header {
   grid-column-gap: 50px;
   grid-row-gap: 1em;
   padding: 0 50px;
-  max-width: 1500px;
+  max-width: 1750px;
   margin: 0 auto 150px;
 }
 
