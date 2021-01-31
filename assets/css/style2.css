@@ -112,11 +112,12 @@ button {
 }
 
 .center {
-  display: flex;
-  justify-content: center;
-  align-items: center;
-  height: 200px;
+	display: flex;
+	justify-content: center;
+	align-items: center;
+	height: 200px;
 }
+
 
 /* Media Query Resonsive to screen size */
 
@@ -136,17 +137,17 @@ button {
 	}
 	.svg-container svg {
 		height: 120%;
-  }
-  .gallery {
-    display: inline;
-    grid-template-columns: repeat(auto-fill, minmax(200px, 1fr));
-    grid-column-gap: 30px;
-    grid-row-gap: 2em;
-  }
-  .poke-card{
-  width: 300px;
-  grid-gap: 30px;
-  margin-left: 100px;
-  margin-bottom: 100px;
-  }
+	}
+	.gallery {
+		display: inline;
+		grid-template-columns: repeat(auto-fill, minmax(200px, 1fr));
+		grid-column-gap: 30px;
+		grid-row-gap: 2em;
+	}
+	.poke-card {
+		width: 300px;
+		grid-gap: 30px;
+		margin-left: 100px;
+		margin-bottom: 100px;
+	}
 }
