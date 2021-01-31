@@ -1,68 +1,71 @@
 <!DOCTYPE html>
 <html lang="en">
-   <head>
-      <meta charset="UTF-8">
-      <title>Gallery</title>
-      <!-- Favicon link for emoji on tab -->
-      <link rel="shortcut icon" type="image/jpg" href="./assets/images/pokeball.png"/>
-      <!-- Google Material Icons link -->
-      <link href="https://fonts.googleapis.com/icon?family=Material+Icons"
-         rel="stylesheet">
-      <!-- CSS files (tailwind and custom) -->
-      <link href="./assets/css/tailwind.css" rel="stylesheet">
-      <link rel="stylesheet" href="./assets/css/style2.css" />
-   </head>
+    <head>
+        <meta charset="UTF-8">
+        <title>Gallery</title>
+         <!-- Favicon link for emoji on tab -->
+        <link rel="shortcut icon" type="image/jpg" href="./assets/images/pokeball.png"/>
+        <!-- Google Material Icons link -->
+        <link href="https://fonts.googleapis.com/icon?family=Material+Icons"
+        rel="stylesheet">
+          <!-- CSS files (tailwind and custom) -->
+        <link href="./assets/css/tailwind.css" rel="stylesheet">  
+        <link rel="stylesheet" href="./assets/css/style2.css" />
 
-   <body>
-      <!-- BLUE CURVE DESIGN -->
-      <div class="svg-container">
-         <svg viewbox="0 0 800 400" class="svg">
-            <path
-               id="curve"
-               fill="#50C6D8"
-               d="M 800 300 Q 400 350 0 300 L 0 0 L 800 0 L 800 300 Z"
-               ></path>
-         </svg>
+    </head>
+    <body>
+
+     <!-- BLUE CURVE DESIGN -->
+     <div class="svg-container">
+        <svg viewbox="0 0 800 400" class="svg">
+          <path
+            id="curve"
+            fill="#50C6D8"
+            d="M 800 300 Q 400 350 0 300 L 0 0 L 800 0 L 800 300 Z"
+          ></path>
+        </svg>
       </div>
+  
+        <!-- Header begins -->
+        <header>
+          <!-- LOGO AND SEARCH BAR -->
+          <div id="logo">
+             <img src="./assets/images/pokeparte-logo.png" />
+          </div>
+       </header>
+       <!-- Header ends -->
 
-      <!-- Header begins -->
-      <header>
-         <!-- LOGO AND SEARCH BAR -->
-         <div id="logo">
-            <img src="./assets/images/pokeparte-logo.png" />
-         </div>
-      </header>
-      <!-- Header ends -->
+        <!--DISPLAY USER DATA -->
+        <section class="user-display">
+          <div id="user-display">
+             <div id="city-name-two"></div>
+             <!--get city name from localstorage-->
+             <div id="weather-conditions"></div>
+             <div id="user-name"></div>
+             <!--get name from localstorage-->
+             <div id="trainer-id"></div>
+             <!--get trainer id from localstorage-->
+          </div>
+       </section>
+    
+ <!--DISPLAY USER SELECTION -->
+ <div class="gallery" id="image-area">
+  <div class="poke-card card slctd"></div>
+  <div class="poke-card card"></div>
+  <div class="poke-card card"></div>
+  <div class="poke-card card"></div>
+  <div class="poke-card card"></div>
+</div>
 
-      <!--DISPLAY USER DATA -->
-      <div id="user-display">
-         <div id="city-name-two"></div>
-         <!--get city name from localstorage-->
-         <div id="weather-conditions"></div>
-         <div id="user-name"></div>
-         <!--get name from localstorage-->
-         <div id="trainer-id"></div>
-         <!--get trainer id from localstorage-->
-      </div>
-
-      <!--DISPLAY USER SELECTION -->
-      <div class="gallery" id="image-area">
-         <div class="poke-card card slctd"></div>
-         <div class="poke-card card"></div>
-         <div class="poke-card card"></div>
-         <div class="poke-card card"></div>
-         <div class="poke-card card"></div>
-      </div>
-
-      <!-- DOWNLOAD BUTTON -->
-      <div class="center">
-          <button id="download-jpeg">DOWNLOAD JPEG</button>
-      </div>
-      <!-- Script section begins -->
-      <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.11.3/jquery.min.js"></script>
-      <script src="https://html2canvas.hertzen.com/dist/html2canvas.min.js"></script>
-      <script src="./assets/js/script2.js"></script>
-      <!-- Script section ends -->
-   </body>
-   </body>
+<!-- DOWNLOAD BUTTON -->
+<div class="center">
+   <button id="download-jpeg">DOWNLOAD JPEG</button>
+</div>
+<!-- Script section begins -->
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/1.11.3/jquery.min.js"></script>
+<script src="https://html2canvas.hertzen.com/dist/html2canvas.min.js"></script>
+<script src="./assets/js/script2.js"></script>
+<!-- Script section ends -->
+</body>
+</body>
 </html>

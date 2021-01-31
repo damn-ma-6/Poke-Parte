@@ -1,95 +1,107 @@
 <!DOCTYPE html>
 <html lang="en">
-   <head>
-      <meta charset="UTF-8">
-      <meta name="viewport" content="width=device-width, initial-scale=1.0">
-      <title>Poké-Parté</title>
-      <!-- Favicon link for emoji on tab -->
-      <link rel="shortcut icon" type="image/jpg" href="./assets/images/pokeball.png"/>
-      <!-- Google Material Icons link -->
-      <link href="https://fonts.googleapis.com/icon?family=Material+Icons"
-         rel="stylesheet">
-      <!-- CSS files (tailwind and custom) -->
-      <link href="./assets/css/tailwind.css" rel="stylesheet">
-      <link rel="stylesheet" href="./assets/css/style.css"/>
-   </head>
-   <body>
-     
-      <!-- BLUE CURVE DESIGN -->
-      <div class="svg-container">
-         <svg viewbox="0 0 800 400" class="svg">
-            <path id="curve" fill="#50C6D8" d="M 800 300 Q 400 350 0 300 L 0 0 L 800 0 L 800 300 Z">
-            </path>
-         </svg>
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Poké-Parté</title>
+
+  <!-- Favicon link for emoji on tab -->
+  <link rel="shortcut icon" type="image/jpg" href="./assets/images/pokeball.png"/>
+  <!-- Google Material Icons link -->
+  <link href="https://fonts.googleapis.com/icon?family=Material+Icons"
+  rel="stylesheet">
+  <!-- Link to font awsome CDN -->
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.2/css/all.min.css" />
+  <!-- CSS files (tailwind and custom) -->
+  <link href="./assets/css/tailwind.css" rel="stylesheet">
+  <link rel="stylesheet" href="./assets/css/style.css"/>
+
+</head>
+
+<body>
+  <!-- BLUE CURVE DESIGN -->
+  <div class="svg-container">
+    <svg viewbox="0 0 800 400" class="svg">
+      <path id="curve" fill="#50C6D8" d="M 800 300 Q 400 350 0 300 L 0 0 L 800 0 L 800 300 Z">
+      </path>
+    </svg>
+  </div>
+
+  <!-- Header begins -->
+  <header>
+    <!-- LOGO AND SEARCH BAR -->
+    <div>
+      <div id="logo">
+        <img src="assets/images/pokeparte-logo.png" alt="page logo">
       </div>
+        <div id="titlebottom"></div>
+    </div>
+  </header>
+  <!-- Header ends -->
 
-      <!-- Header begins -->
-      <header>
-         <!-- LOGO AND SEARCH BAR -->
-         <div>
-            <div id="logo">
-               <img src="assets/images/pokeparte-logo.png">
-            </div>
-            <div id="titlebottom"></div>
-         </div>
-      </header>
-      <!-- Header ends -->
+  <!-- SEARCH DISPLAY -->
+  <div id="city-search-display" class="citysearch">
+    <h3>Search By City</h3>
+    <div class="form">
+      <form id="user-form">
+        <label for="city-name">City:</label>
+        <input name="city" id="city-name" type="text" autofocus class="form-input"/>
+        <button type="submit" class="btn">Get City</button>
+      </form>
+      <button class="btn user-location"><i class="fas fa-map-marker-alt"></i></button>
+    </div>
+  </div>
 
-      <!-- SEARCH DISPLAY -->
-      <div id="city-search-display" class="citysearch">
-         <h3>Search By City</h3>
-         <form id="user-form">
-            <label for="city-name">City:</label>
-            <input name="city" id="city-name" type="text"    autofocus="true" class="form-input"/>
-            <button type="submit" class="btn">Get City</button>
-         </form>
+   <!-- WEATHER DISPLAY -->
+ <section class="weather-container" >
+  <div id="display-weather">
+   <h3 class="location" id="location">Location: </h3>
+   <h3 class="temp" id="temp">Temperature: </h3>
       </div>
+    </section>
 
-      <!-- WEATHER DISPLAY -->
-      <section class="weather-container" >
-         <div id="display-weather">
-            <h3 class="location" id="location">Location: </h3>
-            <h3 class="temp" id="temp">Temperature: </h3>
-         </div>
-      </section>
+  <!-- POKE CARDS SECTION -->
+  <section>
+  <div class="row">
+    <div class="poke-cards">
+      <div class="poke-card card" data-tilt></div>
+      <div class="poke-card card" data-tilt></div>
+      <div class="poke-card card" data-tilt></div>
+      <div class="poke-card card" data-tilt></div>
+      <div class="poke-card card" data-tilt></div>
+      <div class="poke-card card" data-tilt></div>
+      <div class="poke-card card" data-tilt></div>
+      <div class="poke-card card" data-tilt></div>
+      <div class="poke-card card" data-tilt></div>
+      <div class="poke-card card" data-tilt></div>
+    </div>
+  </div>
+  </section>
 
-      <!-- POKE CARDS SECTION -->
-      <section>
-         <div class="row">
-            <div class="poke-cards">
-               <div class="poke-card card"></div>
-               <div class="poke-card card"></div>
-               <div class="poke-card card"></div>
-               <div class="poke-card card"></div>
-               <div class="poke-card card"></div>
-               <div class="poke-card card"></div>
-               <div class="poke-card card"></div>
-               <div class="poke-card card"></div>
-               <div class="poke-card card"></div>
-               <div class="poke-card card"></div>
-            </div>
-         </div>
-      </section>
-
-      <!-- USER DATA-->
-      <section>
-      <div class="submitsection">
-         <input type="text" id="username" class="input" placeholder="Enter Your Name" />
-         <input type="text" id="userID" class="input"  placeholder="Enter Your Trainer ID" size="30" />
-         <div>
-            <button id="submitbutton">ENTER</button>
-         </div>
+  <!-- USER DATA-->
+ <section>
+  <div class="submitsection">
+      <input type="text" id="username" class="input" placeholder="Enter Your Name" />
+      <input type="text" id="userID" class="input"  placeholder="Enter Your Trainer ID" size="30" />
+      <div>
+        <button id="submitbutton">ENTER</button>
       </div>
-      </section>
+    </div>
+  </section>
+    
 
-      <!-- Footer begins -->
-      <footer>
-      </footer>
-      <!-- Footer ends -->
+  <!-- Footer begins -->
+  <footer>
+  </footer>
+  <!-- Footer ends -->
 
-      <!-- Script section begins -->
-      <script src="https://code.jquery.com/jquery-3.4.1.min.js"></script>
-      <script src="assets/js/script.js"></script>
-      <!-- Script section ends -->
-   </body>
+  <!-- Script section begins -->
+        
+  <script src="https://code.jquery.com/jquery-3.4.1.min.js"></script>
+  <script src="assets/js/script.js"></script>
+  <script src="assets/js/vanilla-tilt.min.js"></script>
+  <!-- Script section ends -->
+</body>
+
 </html>
+
