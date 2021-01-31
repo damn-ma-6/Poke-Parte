@@ -1,282 +1,153 @@
 * {
-    margin: 0;
-    padding: 0;
-    box-sizing: border-box;
-  }
-
-  @font-face {
-    font-family: poke;
-    src: url("../fonts/pokemon-font.otf");
+	margin: 0;
+	padding: 0;
+	box-sizing: border-box;
 }
 
-  
-  body {
-    background: #fff;
-    position: relative;
-    font-family: poke;
-    font-size: large;
-    background: url(https://s3-us-west-2.amazonaws.com/s.cdpn.io/652/confectionary.png);
-  }
-  
-  header {
-    color: #fff;
-    padding-bottom: 1vw;
-    text-align: center;
-    overflow: hidden;
-  }
-
-  #logo img {
-    padding-top: 150px;
-  }
-  
-  .svg-container {
-    position: absolute;
-    top: 0;
-    right: 0;
-    left: 0;
-    z-index: -1;
-  }
-  .gallery {
-    max-width: 700px;
-    margin: auto;
-    display: grid;
-    grid-template: repeat(4, 150px) / repeat(5, 150px);
-    grid-gap: 25px;
-  }
-  
-  .slctd {
-    grid-area: 1/ 1/ -1/ -2;
-  }
-  
-  .poke-card:hover {
-    cursor: pointer;
-    transform: translateY(3px);
-    transition: all 0.3s ease;
-  }
-  
-  .slctd:hover {
-    cursor: default;
-  }
-  
-  @keyframes fadeIn {
-    to {
-      opacity: 1;
-    }
-  }
-  
-  .fade-in {
-    opacity: 0;
-    animation: fadeIn 0.5s ease 1;
-  }
-  
-  .poke-card {
-    transform-style: preserve-3d;
-    background: rgb(165, 172, 34);
-    border-radius: 20px;
-    box-shadow: 0 10px 10px rgba(0, 0, 0, 0.4), 0 0px 40px rgba(0, 0, 0, 0.35);
-    padding: 10px;
-  }
-
-  .card,.card.hn {
-    padding: 20px;
-    text-align: left;
-    text-transform: capitalize; /* capitalize pokemon name, type and moves*/
-    box-shadow: 0 10px 10px rgba(0, 0, 0, 0.4), 0 0px 40px rgba(0, 0, 0, 0.35);
-    color: rgb(210, 46, 150);
-    }
-  
-  .images .poke-image {
-    transition: all 0.4s ease;
-    width: 100px;
-  }
-  
-  .poke-image img {
-      width: 100%;
-  }
-  
-  #download-jpeg {
-      width: 100%;
-  }
-  
-  .poke-des {
-    color: darkgreen;
-    padding-left: 320px;
-    padding-top: 100px;
-    padding-bottom: 100px;
-    font-size: 2rem;
-  }
-  
-  button {
-    background: #4caf50;
-    border-radius: 15px;
-    color: white;
-    border: none;
-    padding: 20px;
-    width: 300px;
-    margin-left: 300px;
-  }
-  
-  .downloadpic {
-    padding-bottom: 100px;
-  }
-  
-  /* Media Query Resonsive to screen size */
-  @media (max-width: 768px) {
-    body {
-      font-size: small;
-      align-items: center;
-    }
-    #logo img {
-      padding-top: 20px;
-      width: 80%;
-    }
-    .svg-container {
-      position: absolute;
-      float: none;
-      height: 380px;
-    }
-    .svg-container svg {
-      height: 120%;
-    }
-  }
+@font-face {
+	font-family: poke;
+	src: url("../fonts/pokemon-font.otf");
+}
 
 body {
-  background: #fff;
-  position: relative;
-  font-family: poke;
-  font-size: large;
-  background: url(https://s3-us-west-2.amazonaws.com/s.cdpn.io/652/confectionary.png);
+	background: #fff;
+	position: relative;
+	font-family: poke;
+	font-size: large;
+	background: url(https://s3-us-west-2.amazonaws.com/s.cdpn.io/652/confectionary.png);
 }
 
 header {
-  color: #fff;
-  padding-bottom: 1vw;
-  text-align: center;
-  overflow: hidden;
+	color: #fff;
+	padding-bottom: 1vw;
+	text-align: center;
+	overflow: hidden;
 }
+
 #logo img {
-  padding-top: 150px;
+	padding-top: 150px;
 }
 
 .svg-container {
-  position: absolute;
-  top: 0;
-  right: 0;
-  left: 0;
-  z-index: -1;
+	position: absolute;
+	top: 0;
+	right: 0;
+	left: 0;
+	z-index: -1;
 }
+
 .gallery {
-  max-width: 700px;
-  margin: auto;
-  display: grid;
-  grid-template: repeat(4, 150px) / repeat(5, 150px);
-  grid-gap: 15px;
+	max-width: 700px;
+	margin: auto;
+	display: grid;
+	grid-template: repeat(4, 150px) / repeat(5, 150px);
+	grid-gap: 15px;
 }
 
 .slctd {
-  grid-area: 1/ 1/ -1/ -2;
+	grid-area: 1/ 1/ -1/ -2;
 }
 
 .poke-card:hover {
-  cursor: pointer;
-  transform: translateY(3px);
-  transition: all 0.3s ease;
+	cursor: pointer;
+	transform: translateY(3px);
+	transition: all 0.3s ease;
 }
 
 .slctd:hover {
-  cursor: default;
+	cursor: default;
 }
 
 @keyframes fadeIn {
-  to {
-    opacity: 1;
-  }
+	to {
+		opacity: 1;
+	}
 }
 
 .fade-in {
-  opacity: 0;
-  animation: fadeIn 0.5s ease 1;
+	opacity: 0;
+	animation: fadeIn 0.5s ease 1;
 }
 
 .poke-card {
-  transform-style: preserve-3d;
-  background: rgb(165, 172, 34);
-  border-radius: 20px;
-  box-shadow: 0 10px 10px rgba(0, 0, 0, 0.4), 0 0px 40px rgba(0, 0, 0, 0.35);
-  padding: 10px;
+	transform-style: preserve-3d;
+	background: rgb(165, 172, 34);
+	border-radius: 20px;
+	box-shadow: 0 10px 10px rgba(0, 0, 0, 0.4), 0 0px 40px rgba(0, 0, 0, 0.35);
+	padding: 10px;
+}
+
+.card,
+.card.hn {
+	padding: 20px;
+	text-align: left;
+	text-transform: capitalize;
+	/* capitalize pokemon name, type and moves*/
+	box-shadow: 0 10px 10px rgba(0, 0, 0, 0.4), 0 0px 40px rgba(0, 0, 0, 0.35);
+	color: rgb(210, 46, 150);
 }
 
 .images .poke-image {
-  transition: all 0.4s ease;
-  width: 100px;
+	transition: all 0.4s ease;
+	width: 100px;
 }
 
 .poke-image img {
-    width: 100%;
-}
-
-#download-jpeg {
-    width: 100%;
+	width: 100%;
 }
 
 .poke-des {
-  color: darkgreen;
-  padding-left: 600px;
-  padding-top: 100px;
-  padding-bottom: 100px;
-  font-size: 2rem;
+	color: darkgreen;
+	padding-left: 320px;
+	padding-top: 100px;
+	padding-bottom: 100px;
+	font-size: 2rem;
 }
 
 button {
-  background: #4caf50;
-  border-radius: 15px;
-  color: white;
-  border: none;
-  padding: 20px;
-  width: 300px;
-  margin-left: 300px;
+	background: #4caf50;
+	border-radius: 15px;
+	color: white;
+	padding: 20px;
 }
 
-.downloadpic {
-  padding-bottom: 100px;
-  padding-left: 250px;
+.center {
+	display: flex;
+	justify-content: center;
+	align-items: center;
+	height: 200px;
 }
+
 
 /* Media Query Resonsive to screen size */
+
 @media (max-width: 768px) {
-  #logo img {
-    padding-top: 20px;
-    width: 80%;
-    padding-bottom: 50px;
-  }
-  .svg-container {
-    position: absolute;
-    float: none;
-    height: 380px;
-  }
-  .svg-container svg {
-    height: 120%;
-  }
-  .gallery {
-    display: inline;
-    grid-template-columns: repeat(auto-fill, minmax(200px, 1fr));
-    grid-column-gap: 30px;
-    grid-row-gap: 2em;
-  }
-  .poke-card{
-  width: 300px;
-  grid-gap: 30px;
-  margin-left: 100px;
-  margin-bottom: 100px;
-  }
-
-  .poke-des{  
-    margin-left: -450px;
-  }
-
-  button{
-   margin-left: -140px;
-  }
-  
+	body {
+		font-size: small;
+		align-items: center;
+	}
+	#logo img {
+		padding-top: 20px;
+		width: 80%;
+	}
+	.svg-container {
+		position: absolute;
+		float: none;
+		height: 380px;
+	}
+	.svg-container svg {
+		height: 120%;
+	}
+	.gallery {
+		display: inline;
+		grid-template-columns: repeat(auto-fill, minmax(200px, 1fr));
+		grid-column-gap: 30px;
+		grid-row-gap: 2em;
+	}
+	.poke-card {
+		width: 300px;
+		grid-gap: 30px;
+		margin-left: 100px;
+		margin-bottom: 100px;
+	}
 }
-
