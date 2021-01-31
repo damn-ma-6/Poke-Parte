@@ -4,12 +4,16 @@ var pokemonContainerEl = document.querySelectorAll(".poke-card");
 var city = document.querySelector("#city-name");
 var userFormEl = document.querySelector("#user-form");
 var displayWeatherEl = document.querySelector("#display-weather");
+//empty array for returned pokemon 
 var pokeType = [];  
+//empty array for duplicate pokemon
 let uniquePokeType = [];
+//random number, will get pokemon from divs - random number beetween 1 and 29 
 function getRandomNumber(min, max) {
     return Math.ceil(Math.random() * (max-min) +1) + min;
 };
 
+//get pokemon type, called by weather conditions. 
 var getType = function (type) { 
     var apiURL = "https://pokeapi.co/api/v2/type/"+ type + "/";
     fetch(apiURL).then(function(response) {
@@ -30,6 +34,8 @@ var getType = function (type) {
     }) 
 };
 
+
+//get pokemon moves and type - called by getType 
 var getPokemon = function(pokemon, i) {
     var apiURL = "https://pokeapi.co/api/v2/pokemon/" + pokemon + "/"; 
     fetch(apiURL).then(function(response) {
@@ -41,8 +47,10 @@ var getPokemon = function(pokemon, i) {
     })
 };
 
+//display pokemon moves, type and picture - called by getPokemon 
 var displayPokemon = function(pokemon, i) { 
     let pokemonContainerEls = document.querySelectorAll(".poke-card");  
+    
     pokemonContainerEls[i].innerHTML = ""; //empty content
     //pokemon name 
     let pokeInfoEl = document.createElement("div");
@@ -74,6 +82,7 @@ var displayPokemon = function(pokemon, i) {
     pokeImgEl.append(pokePicEl);
     pokemonContainerEls[i].append(pokeImgEl);
 }
+
 
 var formSubmitHandler = function(event){
     event.preventDefault();
@@ -163,9 +172,22 @@ var getWeather = function(cityKey, cityName){
     }) ;
 }
 
-var displayWeather = function(data, cityName){
-    var weatherIcon = data[0].WeatherIcon;
-    var iconPhrase = data[0].IconPhrase.toUpperCase(); 
+//empty arrays for city names and conditions 
+var cityStorage = [];
+var conditions = [];
+
+var displayWeather = function(data){
+    var cityName = city.value.toUpperCase().trim();
+    cityStorage = JSON.parse(localStorage.getItem("city")) || []; //save city name to array 
+    cityStorage.unshift(cityName); // push to beginning of array 
+    localStorage.setItem("cityName", JSON.stringify(cityName));
+
+    //var weatherIcon = data[0].WeatherIcon;
+    var iconPhrase = data[0].IconPhrase.toUpperCase().trim(); 
+    conditions = JSON.parse(localStorage.getItem("conditions")) || []; //save conditions to array 
+    conditions.unshift(iconPhrase); // push to beginning of array 
+    localStorage.setItem("conditions", JSON.stringify(conditions));
+
     var temp = data[0].Temperature.Value;
 
     displayWeatherEl.textContent = ""
@@ -174,7 +196,6 @@ var displayWeather = function(data, cityName){
     cityNameDisplay.textContent = cityName;
 
     displayWeatherEl.appendChild(cityNameDisplay);
-
 
 
     var tempDisplay = document.createElement("p");
@@ -196,6 +217,7 @@ var displayWeather = function(data, cityName){
         getType("fire");
         typeDisplay.textContent = "GRASS, GROUND AND FIRE TYPES!"
         displayWeatherEl.appendChild(typeDisplay);
+
     } else if(iconPhrase === "INTERMITTENT CLOUDS" || iconPhrase === "PARTLY CLOUDY" || iconPhrase === "MOSTLY CLOUDY") {
         getType("normal");
         getType("rock");
@@ -316,7 +338,53 @@ for(var i = 0; i < pokemonContainerEl.length; i++){
 }
 
 
+//empty arrays to store pokemon info 
+var pokeStorage = [];
+var typeStorage = [];
+var moveStorage = [];
+//save 5 pokemon names, types and moves to localStorage
+for(var i = 0; i < pokemonContainerEl.length; i++){
+    pokemonContainerEl[i].addEventListener("click", function(){
+        var pokeName = this.getElementsByTagName("h2")[0].textContent;
+        pokeStorage = JSON.parse(localStorage.getItem("pokemon")) || [];
+        pokeStorage.push(pokeName);
+        localStorage.setItem("pokemon", JSON.stringify(pokeStorage));
+
+        var pokeType = this.getElementsByTagName("h3")[0].textContent;
+        typeStorage = JSON.parse(localStorage.getItem("types")) || [];
+        typeStorage.push(pokeType);
+        localStorage.setItem("types", JSON.stringify(typeStorage)); 
+
+        var pokeMove = this.getElementsByTagName("h4")[0].textContent; 
+        moveStorage = JSON.parse(localStorage.getItem("moves")) || [];
+        moveStorage.push(pokeMove);
+        localStorage.setItem("moves", JSON.stringify(moveStorage)); 
+        $(this).addClass("selectedpoke");
+    });
+}
+
 userFormEl.addEventListener("submit", formSubmitHandler);
+
+// save user name and trainer id 
+// opens 2nd page on submit button 
+var userName = [];
+var userId = []; 
+var submitButton = document.querySelector("#submitbutton"); 
+submitButton.addEventListener("click", function () {
+    var username = document.querySelector("#username"); 
+    var uservalue = username.value.trim();  
+    userName = JSON.parse(localStorage.getItem("uservalue")) || []; 
+    userName.unshift(uservalue);
+    localStorage.setItem("uservalue", JSON.stringify(userName)); 
+
+    var userid = document.querySelector("#userID"); 
+    var idvalue = userid.value.trim(); 
+    userId = JSON.parse(localStorage.getItem("idvalue")) || []; 
+    userId.unshift(idvalue);
+    localStorage.setItem("idvalue", JSON.stringify(userId));
+
+    document.location.href = "./index2.html"
+}); 
 
 let cardEl = $(".poke-card");
 let card = {};

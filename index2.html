@@ -12,7 +12,7 @@
         <link href="./assets/css/tailwind.css" rel="stylesheet">  
         <link rel="stylesheet" href="./assets/css/style2.css" />
     </head>
-
+  
   <body>
       
     <!-- BLUE CURVE DESIGN -->
@@ -25,72 +25,36 @@
         ></path>
       </svg>
     </div>
-
-    <!-- Header begins -->
-    <header>
       <!-- LOGO AND SEARCH BAR -->
-      <div>
-        <div id="logo">
-          <img src="assets/images/pokeparte-logo.png" />
-        </div>
-        
         <header>
-            <!-- LOGO AND SEARCH BAR -->
             <div>
-              <div id="logo">
-                <img src="assets/images/pokeparte-logo.png">
-              </div>
-                <div id="titlebottom"></div>
+            <div id="logo">
+                <img src="./assets/images/pokeparte logo.png" />
             </div>
         </header>
 
-    <div class="gallery">
-      <div class="poke-card slctd">
-        <div class="poke-image">
-          <img
-            src="https://pokeres.bastionbot.org/images/pokemon/450.png"
-            class="active"
-            alt="??"
-          />
-        </div>
-      </div>
+        <div id="user-display">
+            <div id="city-name-two"></div> <!--get city name from localstorage-->
+            <div id="weather-conditions"></div>
+            <div id="user-name"></div> <!--get name from localstorage-->
+            <div id="trainer-id"></div> <!--get trainer id from localstorage-->
+         </div>
+        
+         <div class="gallery" id="image-area">
+                  
+                  <div class="poke-card card slctd"></div>
+                  
+                  <div class="poke-card card"></div>
+                  <div class="poke-card card"></div>
+                  <div class="poke-card card"></div>
+                  <div class="poke-card card"></div>
+                  
+          </div> 
 
-
-        <div class="gallery" id="image-area">
-            
-            <div class="poke-card slctd">
-                <div class="poke-image">
-                    <img src="https://pokeres.bastionbot.org/images/pokemon/450.png" class="active" alt="??"/>
-                </div>
-            </div>
-            
-            <div class="poke-card">
-                <div class="poke-image">
-                    <img src="https://pokeres.bastionbot.org/images/pokemon/230.png" class="img" alt="??"/>
-                </div>
-            </div>
-            <div class="poke-card">
-                <div class="poke-image">
-                    <img src="https://pokeres.bastionbot.org/images/pokemon/673.png" class="img" alt="??"/>
-                </div>
-            </div>
-            <div class="poke-card">
-                <div class="poke-image">
-                    <img src="https://pokeres.bastionbot.org/images/pokemon/125.png" class="img" alt="??"/>
-                </div>
-            </div>
-            <div class="poke-card">
-                <div class="poke-image">
-                    <img src="https://pokeres.bastionbot.org/images/pokemon/777.png" class="img" alt="??"/>
-                </div>
-            </div>
-            
-        </div>
-
-        <br />
-        <br />
-
-        <button id="download-jpeg">Download jpeg</button>
+              <br />
+              <br />
+      
+              <button id="download-jpeg">DOWNLOAD JPEG</button>
 
 
         <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.11.3/jquery.min.js"></script>
