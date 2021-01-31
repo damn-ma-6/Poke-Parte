@@ -1,17 +1,16 @@
 <!DOCTYPE html>
 <html lang="en">
-    <head>
-        <meta charset="UTF-8">
-        <title>Gallery</title>
-         <!-- Favicon link for emoji on tab -->
-        <link rel="shortcut icon" type="image/jpg" href="./assets/images/pokeball.png"/>
-        <!-- Google Material Icons link -->
-        <link href="https://fonts.googleapis.com/icon?family=Material+Icons"
-        rel="stylesheet">
-          <!-- CSS files (tailwind and custom) -->
-        <link href="./assets/css/tailwind.css" rel="stylesheet">  
-        <link rel="stylesheet" href="./assets/css/style2.css" />
-    </head>
+  <head>
+    <meta charset="UTF-8">
+    <title>Gallery</title>
+      <!-- Favicon link for emoji on tab -->
+    <link rel="shortcut icon" type="image/jpg" href="./assets/images/pokeball.png"/>
+    <!-- Google Material Icons link -->
+    <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
+      <!-- CSS files (tailwind and custom) -->
+    <link href="./assets/css/tailwind.css" rel="stylesheet">  
+    <link rel="stylesheet" href="./assets/css/style2.css" />
+  </head>
   
   <body>
       
@@ -25,41 +24,39 @@
         ></path>
       </svg>
     </div>
-      <!-- LOGO AND SEARCH BAR -->
-        <header>
-            <div>
-            <div id="logo">
-                <img src="./assets/images/pokeparte logo.png" />
-            </div>
-        </header>
+    <!-- LOGO AND SEARCH BAR -->
+    <header>
+        <div id="logo">
+            <img src="./assets/images/pokeparte-logo.png" alt="page logo" />
+        </div>
+    </header>
 
-        <div id="user-display">
-            <div id="city-name-two"></div> <!--get city name from localstorage-->
-            <div id="weather-conditions"></div>
-            <div id="user-name"></div> <!--get name from localstorage-->
-            <div id="trainer-id"></div> <!--get trainer id from localstorage-->
-         </div>
-        
-         <div class="gallery" id="image-area">
-                  
-                  <div class="poke-card card slctd"></div>
-                  
-                  <div class="poke-card card"></div>
-                  <div class="poke-card card"></div>
-                  <div class="poke-card card"></div>
-                  <div class="poke-card card"></div>
-                  
-          </div> 
-
-              <br />
-              <br />
+    <div id="user-display">
+      <div id="city-name-two"></div> <!--get city name from localstorage-->
+      <div id="weather-conditions"></div>
+      <div id="user-name"></div> <!--get name from localstorage-->
+      <div id="trainer-id"></div> <!--get trainer id from localstorage-->
+    </div>
       
-              <button id="download-jpeg">DOWNLOAD JPEG</button>
+    <div class="gallery" id="image-area">
+      <div class="poke-card card slctd" data-tilt></div>
+      
+      <div class="poke-card card"></div>
+      <div class="poke-card card"></div>
+      <div class="poke-card card"></div>
+      <div class="poke-card card"></div>  
+    </div> 
+
+    <br />
+    <br />
+    
+    <button id="download-jpeg">DOWNLOAD JPEG</button>
 
 
-        <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.11.3/jquery.min.js"></script>
-        <script src="https://html2canvas.hertzen.com/dist/html2canvas.min.js"></script>
-        <script src="./assets/js/script2.js"></script>
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.11.3/jquery.min.js"></script>
+    <script src="https://html2canvas.hertzen.com/dist/html2canvas.min.js"></script>
+    <script src="./assets/js/script2.js"></script>
+    <script src="./assets/js/vanilla-tilt.min.js"></script>
 
-    </body>
+  </body>
 </html>

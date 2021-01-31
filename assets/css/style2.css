@@ -41,7 +41,7 @@
     margin: auto;
     display: grid;
     grid-template: repeat(4, 150px) / repeat(5, 150px);
-    grid-gap: 15px;
+    grid-gap: 25px;
   }
   
   .slctd {
@@ -139,11 +139,6 @@
       height: 120%;
     }
   }
-=======
-  margin: 0;
-  padding: 0;
-  box-sizing: border-box;
-}
 
 body {
   background: #fff;
