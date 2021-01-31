@@ -122,12 +122,13 @@ for (var i=0; i<pokemonContainerEls.length; i++) {
                 response.json().then(function(pokemon) {
                     //pokemon picture 
                     let pokeNumber = pokemon.id; 
+                    let pokePicDiv = document.createElement("div");
                     let pokePicEl = document.createElement("img");
-                    pokePicEl.classList = "poke-image";
+                    pokePicDiv.classList = "poke-image";
                     //pokePicEl.setAttribute("style", "width:auto;height:auto;");
                     pokePicEl.srcset = "https://pokeres.bastionbot.org/images/pokemon/" + pokeNumber + ".png";
-                    pokeDiv.append(pokePicEl);
-                    pokemonContainerEls[i].append(pokeDiv);
+                    pokePicDiv.append(pokePicEl);
+                    pokemonContainerEls[i].append(pokePicDiv);
                 }); 
             }
         })
