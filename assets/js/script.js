@@ -1,3 +1,5 @@
+//updated 
+
 var mainContainerEl = document.querySelector(".poke-cards");
 var pokemonContainerEl = document.querySelectorAll(".poke-card");
 // this variable will pull the city from the search bar
@@ -47,7 +49,7 @@ var getPokemon = function(pokemon, i) {
     })
 };
 
-//display pokemon moves, type and picture - called by getPokemon 
+//display pokemon moves, type and picture - called by getPokemo
 var displayPokemon = function(pokemon, i) { 
     let pokemonContainerEls = document.querySelectorAll(".poke-card");  
     
@@ -61,38 +63,39 @@ var displayPokemon = function(pokemon, i) {
     pokeInfoEl.appendChild(pokeNameEl);
     //pokemon type 
     let pokeTypeOne = pokemon.types[0].type.name;  
-    let pokeTypeEl = document.createElement("p"); 
+    let pokeTypeEl = document.createElement("h3"); 
     pokeTypeEl.innerHTML = "Type: " + pokeTypeOne;  
     pokeInfoEl.append(pokeTypeEl);
     pokemonContainerEls[i].append(pokeInfoEl);
     //pokemon move 
     let moveOne = pokemon.moves[Math.floor(Math.random() * 5)].move.name; 
     let moveTwo = pokemon.moves[Math.floor(Math.random() * 5)].move.name; 
-    let pokeMoveEl = document.createElement("p");
+    let pokeMoveEl = document.createElement("h4");
     pokeMoveEl.innerHTML= "Moves: " + moveOne + " / " + moveTwo;
     pokeInfoEl.append(pokeMoveEl);
     pokemonContainerEls[i].append(pokeInfoEl);
     //pokemon picture 
+
     let pokeImgEl = document.createElement("div");
     pokeImgEl.classList.add("poke-image");
     let pokeNumber = pokemon.id; 
     let pokePicEl = document.createElement("img");
     pokePicEl.setAttribute("style", "width:150px;height:150px;");
     pokePicEl.src = "https://pokeres.bastionbot.org/images/pokemon/" + pokeNumber + ".png";
+    
     pokeImgEl.append(pokePicEl);
-    pokemonContainerEls[i].append(pokeImgEl);
+    pokemonContainerEls[i].append(pokeImgEl)
 }
 
 
 var formSubmitHandler = function(event){
     event.preventDefault();
+    localStorage.clear();
 
     var cityName = city.value.trim();
     
     if(cityName){
         getCity(cityName);
-    }else{
-        console.log("User did not enter a city name");
     }
     
 }
@@ -171,6 +174,10 @@ var getWeather = function(cityKey, cityName){
         }
     }) ;
 }
+
+//empty arrays for city names and conditions 
+var cityStorage = [];
+var conditions = [];
 
 //empty arrays for city names and conditions 
 var cityStorage = [];
@@ -363,6 +370,31 @@ for(var i = 0; i < pokemonContainerEl.length; i++){
     });
 }
 
+//empty arrays to store pokemon info 
+var pokeStorage = [];
+var typeStorage = [];
+var moveStorage = [];
+//save 5 pokemon names, types and moves to localStorage
+for(var i = 0; i < pokemonContainerEl.length; i++){
+    pokemonContainerEl[i].addEventListener("click", function(){
+        var pokeName = this.getElementsByTagName("h2")[0].textContent;
+        pokeStorage = JSON.parse(localStorage.getItem("pokemon")) || [];
+        pokeStorage.push(pokeName);
+        localStorage.setItem("pokemon", JSON.stringify(pokeStorage));
+
+        var pokeType = this.getElementsByTagName("h3")[0].textContent;
+        typeStorage = JSON.parse(localStorage.getItem("types")) || [];
+        typeStorage.push(pokeType);
+        localStorage.setItem("types", JSON.stringify(typeStorage)); 
+
+        var pokeMove = this.getElementsByTagName("h4")[0].textContent; 
+        moveStorage = JSON.parse(localStorage.getItem("moves")) || [];
+        moveStorage.push(pokeMove);
+        localStorage.setItem("moves", JSON.stringify(moveStorage)); 
+        $(this).addClass("selectedpoke");
+    });
+}
+
 userFormEl.addEventListener("submit", formSubmitHandler);
 
 // save user name and trainer id 
@@ -419,3 +451,4 @@ $(cardEl).on("mouseleave", () => {
     $(card.image).css("transform", "translateZ(0px) rotateZ(0deg)");
     card = {};
 });
+
