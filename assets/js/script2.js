@@ -116,7 +116,7 @@ cityNameEl.textContent = "CITY: " + cityParsed;
 var weatherEl = document.querySelector("#weather-conditions")
 var weatherValue = localStorage.getItem("conditions");
 var weatherParsed = JSON.parse(weatherValue); 
-weatherEl.innerHTML = "CONDTIONS: " + weatherParsed[0]; 
+weatherEl.innerHTML = "CONDITIONS: " + weatherParsed[0]; 
 
 
 for (var i=0; i<pokemonContainerEls.length; i++) {
