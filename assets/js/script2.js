@@ -132,7 +132,6 @@ for (var i=0; i<pokemonContainerEls.length; i++) {
                     let pokeNumber = pokemon.id; 
                     let pokePicEl = document.createElement("img");
                     pokePicEl.classList = "poke-image";
-                    //pokePicEl.setAttribute("style", "width:auto;height:auto;");
                     pokePicEl.srcset = "https://pokeres.bastionbot.org/images/pokemon/" + pokeNumber + ".png";
                     pokeDiv.append(pokePicEl);
                     pokemonContainerEls[i].append(pokeDiv);
