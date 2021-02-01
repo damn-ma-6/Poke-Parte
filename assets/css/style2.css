@@ -39,13 +39,13 @@ header {
 .gallery {
 	display: grid;
 	padding-left: 50vh;
-	grid-template: repeat(1, 400px) / repeat(3, 200px);
+	grid-template: repeat(1,400px) / repeat(3, 200px);
 	grid-gap: 30px;
 }
 
 .slctd {
 	grid-area: 1/ 1/ -1/ -2;
-	width: 90%;
+	width: 70%;
 }
 
 .poke-card:hover {
@@ -106,6 +106,8 @@ header {
 
 .poke-info h3, .poke-info h4{
 	font-size: 0.1em;
+	padding-top: 10px;
+	padding-bottom: 10px;
 }
 
 /* Media Query Resonsive to screen size */
