@@ -39,13 +39,12 @@ header {
 .gallery {
 	display: grid;
 	padding-left: 50vh;
-	grid-template: repeat(1,400px) / repeat(3, 200px);
+	grid-template: repeat(1,400px) / repeat(3, 300px);
 	grid-gap: 30px;
 }
 
 .slctd {
 	grid-area: 1/ 1/ -1/ -2;
-	width: 70%;
 }
 
 .poke-card:hover {
@@ -89,6 +88,10 @@ header {
 
 .images .poke-image {
 	transition: all 0.4s ease;
+}
+
+.poke-image{
+	max-width: 250px;
 }
 .user-display {
 	line-height: 40px;
