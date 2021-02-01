@@ -96,6 +96,7 @@ var formSubmitHandler = function(event){
     
     if(cityName){
         getCity(cityName);
+        localStorage.clear();
     }
     
 }
