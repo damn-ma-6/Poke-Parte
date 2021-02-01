@@ -9,33 +9,33 @@
 	src: url("../fonts/pokemon-font.otf");
 }
 
-  
 body {
-  background: #fff;
-  position: relative;
-  font-family: poke;
-  font-size: large;
-  background: url(https://s3-us-west-2.amazonaws.com/s.cdpn.io/652/confectionary.png);
+	background: #fff;
+	position: relative;
+	font-family: poke;
+	background: url(https://s3-us-west-2.amazonaws.com/s.cdpn.io/652/confectionary.png);
 }
 
 header {
-  color: #fff;
-  padding-bottom: 1vw;
-  text-align: center;
-  overflow: hidden;
+	color: #fff;
+	padding-bottom: 1vw;
+	text-align: center;
+	overflow: hidden;
 }
 
 #logo img {
-  padding-top: 150px;
+	padding-top: 150px;
+	padding-bottom: 100px;
 }
 
 .svg-container {
-  position: absolute;
-  top: 0;
-  right: 0;
-  left: 0;
-  z-index: -1;
+	position: absolute;
+	top: 0;
+	right: 0;
+	left: 0;
+	z-index: -1;
 }
+
 .gallery {
   max-width: 700px;
   margin: auto;
@@ -45,36 +45,36 @@ header {
 }
   
 .slctd {
-  grid-area: 1/ 1/ -1/ -2;
+	grid-area: 1/ 1/ -1/ -2;
 }
 
 .poke-card:hover {
-  cursor: pointer;
-  transform: translateY(3px);
-  transition: all 0.3s ease;
+	cursor: pointer;
+	transform: translateY(3px);
+	transition: all 0.3s ease;
 }
 
 .slctd:hover {
-  cursor: default;
+	cursor: default;
 }
 
 @keyframes fadeIn {
-  to {
-    opacity: 1;
-  }
+	to {
+		opacity: 1;
+	}
 }
 
 .fade-in {
-  opacity: 0;
-  animation: fadeIn 0.5s ease 1;
+	opacity: 0;
+	animation: fadeIn 0.5s ease 1;
 }
 
 .poke-card {
-  transform-style: preserve-3d;
-  background: rgb(165, 172, 34);
-  border-radius: 20px;
-  box-shadow: 0 10px 10px rgba(0, 0, 0, 0.4), 0 0px 40px rgba(0, 0, 0, 0.35);
-  padding: 10px;
+	transform-style: preserve-3d;
+	background: rgb(165, 172, 34);
+	border-radius: 20px;
+	box-shadow: 0 10px 10px rgba(0, 0, 0, 0.4), 0 0px 40px rgba(0, 0, 0, 0.35);
+	padding: 10px;
 }
 
 .card,.card.hn {
@@ -90,12 +90,12 @@ header {
   width: 100px;
 }
 
-.poke-image img {
-    width: 100%;
+.images .poke-image {
+	transition: all 0.4s ease;
 }
 
-#download-jpeg {
-    width: 100%;
+.poke-image{
+	max-width: 250px;
 }
 
 .poke-des {
@@ -106,15 +106,14 @@ header {
   font-size: 2rem;
 }
 
-button {
-  background: #4caf50;
-  border-radius: 15px;
-  color: white;
-  border: none;
-  padding: 20px;
-  width: 300px;
-  margin-left: 300px;
+.center, .user-display{
+	display: flex;
+	justify-content: center;
+	text-align: center;
+	align-items: center;
+	height: 200px;
 }
+
 
 .downloadpic {
   padding-bottom: 100px;
@@ -245,6 +244,7 @@ header {
 }
 
 /* Media Query Resonsive to screen size */
+
 
 @media (max-width: 768px) {
 	#logo img {

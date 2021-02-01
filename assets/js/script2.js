@@ -1,3 +1,4 @@
+
 let active = $(".active");
 let images = $(".img");
 
@@ -160,5 +161,3 @@ for (var i=0; i<pokemonContainerEls.length; i++) {
     pokeMoveEl.innerHTML = moveOne; 
     pokeDiv.append(pokeMoveEl);
     pokemonContainerEls[i].append(pokeDiv);
-
-}; 
