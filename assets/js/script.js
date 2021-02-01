@@ -63,26 +63,28 @@ var displayPokemon = function(pokemon, i) {
     pokeInfoEl.appendChild(pokeNameEl);
     //pokemon type 
     let pokeTypeOne = pokemon.types[0].type.name;  
-    let pokeTypeEl = document.createElement("p"); 
+    let pokeTypeEl = document.createElement("h3"); 
     pokeTypeEl.innerHTML = "Type: " + pokeTypeOne;  
     pokeInfoEl.append(pokeTypeEl);
     pokemonContainerEls[i].append(pokeInfoEl);
     //pokemon move 
     let moveOne = pokemon.moves[Math.floor(Math.random() * 5)].move.name; 
     let moveTwo = pokemon.moves[Math.floor(Math.random() * 5)].move.name; 
-    let pokeMoveEl = document.createElement("p");
+    let pokeMoveEl = document.createElement("h4");
     pokeMoveEl.innerHTML= "Moves: " + moveOne + " / " + moveTwo;
     pokeInfoEl.append(pokeMoveEl);
     pokemonContainerEls[i].append(pokeInfoEl);
     //pokemon picture 
+
     let pokeImgEl = document.createElement("div");
     pokeImgEl.classList.add("poke-image");
     let pokeNumber = pokemon.id; 
     let pokePicEl = document.createElement("img");
     pokePicEl.setAttribute("style", "width:150px;height:150px;");
     pokePicEl.src = "https://pokeres.bastionbot.org/images/pokemon/" + pokeNumber + ".png";
+    
     pokeImgEl.append(pokePicEl);
-    pokemonContainerEls[i].append(pokeImgEl);
+    pokemonContainerEls[i].append(pokeImgEl)
 }
 
 
