@@ -160,4 +160,6 @@ for (var i=0; i<pokemonContainerEls.length; i++) {
     let pokeMoveEl = document.createElement("h4");
     pokeMoveEl.innerHTML = moveOne; 
     pokeDiv.append(pokeMoveEl);
-    pokemonContainerEls[i].append(pokeDiv);
+	pokemonContainerEls[i].append(pokeDiv);
+	
+};
