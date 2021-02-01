@@ -116,7 +116,7 @@ cityNameEl.textContent = "CITY: " + cityParsed;
 var weatherEl = document.querySelector("#weather-conditions")
 var weatherValue = localStorage.getItem("conditions");
 var weatherParsed = JSON.parse(weatherValue); 
-weatherEl.innerHTML = "CONDTIONS: " + weatherParsed[0]; 
+weatherEl.innerHTML = "CONDITIONS: " + weatherParsed[0]; 
 
 
 for (var i=0; i<pokemonContainerEls.length; i++) {
@@ -132,7 +132,6 @@ for (var i=0; i<pokemonContainerEls.length; i++) {
                     let pokeNumber = pokemon.id; 
                     let pokePicEl = document.createElement("img");
                     pokePicEl.classList = "poke-image";
-                    //pokePicEl.setAttribute("style", "width:auto;height:auto;");
                     pokePicEl.srcset = "https://pokeres.bastionbot.org/images/pokemon/" + pokeNumber + ".png";
                     pokeDiv.append(pokePicEl);
                     pokemonContainerEls[i].append(pokeDiv);
