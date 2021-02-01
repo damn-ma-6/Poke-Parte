@@ -90,13 +90,12 @@ var displayPokemon = function(pokemon, i) {
 
 var formSubmitHandler = function(event){
     event.preventDefault();
+    localStorage.clear();
 
     var cityName = city.value.trim();
     
     if(cityName){
         getCity(cityName);
-    }else{
-        alert("this doesnt display anything");
     }
     
 }
