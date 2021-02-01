@@ -49,7 +49,7 @@ var getPokemon = function(pokemon, i) {
     })
 };
 
-//display pokemon moves, type and picture - called by getPokemon 
+//display pokemon moves, type and picture - called by getPokemo
 var displayPokemon = function(pokemon, i) { 
     let pokemonContainerEls = document.querySelectorAll(".poke-card");  
     

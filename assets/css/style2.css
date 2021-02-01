@@ -1,12 +1,12 @@
 * {
-  margin: 0;
-  padding: 0;
-  box-sizing: border-box;
+	margin: 0;
+	padding: 0;
+	box-sizing: border-box;
 }
 
 @font-face {
-  font-family: poke;
-  src: url("../fonts/pokemon-font.otf");
+	font-family: poke;
+	src: url("../fonts/pokemon-font.otf");
 }
 
   
@@ -144,7 +144,6 @@ body {
 	background: #fff;
 	position: relative;
 	font-family: poke;
-	font-size: large;
 	background: url(https://s3-us-west-2.amazonaws.com/s.cdpn.io/652/confectionary.png);
 }
 
@@ -169,11 +168,10 @@ header {
 }
 
 .gallery {
-	max-width: 700px;
-	margin: auto;
 	display: grid;
-	grid-template: repeat(4, 150px) / repeat(5, 150px);
-	grid-gap: 15px;
+	padding-left: 50vh;
+	grid-template: repeat(1,400px) / repeat(3, 300px);
+	grid-gap: 30px;
 }
 
 .slctd {
@@ -221,17 +219,11 @@ header {
 
 .images .poke-image {
 	transition: all 0.4s ease;
-	width: 100px;
 }
 
-.poke-image img {
-    width: 100%;
+.poke-image{
+	max-width: 250px;
 }
-
-#download-jpeg {
-    width: 100%;
-}
-
 .user-display {
 	line-height: 40px;
 	color: darkgreen;
@@ -246,14 +238,15 @@ header {
 	height: 200px;
 }
 
+.poke-info h3, .poke-info h4{
+	font-size: 0.1em;
+	padding-top: 10px;
+	padding-bottom: 10px;
+}
 
 /* Media Query Resonsive to screen size */
 
 @media (max-width: 768px) {
-	body {
-		font-size: small;
-		align-items: center;
-	}
 	#logo img {
 		padding-top: 20px;
 		width: 80%;
