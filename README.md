@@ -2,7 +2,6 @@
 
 Please visit our completed webpage at:  https://damn-ma-6.github.io/Poke-Parte/
 
-![website screenshot]()
 
 Hello, and welcome to our README! This is for our first group project. We were tasked with creating an application that provided a service, while combining two different server side APIs. We had some trials and tribulations throughout the making of this project, but we all learned a lot and ended up creating a really fun and unique project. 
 
