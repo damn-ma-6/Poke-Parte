@@ -107,7 +107,7 @@ function getLocation() {
         $("#city-name").val("Locating...");
         navigator.geolocation.getCurrentPosition(showPosition, error);
     } else {
-        alert("Geolocation is not supported by this browser.");
+        console.log("Geolocation is not supported by this browser.");
     }
 }
 
@@ -125,7 +125,7 @@ function showPosition(position) {
                 getCity(cityName);
             })
         } else {
-            alert("something went wrong!");
+            console.log("something went wrong!");
         }
     }) 
     .catch(error => {
@@ -136,7 +136,7 @@ function showPosition(position) {
 
 function error() {
     $("#city-name").val("");
-    alert('Unable to get your location');
+    console.log('Unable to get your location');
 }
 
 // had to call the city api to get the data key for the city then enter it into the get weather function
@@ -151,11 +151,11 @@ var getCity = function(city){
                 getWeather(data[0].Key, cityName);
             });
         }else{
-            alert("City not found Error: " + response.statusText);
+            console.log("City not found Error: " + response.statusText);
         }
     })
     .catch(function(error){
-        alert("Unable to connect");
+        console.log("Unable to connect");
     })
 };
 
@@ -337,7 +337,7 @@ for(var i = 0; i < pokemonContainerEl.length; i++){
         pokeStorage = JSON.parse(localStorage.getItem("pokemon")) || [];
         pokeStorage.push(pokeName);
 
-        alert(pokeName);
+        console.log(pokeName);
 
         localStorage.setItem("pokemon", JSON.stringify(pokeStorage));
 
