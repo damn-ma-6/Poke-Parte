@@ -180,9 +180,6 @@ var getWeather = function(cityKey, cityName){
 var cityStorage = [];
 var conditions = [];
 
-//empty arrays for city names and conditions 
-var cityStorage = [];
-var conditions = [];
 
 var displayWeather = function(data){
     var cityName = city.value.toUpperCase().trim();
@@ -326,50 +323,6 @@ var displayWeather = function(data){
 //     });
 
 // };
-
-var pokeStorage = [];
-
-
-for(var i = 0; i < pokemonContainerEl.length; i++){
-    pokemonContainerEl[i].addEventListener("click", function(){
-        var pokeName = this.getElementsByTagName("h2")[0].textContent;
-        console.log(pokeName);
-        
-        pokeStorage = JSON.parse(localStorage.getItem("pokemon")) || [];
-        pokeStorage.push(pokeName);
-
-        console.log(pokeName);
-
-        localStorage.setItem("pokemon", JSON.stringify(pokeStorage));
-
-    });
-}
-
-
-//empty arrays to store pokemon info 
-var pokeStorage = [];
-var typeStorage = [];
-var moveStorage = [];
-//save 5 pokemon names, types and moves to localStorage
-for(var i = 0; i < pokemonContainerEl.length; i++){
-    pokemonContainerEl[i].addEventListener("click", function(){
-        var pokeName = this.getElementsByTagName("h2")[0].textContent;
-        pokeStorage = JSON.parse(localStorage.getItem("pokemon")) || [];
-        pokeStorage.push(pokeName);
-        localStorage.setItem("pokemon", JSON.stringify(pokeStorage));
-
-        var pokeType = this.getElementsByTagName("h3")[0].textContent;
-        typeStorage = JSON.parse(localStorage.getItem("types")) || [];
-        typeStorage.push(pokeType);
-        localStorage.setItem("types", JSON.stringify(typeStorage)); 
-
-        var pokeMove = this.getElementsByTagName("h4")[0].textContent; 
-        moveStorage = JSON.parse(localStorage.getItem("moves")) || [];
-        moveStorage.push(pokeMove);
-        localStorage.setItem("moves", JSON.stringify(moveStorage)); 
-        $(this).addClass("selectedpoke");
-    });
-}
 
 //empty arrays to store pokemon info 
 var pokeStorage = [];
