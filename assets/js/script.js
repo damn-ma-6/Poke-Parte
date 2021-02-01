@@ -1,3 +1,5 @@
+//updated 
+
 var mainContainerEl = document.querySelector(".poke-cards");
 var pokemonContainerEl = document.querySelectorAll(".poke-card");
 // this variable will pull the city from the search bar
@@ -47,85 +49,95 @@ var getPokemon = function(pokemon, i) {
     })
 };
 
-//display pokemon moves, type and picture - called by getPokemon 
+//display pokemon moves, type and picture - called by getPokemo
 var displayPokemon = function(pokemon, i) { 
     let pokemonContainerEls = document.querySelectorAll(".poke-card");  
-
-            pokemonContainerEls[i].innerHTML = ""; //empty content
-            let pokeDiv = document.createElement("div"); //create div
-            //pokemon name 
-            let pokeName = pokemon.name; 
-            let pokeNameEl = document.createElement("h2");
-            pokeNameEl.innerHTML = pokeName; 
-            pokeDiv.append(pokeNameEl);  
-            pokemonContainerEls[i].append(pokeDiv); 
-            //pokemon type 
-            let pokeTypeOne = pokemon.types[0].type.name;  
-            let pokeTypeEl = document.createElement("h3"); 
-            pokeTypeEl.innerHTML = "Type: " + pokeTypeOne;  
-            pokeDiv.append(pokeTypeEl);
-            pokemonContainerEls[i].append(pokeDiv);
-            //pokemon move 
-            let moveOne = pokemon.moves[Math.floor(Math.random() * 5)].move.name; 
-            let moveTwo = pokemon.moves[Math.floor(Math.random() * 5)].move.name; 
-            let pokeMoveEl = document.createElement("h4");
-            pokeMoveEl.innerHTML= "Moves: " + moveOne + " / " + moveTwo;
-            pokeDiv.append(pokeMoveEl);
-            pokemonContainerEls[i].append(pokeDiv);
-            //pokemon picture 
-            let pokeNumber = pokemon.id; 
-            let pokePicEl = document.createElement("img");
-            pokePicEl.setAttribute("style", "width:150px;height:150px;");
-            pokePicEl.srcset = "https://pokeres.bastionbot.org/images/pokemon/" + pokeNumber + ".png";
-            pokeDiv.append(pokePicEl);
-            pokemonContainerEls[i].append(pokeDiv);
-=======
+    
     pokemonContainerEls[i].innerHTML = ""; //empty content
-    let pokeDiv = document.createElement("div"); //create div
-
     //pokemon name 
+    let pokeInfoEl = document.createElement("div");
+    pokeInfoEl.classList.add("poke-info");
     let pokeName = pokemon.name; 
     let pokeNameEl = document.createElement("h2");
     pokeNameEl.innerHTML = pokeName; 
-    pokeDiv.append(pokeNameEl);  
-    pokemonContainerEls[i].append(pokeDiv); 
-
+    pokeInfoEl.appendChild(pokeNameEl);
     //pokemon type 
     let pokeTypeOne = pokemon.types[0].type.name;  
-    let pokeTypeEl = document.createElement("p"); 
+    let pokeTypeEl = document.createElement("h3"); 
     pokeTypeEl.innerHTML = "Type: " + pokeTypeOne;  
-    pokeDiv.append(pokeTypeEl);
-    pokemonContainerEls[i].append(pokeDiv);
-
+    pokeInfoEl.append(pokeTypeEl);
+    pokemonContainerEls[i].append(pokeInfoEl);
     //pokemon move 
     let moveOne = pokemon.moves[Math.floor(Math.random() * 5)].move.name; 
     let moveTwo = pokemon.moves[Math.floor(Math.random() * 5)].move.name; 
-    let pokeMoveEl = document.createElement("p");
+    let pokeMoveEl = document.createElement("h4");
     pokeMoveEl.innerHTML= "Moves: " + moveOne + " / " + moveTwo;
-    pokeDiv.append(pokeMoveEl);
-    pokemonContainerEls[i].append(pokeDiv);
-
+    pokeInfoEl.append(pokeMoveEl);
+    pokemonContainerEls[i].append(pokeInfoEl);
     //pokemon picture 
+
+    let pokeImgEl = document.createElement("div");
+    pokeImgEl.classList.add("poke-image");
     let pokeNumber = pokemon.id; 
     let pokePicEl = document.createElement("img");
     pokePicEl.setAttribute("style", "width:150px;height:150px;");
-    pokePicEl.srcset = "https://pokeres.bastionbot.org/images/pokemon/" + pokeNumber + ".png";
-    pokeDiv.append(pokePicEl);
-    pokemonContainerEls[i].append(pokeDiv);
+    pokePicEl.src = "https://pokeres.bastionbot.org/images/pokemon/" + pokeNumber + ".png";
+    
+    pokeImgEl.append(pokePicEl);
+    pokemonContainerEls[i].append(pokeImgEl)
 }
 
 
 var formSubmitHandler = function(event){
     event.preventDefault();
+    localStorage.clear();
 
     var cityName = city.value.trim();
     
     if(cityName){
         getCity(cityName);
-    }else{
-        alert("this doesnt display anything");
+        localStorage.clear();
     }
     
+}
+
+$(".user-location").on("click", getLocation);
+
+function getLocation() {
+    if (navigator.geolocation) {
+        $("#city-name").val("Locating...");
+        navigator.geolocation.getCurrentPosition(showPosition, error);
+    } else {
+        console.log("Geolocation is not supported by this browser.");
+    }
+}
+
+function showPosition(position) {
+    let lat = position.coords.latitude;
+    let lon = position.coords.longitude;
+    console.log(`latitude: ${lat}, longitude: ${lon}`);
+    let apiUrl = 
+        `https://dataservice.accuweather.com/locations/v1/cities/geoposition/search?apikey=8phV97GIATzlpDJK66fxWSKyzLgvNucC&q=${lat},${lon}&language=en-ca&details=false`;
+    fetch(apiUrl).then(response => {
+        if(response.ok) {
+            response.json().then(data => {
+                $("#city-name").val("");
+                let cityName = data.LocalizedName;
+                getCity(cityName);
+            })
+        } else {
+            console.log("something went wrong!");
+        }
+    }) 
+    .catch(error => {
+        $("#city-name")
+        console.log(error);
+    })
+}
+
+function error() {
+    $("#city-name").val("");
+    console.log('Unable to get your location');
 }
 
 // had to call the city api to get the data key for the city then enter it into the get weather function
@@ -136,34 +148,38 @@ var getCity = function(city){
     fetch(apiUrl).then(function(response){
         if(response.ok){
             response.json().then(function(data){
-                getWeather(data[0].Key);
+                let cityName = data[0].LocalizedName;
+                getWeather(data[0].Key, cityName);
             });
         }else{
-            alert("City not found Error: " + response.statusText);
+            console.log("City not found Error: " + response.statusText);
         }
     })
     .catch(function(error){
-        alert("Unable to connect");
+        console.log("Unable to connect");
     })
 };
 
 // function uses the get hourly weather api from accuweather and uses city key to display weather
-var getWeather = function(cityKey){
+var getWeather = function(cityKey, cityName){
+    // let ctname = cityName;
 
     var apiUrl = "https://dataservice.accuweather.com/forecasts/v1/hourly/1hour/" + cityKey + "?apikey=8phV97GIATzlpDJK66fxWSKyzLgvNucC&metric=true";
 
     fetch(apiUrl).then(function(response){
         if(response.ok){
             response.json().then(function(data){
-                displayWeather(data);
+                displayWeather(data, cityName);
+                console.log(cityName);
             });
         }
-    });
-};
+    }) ;
+}
 
 //empty arrays for city names and conditions 
 var cityStorage = [];
 var conditions = [];
+
 
 var displayWeather = function(data){
     var cityName = city.value.toUpperCase().trim();
@@ -308,25 +324,6 @@ var displayWeather = function(data){
 
 // };
 
-var pokeStorage = [];
-
-
-for(var i = 0; i < pokemonContainerEl.length; i++){
-    pokemonContainerEl[i].addEventListener("click", function(){
-        var pokeName = this.getElementsByTagName("h2")[0].textContent;
-        console.log(pokeName);
-        
-        pokeStorage = JSON.parse(localStorage.getItem("pokemon")) || [];
-        pokeStorage.push(pokeName);
-
-        alert(pokeName);
-
-        localStorage.setItem("pokemon", JSON.stringify(pokeStorage));
-
-    });
-}
-
-
 //empty arrays to store pokemon info 
 var pokeStorage = [];
 var typeStorage = [];
@@ -386,44 +383,21 @@ function getCardDetails(target) {
     currentCard,
     info,
     image
-    };
-            
-    return card;
-    }
-            
-    $(cardEl).on("mouseenter", (e) => {
-        let card = getCardDetails(e.target);
-        $(card.currentCard).css("transition", "none");
-    });
+  };
         
-    $(cardEl).on('mousemove', (e) => {
-        let center = {
-            x: (e.target.offsetWidth)/2,
-            y: (e.target.offsetHeight)/2
-        };
-    
-        let mouse = {
-            x: e.offsetX,
-            y: e.offsetY
-        };
-
-        let x = (center.x - mouse.x) / 25;
-        let y = (center.y - mouse.y) / 25;
-
-        (x > 5) && (x = 5 + (x-5)/10);
-        (x < -5) && (x = -5 - (x + 5)/10);
-        (y > 5) && (y = 5 + (y-5)/10);
-        (y < -5) && (y = -5 - (y + 5)/10)
-    
-        $(card.currentCard).css("transform", `rotateY(${-x}deg) rotateX(${y}deg)`);
-    
-        $(card.info).css("transform", "translateZ(40px)")
-        $(card.image).css("transition", "transform .5s")
-        $(card.image).css("transform", "translateZ(60px)")
-    });
-    
+    return card;
+}
+        
+$(cardEl).on("mouseenter", (e) => {
+    let card = getCardDetails(e.target);
+    $(card.currentCard).css("transition", "none");
+    $(card.info).css("transform", "translateZ(40px)");
+    $(card.info).css("perspective", "300px")
+    $(card.image).css("transition", "transform .5s");
+    $(card.image).css("transform", "translateZ(60px)");
+});
             
-    $(cardEl).on("mouseleave", () => {
+$(cardEl).on("mouseleave", () => {
     $(card.currentCard).css("transition", "all .5s ease");
     $(card.currentCard).css("transform", "rotateY(0deg) rotateX(0deg)");
             
@@ -431,3 +405,4 @@ function getCardDetails(target) {
     $(card.image).css("transform", "translateZ(0px) rotateZ(0deg)");
     card = {};
 });
+

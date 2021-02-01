@@ -35,6 +35,19 @@ header {
   z-index: -1;
 }
 
+.form {
+  display: flex;
+  flex-wrap: wrap;
+  width: 70%;
+  justify-content: center;
+  margin: 0 auto;
+}
+
+.user-location {
+  margin-left: 5px;
+  width: 60px;
+}
+
 .user-form {
   display: flex;
   flex-direction: row;
@@ -76,8 +89,8 @@ header {
   padding-top: 100px;
   padding-left: 150px;
   line-height: 40px;
-  margin-bottom: 100px;
-  margin-top: 50px;
+  max-width: 1650px;
+  margin: 50px auto 100px;
   color: darkgreen;
 }
 
@@ -95,8 +108,19 @@ header {
   grid-template-columns: repeat(5, 2fr);
   grid-column-gap: 50px;
   grid-row-gap: 1em;
-  margin-bottom: 150px;
-  padding: 0 100px;
+  padding: 0 50px;
+  max-width: 1750px;
+  margin: 0 auto 150px;
+}
+
+.poke-card {
+  display: flex;
+  flex-direction: column;
+  transform-style: preserve-3d;
+}
+
+.poke-info {
+  pointer-events: none;
 }
 
 /* Style the counter cards */
@@ -110,6 +134,8 @@ header {
   box-shadow: 0 10px 10px rgba(0, 0, 0, 0.4), 0 0px 40px rgba(0, 0, 0, 0.35);
   color: rgb(210, 46, 150);
   display: flex;
+  flex-direction: column;
+
   margin-bottom: 100px;
 }
 
@@ -159,4 +185,4 @@ header {
     grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
     grid-gap: 50px;
   }
-
+}
